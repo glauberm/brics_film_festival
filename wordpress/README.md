@@ -35,7 +35,7 @@ wp config set WP_DEBUG true --raw --type=constant
 #### Install WordPress core
 
 ```[sh]
-wp core install --url=localhost:8080 --admin_user=<YOUR_ADMIN_USER> --admin_password=<YOUR_ADMIN_PASSWORD> --admin_email=<YOUR_ADMIN_EMAIL>
+wp core install --title='4th BRICS Film Festival' --url=localhost:8080 --admin_user=<YOUR_ADMIN_USER> --admin_password=<YOUR_ADMIN_PASSWORD> --admin_email=<YOUR_ADMIN_EMAIL>
 ```
 
 ### Symlink the plugin to the plugins directory
@@ -44,18 +44,12 @@ wp core install --url=localhost:8080 --admin_user=<YOUR_ADMIN_USER> --admin_pass
 ln -sr ../brics-film-festival wp-content/plugins/
 ```
 
-### Activate the plugin
-
-```[sh]
-wp plugin activate brics-film-festival
-```
-
 ### Define the environment parameters
 
 Copy the `env.php.example` file to a `env.php` one:
 
 ```[sh]
-cp ../plugin/env.example.php ../plugin/env.php
+cp ../brics-film-festival/env.php.example ../brics-film-festival/env.php
 ```
 
 Then, edit the following parameters:
@@ -66,6 +60,12 @@ define( 'BASE_SITE_URL', 'http://localhost:8080' );
 ```
 
 We'll let `RECAPTCHA_SECRET_KEY` blank for now.
+
+### Activate the plugin
+
+```[sh]
+wp plugin activate brics-film-festival
+```
 
 ### Install additional plugins
 

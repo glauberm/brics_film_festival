@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import DefaultLayout from '../../layouts/default.pt';
-import IncubatorMeetingEnrollmentForm from '../../components/IncubatorMeetingEnrollmentForm';
+import IncubatorMeetingEnrollmentForm from '../../components/ExpandedEnrollmentForm';
 import Section from '../../components/Section';
 import { colors } from '../../styles/theme';
 
@@ -79,7 +79,7 @@ class IncubatorMeetingEnrollmentPage extends React.PureComponent {
       >
         <IncubatorMeetingEnrollmentForm
           location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API}brics/v1/incubator_meeting_enrollment`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/incubator_meeting_enrollment`}
         />
       </DefaultLayout>
     );

@@ -6,7 +6,7 @@ import { injectIntl } from 'react-intl';
 
 import { colors, breakpoints, containerSize } from '../styles/theme';
 import Decoration from './Decoration';
-import { navigationLinks } from '../data/shared';
+import { navigationLinks } from '../data/navigation';
 import logo from '../images/icon.svg';
 
 class Navigation extends React.PureComponent {

@@ -6,7 +6,7 @@ import { injectIntl } from 'react-intl';
 import { colors, breakpoints, containerSize, linkBaseStyle, headingBaseStyle } from '../styles/theme';
 import SocialMedia from './SocialMedia';
 import Decoration from './Decoration';
-import { navigationLinks } from '../data/shared';
+import { navigationLinks } from '../data/navigation';
 
 class Footer extends React.PureComponent {
   render() {

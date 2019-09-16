@@ -1,11 +1,13 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
 
 import Form from './Form';
 import Input from './Forms/Input';
 import Select from './Forms/Select';
-import { Row, FormControl } from '../styles/form';
+import Textarea from './Forms/Textarea';
+import { Row } from '../styles/form';
 
-class CoursesEnrollmentForm extends React.PureComponent {
+class CourseEnrollmentForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,9 +18,9 @@ class CoursesEnrollmentForm extends React.PureComponent {
       profession: '',
       formation: '',
       course: '',
-      knowledge: '',
+      registrationKnowledge: '',
       address: '',
-      interest: '',
+      activityInterest: '',
     };
   }
 
@@ -35,33 +37,34 @@ class CoursesEnrollmentForm extends React.PureComponent {
           name: this.state.name,
           age: this.state.age,
           email: this.state.email,
-          phone: this.state.phone,
+          telephone: this.state.telephone,
           profession: this.state.profession,
           formation: this.state.formation,
           course: this.state.course,
-          knowledge: this.state.knowledge,
+          registrationKnowledge: this.state.registrationKnowledge,
           address: this.state.address,
-          interest: this.state.interest,
+          activityInterest: this.state.activityInterest,
         }}
         successMessage={
-          this.props.intl.formatMessage({ id: 'contactFormSuccess' })
+          this.props.intl.formatMessage({ id: 'enrollmentFormSuccess' })
         }
         successAction={() => {
           this.setState({
             name: '',
             age: '',
             email: '',
-            phone: '',
+            telephone: '',
             profession: '',
             formation: '',
             course: '',
-            knowledge: '',
+            registrationKnowledge: '',
             address: '',
-            interest: '',
+            activityInterest: '',
           });
         }}
       >
-        <h2>
+        <br/>
+        <h2 className='title'>
           {this.props.intl.formatMessage({ id: 'enrollmentFormTitle' })}
         </h2>
         <Row>
@@ -72,6 +75,8 @@ class CoursesEnrollmentForm extends React.PureComponent {
           />
           <Input
             label='age'
+            type='number'
+            min='1'
             value={this.state.age}
             handleChange={(e) => this.handleChange(e, 'age')}
           />
@@ -85,6 +90,7 @@ class CoursesEnrollmentForm extends React.PureComponent {
           />
           <Input
             label='telephone'
+            type='tel'
             value={this.state.telephone}
             handleChange={(e) => this.handleChange(e, 'telephone')}
           />
@@ -100,53 +106,51 @@ class CoursesEnrollmentForm extends React.PureComponent {
             value={this.state.formation}
             handleChange={(e) => this.handleChange(e, 'formation')}
             options={[
-              'fundamental', 'medio', 'superior', 'mestrado', 'doutorado'
+              'middleSchool',
+              'highSchool',
+              'bachelorsDegree',
+              'mastersDegree',
+              'doctorsDegree'
             ]}
           />
         </Row>
         <Row>
-          <FormControl>
-            <label>
-              <span>Curso</span>
-              <select required name='course' defaultValue="">
-                <option disabled value="">Selecione uma opção...</option>
-                <option value="russian_soviet">História do cinema russo e soviético</option>
-                <option value="south_african">História do cinema sul-africano</option>
-                <option value="chinese">História do cinema chinês</option>
-                <option value="indian">História do cinema indiano</option>
-              </select>
-            </label>
-          </FormControl>
-          <FormControl>
-            <label>
-              <span>Como soube do curso</span>
-              <select required name='knowledge' defaultValue="">
-                <option disabled value="">
-                  Selecione uma opção...
-                </option>
-                <option value="site">Site do Festival</option>
-                <option value="email">E-mail</option>
-                <option value="social">Redes Sociais</option>
-                <option value="others">Outros</option>
-              </select>
-            </label>
-          </FormControl>
+          <Select
+            label='course'
+            value={this.state.course}
+            handleChange={(e) => this.handleChange(e, 'course')}
+            options={[
+              'russianSovietFilmHistory',
+              'southAfricanFilmHistory',
+              'chineseFilmHistory',
+              'indianFilmHistory'
+            ]}
+          />
+          <Select
+            label='registrationKnowledge'
+            value={this.state.registrationKnowledge}
+            handleChange={(e) => this.handleChange(e, 'registrationKnowledge')}
+            options={[
+              'festivalWebsite',
+              'email',
+              'socialMedia',
+              'others'
+            ]}
+          />
         </Row>
-        <FormControl>
-          <label>
-            <span>Endereço</span>
-            <input required type='text' name='address' />
-          </label>
-        </FormControl>
-        <FormControl>
-          <label>
-            <span>Qual é o motivo do interesse pelo curso</span>
-            <textarea required name='interest'></textarea>
-          </label>
-        </FormControl>
+        <Input
+          label='address'
+          value={this.state.address}
+          handleChange={(e) => this.handleChange(e, 'address')}
+        />
+        <Textarea
+          label='activityInterest'
+          value={this.state.activityInterest}
+          handleChange={(e) => this.handleChange(e, 'activityInterest')}
+        />
       </Form>
     );
   }
 }
 
-export default CoursesEnrollmentForm;
+export default injectIntl(CourseEnrollmentForm);

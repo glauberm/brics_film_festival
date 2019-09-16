@@ -4,8 +4,7 @@ import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 import Recaptcha from 'react-recaptcha';
 
-import { NotificationContext } from './/Notification';
-import { recaptchaSitekey } from '../data/shared';
+import { NotificationContext } from './Notifications';
 import { colors, breakpoints, headingBaseStyle } from '../styles/theme';
 import { FormControl } from '../styles/form';
 
@@ -23,7 +22,7 @@ class Form extends React.PureComponent {
       { recaptcha:
         <Recaptcha
           render="explicit"
-          sitekey={recaptchaSitekey}
+          sitekey={process.env.RECAPTCHA_SITE_KEY}
           size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
         />
       }

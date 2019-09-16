@@ -1,10 +1,10 @@
 import React from 'react';
 
 import DefaultLayout from '../../layouts/default.pt';
-import EnrollmentForm from '../../components/EnrollmentForm';
+import CoursesEnrollmentForm from '../../components/CoursesEnrollmentForm';
 import Section from '../../components/Section';
 
-class EnrollmentPage extends React.PureComponent {
+class CoursesEnrollmentPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 
@@ -22,13 +22,13 @@ class EnrollmentPage extends React.PureComponent {
           </Section>
         }
       >
-        <EnrollmentForm
+        <CoursesEnrollmentForm
           location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API}brics/v1/enrollment`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/enrollment`}
         />
       </DefaultLayout>
     );
   }
 }
 
-export default EnrollmentPage;
+export default CoursesEnrollmentPage;

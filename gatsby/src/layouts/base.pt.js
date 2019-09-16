@@ -9,7 +9,6 @@ import BaseLayout from './base';
 import Logo from '../components/I18n/pt/Logo';
 import ogImg from '../images/og.pt.png';
 import logoFooter from '../images/logo-s.pt.svg';
-import { baseUrl } from '../data/shared';
 
 addLocaleData(pt);
 
@@ -25,8 +24,10 @@ const BasePtLayout = (props) => {
     `
   );
 
-  const pageTitle = (props.pageTitle ? props.pageTitle + ' - ' : '')
-    + wordpressBricsPtSiteInfo.pt_site_info_title;
+  const pageTitle = (props.pageTitle
+    ? `${props.pageTitle} - ${wordpressBricsPtSiteInfo.pt_site_info_title}`
+    : wordpressBricsPtSiteInfo.pt_site_info_title
+  );
   const description = wordpressBricsPtSiteInfo.pt_site_info_description;
 
   return (
@@ -43,7 +44,11 @@ const BasePtLayout = (props) => {
           <meta property="og:image" content={ogImg} />
           <meta property="og:image:alt" content="BRICS Film Festival" />
           <meta property="og:description" content={description} />
-          <link rel="alternate" href={baseUrl + props.langEn} hreflang="en" />
+          <link
+            rel="alternate"
+            href={process.env.BASE_URL + props.langEn}
+            hreflang="en"
+          />
         </Helmet>
         <BaseLayout
           pathname={props.pathname}

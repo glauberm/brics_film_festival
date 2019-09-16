@@ -1,7 +1,3 @@
-export const baseUrl = 'https://bricsfilmfestival.com.br';
-
-export const recaptchaSitekey = '6LedcKwUAAAAAN5X9FG34Z4QUgt4NS_LFBVKOx5P';
-
 export const navigationLinks = (intl) => [
   {
     href: intl.formatMessage({ id: 'navigationHomeHref' }),

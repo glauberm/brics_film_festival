@@ -1,6 +1,7 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
+import Label from './Label';
 import { FormControl } from '../../styles/form';
 
 class Message extends React.PureComponent {
@@ -8,7 +9,7 @@ class Message extends React.PureComponent {
     return (
       <FormControl>
         <label>
-          <span>{this.props.intl.formatMessage({ id: this.props.label })}</span>
+          <Label />
           <textarea
             required
             name={this.props.label}

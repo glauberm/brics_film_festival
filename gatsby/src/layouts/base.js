@@ -10,25 +10,37 @@ import SocialMedia from '../components/SocialMedia';
 import Navigation from '../components/Navigation';
 import Timer from '../components/Timer';
 import Footer from '../components/Footer';
-import { baseUrl } from '../data/shared';
-import { colors, breakpoints, containerSize, headingBaseStyle } from '../styles/theme';
+import {
+  colors, breakpoints, containerSize, headingBaseStyle
+} from '../styles/theme';
 
 class BaseLayout extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
         <Helmet>
-          <meta name="robots"
+          <meta
+            name="robots"
             content={ this.props.noRobots ? 'noindex,nofollow' : 'index,follow' }
           />
-          <meta name="googlebot"
+          <meta
+            name="googlebot"
             content={ this.props.noRobots ? 'noindex,nofollow' : 'index,follow' }
           />
-          <meta property="og:url" content={baseUrl + this.props.pathname} />
+          <meta
+            property="og:url"
+            content={process.env.BASE_URL + this.props.pathname}
+          />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="BRICS Film Festival" />
-          <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Montserrat:700&display=swap" rel="stylesheet" />
-          <link rel="canonical" href={baseUrl + this.props.pathname} />
+          <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Montserrat:700display=swap"
+            rel="stylesheet"
+          />
+          <link
+            rel="canonical"
+            href={process.env.BASE_URL + this.props.pathname}
+          />
         </Helmet>
         <Global
           styles={(colors, headingBaseStyle) => GlobalStyles}

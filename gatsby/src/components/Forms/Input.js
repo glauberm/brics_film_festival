@@ -1,6 +1,7 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
 
+import Label from './Label';
 import { FormControl } from '../../styles/form';
 
 class Input extends React.PureComponent {
@@ -8,13 +9,14 @@ class Input extends React.PureComponent {
     return (
       <FormControl>
         <label>
-          <span>{this.props.intl.formatMessage({ id: this.props.label })}</span>
+          <Label />
           <input
             name={this.props.label}
             type={this.props.type ? this.props.type : 'text'}
             value={this.props.value}
             required={this.props.notRequired ? false : true}
             onChange={this.props.handleChange}
+            {...this.props}
           />
         </label>
       </FormControl>

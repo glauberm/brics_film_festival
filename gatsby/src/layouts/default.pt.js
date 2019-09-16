@@ -9,6 +9,7 @@ class DefaultLayout extends React.PureComponent {
   render() {
     return (
       <BaseLayout
+        pageTitle={this.props.pageTitle}
         pathname={this.props.pathname}
         langPt={this.props.pathname}
         langEn={this.props.langEn}

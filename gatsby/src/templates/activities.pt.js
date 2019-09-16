@@ -13,14 +13,14 @@ class ActivitiesTemplate extends React.PureComponent {
       return (
         <CoursesEnrollmentForm
           location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API}brics/v1/pt_courses_enrollment_form`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/pt_courses_enrollment_form`}
         />
       );
     case 'courses-on-south-african-chinese-indian-and-russian-and-soviet-film-history':
       return (
         <CoursesEnrollmentForm
           location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API}brics/v1/en_courses_enrollment_form`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/en_courses_enrollment_form`}
         />
       );
     }
