@@ -5,7 +5,7 @@ import Notification from './Notification';
 
 export const NotificationContext = React.createContext();
 
-class NotificationProvider extends React.Component {
+class NotificationProvider extends React.PureComponent {
   constructor(props) {
     super(props);
     this.count = 0;

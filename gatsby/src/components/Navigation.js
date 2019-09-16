@@ -176,6 +176,17 @@ const Nav = styled.nav`
   color: ${colors.white};
   overflow-y: hidden;
   overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: ${colors.gray} ${colors.grayDark};
+
+  ::-webkit-scrollbar {
+    height: 6px;
+    background-color: ${colors.grayDark};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${colors.gray};
+  }
 `;
 
 const List = styled.ul`

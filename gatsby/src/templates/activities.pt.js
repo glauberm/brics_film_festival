@@ -4,21 +4,21 @@ import { graphql } from 'gatsby';
 import DefaultLayout from '../layouts/default.pt';
 import Breadcrumb from '../components/Breadcrumb';
 import ActivitiesNav from '../components/I18n/pt/ActivitiesNav';
-import CoursesEnrollmentForm from '../components/CoursesEnrollmentForm';
+import CourseEnrollmentForm from '../components/CourseEnrollmentForm';
 
 class ActivitiesTemplate extends React.PureComponent {
   getForm(slug) {
     switch (slug) {
     case 'cursos-de-historia-do-cinema-indiano-chines-sul-africano-russo-e-sovietico':
       return (
-        <CoursesEnrollmentForm
+        <CourseEnrollmentForm
           location={this.props.location}
           formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/pt_courses_enrollment_form`}
         />
       );
     case 'courses-on-south-african-chinese-indian-and-russian-and-soviet-film-history':
       return (
-        <CoursesEnrollmentForm
+        <CourseEnrollmentForm
           location={this.props.location}
           formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/en_courses_enrollment_form`}
         />

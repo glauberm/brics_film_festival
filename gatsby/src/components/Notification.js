@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import { colors } from '../styles/theme';
 
-class Notification extends React.Component {
+class Notification extends React.PureComponent {
   constructor(props) {
     super(props);
     this.count = 0;

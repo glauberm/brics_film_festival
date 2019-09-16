@@ -47,6 +47,17 @@ const Nav = styled.nav`
   border: 1px solid ${colors.grayLighter};
   overflow-x: auto;
   width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: ${colors.grayLight} ${colors.white};
+
+  ::-webkit-scrollbar {
+    height: 6px;
+    background-color: ${colors.white};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${colors.grayLight};
+  }
 `;
 
 const List = styled.ol`
