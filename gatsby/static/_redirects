@@ -1,0 +1,4 @@
+/       /en            302   Language=en
+/       /pt            302
+/en/*   /en/404.html   404
+/pt/*   /pt/404.html   404

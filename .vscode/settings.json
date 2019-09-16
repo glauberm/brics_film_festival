@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "gatsby/node_modules": true,
+    "gatsby/.cache": true,
+    "gatsby/public": true,
+  },
+  "[js]": {
+    "editor.tabSize": 2,
+  },
+  "[php]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false,
+  },
+  "phpcs.executablePath": "wordpress/vendor/squizlabs/php_codesniffer/bin/phpcs",
+  "phpcs.standard": "WordPress-Extra",
+}

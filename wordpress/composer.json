@@ -1,0 +1,29 @@
+{
+    "name": "glauberm/brics_film_festival",
+    "description": "Wordpress theme for the 4th BRICS Film Festival.",
+    "type": "wordpress-theme",
+    "license": "GPLv3",
+    "keywords": [
+        "wordpress",
+        "wordpress-theme"
+    ],
+    "authors": [
+        {
+            "name": "Glauber Mota",
+            "email": "glaubernm@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.1",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cp -r vendor/wp-coding-standards/wpcs/WordPress vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Core vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Docs vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Extra vendor/squizlabs/php_codesniffer/src/Standards/"
+        ],
+        "post-update-cmd": [
+            "cp -r vendor/wp-coding-standards/wpcs/WordPress vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Core vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Docs vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Extra vendor/squizlabs/php_codesniffer/src/Standards/"
+        ]
+    }
+}
