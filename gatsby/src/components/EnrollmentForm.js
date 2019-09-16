@@ -122,8 +122,8 @@ class EnrollmentForm extends PureComponent {
                 <select required name='course' defaultValue="">
                   <option disabled value="">Selecione uma opção...</option>
                   <option disabled value="russian_soviet">História do cinema russo e soviético (Inscrições Encerradas!)</option>
-                  <option disabled value="south_african">História do cinema sul-africano (Inscrições Encerradas!)</option>
-                  <option value="chinese">História do cinema chinês</option>
+                  <option value="south_african">História do cinema sul-africano</option>
+                  <option disabled value="chinese">História do cinema chinês (Inscrições Encerradas!)</option>
                   <option value="indian">História do cinema indiano</option>
                 </select>
               </label>
