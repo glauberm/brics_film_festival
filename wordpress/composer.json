@@ -1,0 +1,39 @@
+{
+    "name": "glauberm/brics_film_festival",
+    "description": "WordPress plugin for the 4th BRICS Film Festival.",
+    "type": "wordpress-plugin",
+    "license": "GPLv3",
+    "keywords": [
+        "wordpress",
+        "wordpress-plugin"
+    ],
+    "authors": [
+        {
+            "name": "Glauber Mota",
+            "email": "glaubernm@gmail.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "squizlabs/php_codesniffer": "*",
+        "wp-coding-standards/wpcs": "*"
+    },
+    "prefer-stable" : true,
+    "scripts": {
+        "install-codestandards": [
+            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        ],
+        "copy-wpcs": [
+            "cp -r vendor\/wp-coding-standards\/wpcs\/WordPress vendor\/squizlabs\/php_codesniffer\/src\/Standards\/ && cp -r vendor\/wp-coding-standards\/wpcs\/WordPress-Core vendor\/squizlabs\/php_codesniffer\/src\/Standards\/ && cp -r vendor\/wp-coding-standards\/wpcs\/WordPress-Extra vendor\/squizlabs\/php_codesniffer\/src\/Standards\/"
+        ],
+        "post-install-cmd": [
+            "@install-codestandards && @copy-wpcs"
+        ],
+        "post-update-cmd": [
+            "@install-codestandards && @copy-wpcs"
+        ]
+    }
+}
