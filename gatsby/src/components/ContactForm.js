@@ -18,6 +18,8 @@ class ContactForm extends React.PureComponent {
   }
 
   handleChange = (event, target) => {
+    console.log('oi');
+    
     this.setState({ [target]: event.target.value });
   }
 
@@ -51,24 +53,24 @@ class ContactForm extends React.PureComponent {
           <Input
             label='name'
             value={this.state.name}
-            handleChange={(e) => this.handleChange(e, 'name')}
+            onValueChange={(e) => this.handleChange(e, 'name')}
           />
           <Input
             label='email'
             type='email'
             value={this.state.email}
-            handleChange={(e) => this.handleChange(e, 'email')}
+            onValueChange={(e) => this.handleChange(e, 'email')}
           />
         </Row>
         <Input
           label='subject'
           value={this.state.subject}
-          handleChange={(e) => this.handleChange(e, 'subject')}
+          onValueChange={(e) => this.handleChange(e, 'subject')}
         />
         <Textarea
           label='message'
           value={this.state.message}
-          handleChange={(e) => this.handleChange(e, 'message')}
+          onValueChange={(e) => this.handleChange(e, 'message')}
         />
       </Form>
     );

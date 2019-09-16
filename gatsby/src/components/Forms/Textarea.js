@@ -9,12 +9,14 @@ class Message extends React.PureComponent {
     return (
       <FormControl>
         <label>
-          <Label />
+          <Label
+            label={this.props.label}
+          />
           <textarea
-            required
             name={this.props.label}
             value={this.props.value}
-            onChange={this.props.handleChange}
+            // required={this.props.notRequired ? false : true}
+            onChange={this.props.onValueChange}
           ></textarea>
         </label>
       </FormControl>

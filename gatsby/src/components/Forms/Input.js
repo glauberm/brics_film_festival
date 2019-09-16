@@ -9,13 +9,15 @@ class Input extends React.PureComponent {
     return (
       <FormControl>
         <label>
-          <Label />
+          <Label
+            label={this.props.label}
+          />
           <input
             name={this.props.label}
             type={this.props.type ? this.props.type : 'text'}
             value={this.props.value}
-            required={this.props.notRequired ? false : true}
-            onChange={this.props.handleChange}
+            // required={this.props.notRequired ? false : true}
+            onChange={this.props.onValueChange}
             {...this.props}
           />
         </label>

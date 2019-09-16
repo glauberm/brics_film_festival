@@ -9,12 +9,14 @@ class Select extends React.PureComponent {
     return (
       <FormControl>
         <label>
-          <Label />
+          <Label
+            label={this.props.label}
+          />
           <select
             name={this.props.label}
             value={this.props.value}
             required={this.props.notRequired ? false : true}
-            onChange={this.props.handleChange}
+            onChange={this.props.onValueChange}
             defaultValue=''
           >
             <option disabled value=''>
