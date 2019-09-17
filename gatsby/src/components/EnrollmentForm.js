@@ -62,14 +62,14 @@ class EnrollmentForm extends React.PureComponent {
           <Input
             label='name'
             value={this.state.name}
-            handleChange={(e) => this.handleChange(e, 'name')}
+            onValueChange={(e) => this.handleChange(e, 'name')}
           />
           <Input
             label='age'
             type='number'
             min='1'
             value={this.state.age}
-            handleChange={(e) => this.handleChange(e, 'age')}
+            onValueChange={(e) => this.handleChange(e, 'age')}
           />
         </Row>
         <Row>
@@ -77,25 +77,25 @@ class EnrollmentForm extends React.PureComponent {
             label='email'
             type='email'
             value={this.state.email}
-            handleChange={(e) => this.handleChange(e, 'email')}
+            onValueChange={(e) => this.handleChange(e, 'email')}
           />
           <Input
             label='telephone'
             type='tel'
             value={this.state.telephone}
-            handleChange={(e) => this.handleChange(e, 'telephone')}
+            onValueChange={(e) => this.handleChange(e, 'telephone')}
           />
         </Row>
         <Row>
           <Input
             label='profession'
             value={this.state.profession}
-            handleChange={(e) => this.handleChange(e, 'profession')}
+            onValueChange={(e) => this.handleChange(e, 'profession')}
           />
           <Select
             label='formation'
             value={this.state.formation}
-            handleChange={(e) => this.handleChange(e, 'formation')}
+            onValueChange={(e) => this.handleChange(e, 'formation')}
             options={[
               'middleSchool',
               'highSchool',
@@ -108,7 +108,7 @@ class EnrollmentForm extends React.PureComponent {
         <Textarea
           label='activityInterest'
           value={this.state.activityInterest}
-          handleChange={(e) => this.handleChange(e, 'activityInterest')}
+          onValueChange={(e) => this.handleChange(e, 'activityInterest')}
         />
       </Form>
     );

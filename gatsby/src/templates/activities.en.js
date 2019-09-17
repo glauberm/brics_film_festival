@@ -6,6 +6,18 @@ import Breadcrumb from '../components/Breadcrumb';
 import ActivitiesNav from '../components/I18n/en/ActivitiesNav';
 
 class ActivitiesTemplate extends React.PureComponent {
+  getForm(slug) {
+    switch (slug) {
+    case 'courses-on-south-african-chinese-indian-and-russian-and-soviet-film-history':
+      return (
+        <CourseEnrollmentForm
+          location={this.props.location}
+          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/en_courses_enrollment_form`}
+        />
+      );
+    }
+  }
+
   render() {
     const pathname = this.props.location.pathname;
     const data = this.props.data.wordpressWpEnActivities;

@@ -18,8 +18,6 @@ class ContactForm extends React.PureComponent {
   }
 
   handleChange = (event, target) => {
-    console.log('oi');
-    
     this.setState({ [target]: event.target.value });
   }
 

@@ -1,4 +1,6 @@
 # TO-DO List
 
-- `Notification` to `Notifications` and create a new `Notification` components with its own state, and that lifts `onClick` event to `Notifications`.
-- Figure out a wat to pass `IntlProvider` as a `wrapRootElement` element.
+- Pagination on News.
+- Get Activity Forms by ACF.
+- Add Schemas to Events and Schedule.
+- `twitter:image`

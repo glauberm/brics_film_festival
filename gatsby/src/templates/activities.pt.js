@@ -4,25 +4,20 @@ import { graphql } from 'gatsby';
 import DefaultLayout from '../layouts/default.pt';
 import Breadcrumb from '../components/Breadcrumb';
 import ActivitiesNav from '../components/I18n/pt/ActivitiesNav';
+import EnrollmentForm from '../components/EnrollmentForm';
+import ExpandedEnrollmentForm from '../components/ExpandedEnrollmentForm';
 import CourseEnrollmentForm from '../components/CourseEnrollmentForm';
 
 class ActivitiesTemplate extends React.PureComponent {
   getForm(slug) {
     switch (slug) {
+    case 'oficina-relacoes-audiovisuais-entre-os-paises-do-brics-passado-presente-e-futuro':
+      return <EnrollmentForm formAction='' />;
+    case 'encontro-de-preservacao-audiovisual-do-brics':
+    case 'perspectivas-para-a-criacao-de-incubadoras-na-industria-criativa':
+      return <ExpandedEnrollmentForm formAction='' />;
     case 'cursos-de-historia-do-cinema-indiano-chines-sul-africano-russo-e-sovietico':
-      return (
-        <CourseEnrollmentForm
-          location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/pt_courses_enrollment_form`}
-        />
-      );
-    case 'courses-on-south-african-chinese-indian-and-russian-and-soviet-film-history':
-      return (
-        <CourseEnrollmentForm
-          location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/en_courses_enrollment_form`}
-        />
-      );
+      return <CourseEnrollmentForm formAction='' />;
     }
   }
   

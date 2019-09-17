@@ -12,6 +12,8 @@ import logo from '../images/icon.svg';
 class Navigation extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.timeoutFadeOut;
+    this.timeoutFadeIn;
     this.state = {
       fixed: false,
       transition: false
@@ -24,25 +26,24 @@ class Navigation extends React.PureComponent {
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handleScroll);
+    clearTimeout(this.timeoutFadeOut);
+    clearTimeout(this.timeoutFadeIn);
   }
 
   componentDidUpdate() {
-    let timeoutFadeOut;
-    let timeoutFadeIn;
-
     const fadeOut = () => {
       this.setState({ fixed: false });
-      clearTimeout(timeoutFadeOut);
+      clearTimeout(this.timeoutFadeOut);
     };
 
     const fadeIn = () => {
       this.setState({ transition: false });
-      clearTimeout(timeoutFadeIn);
+      clearTimeout(this.timeoutFadeIn);
     };
 
     if (this.state.transition == true) {
-      timeoutFadeOut = setTimeout(fadeOut, 250);
-      timeoutFadeIn = setTimeout(fadeIn, 250);
+      this.timeoutFadeOut = setTimeout(fadeOut, 250);
+      this.timeoutFadeIn = setTimeout(fadeIn, 250);
     }
   }
 

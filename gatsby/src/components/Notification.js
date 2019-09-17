@@ -1,16 +1,44 @@
 import React from 'react';
 import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
+import { injectIntl } from 'react-intl';
 
 import { colors } from '../styles/theme';
 
 class Notification extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.count = 0;
+    this.timeoutSlideOut;
+    this.timeoutDismiss;
     this.state = {
       active: true,
     };
+  }
+
+  componentDidUpdate() {
+    if (this.props.status) {
+      const slideOut = () => {
+        this.setState({ active: false });
+        clearTimeout(this.timeoutSlideOut);
+      };
+
+      const dismiss = () => {
+        this.props.handleDismiss();
+        clearTimeout(this.timeoutDismiss);
+      };
+  
+      if (this.state.active == true) {
+        this.timeoutSlideOut = setTimeout(slideOut, 5000);
+      }
+
+      if (this.state.active == false) {
+        this.timeoutDismiss = setTimeout(dismiss, 250);
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeoutSlideOut);
   }
 
   render() {
@@ -24,13 +52,15 @@ class Notification extends React.PureComponent {
       >
         <Row>
           <Content>{this.props.content}</Content>
-          <Close
-            type="button"
-            aria-label={this.props.closeMessage}
-            onClick={this.props.handleDismiss}
-          >
-            <span aria-hidden="true">&times;</span>
-          </Close>
+          {this.props.status &&
+            <Close
+              type="button"
+              aria-label={this.props.intl.formatMessage({ id: 'close' })}
+              onClick={this.props.handleDismiss}
+            >
+              <span aria-hidden="true">&times;</span>
+            </Close>
+          }
         </Row>
       </NotificationElement>
     );
@@ -110,4 +140,4 @@ const Close = styled.button`
   margin-left: 1em;
 `;
 
-export default Notification;
+export default injectIntl(Notification);

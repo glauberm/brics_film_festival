@@ -17,14 +17,13 @@ class Select extends React.PureComponent {
             value={this.props.value}
             required={this.props.notRequired ? false : true}
             onChange={this.props.onValueChange}
-            defaultValue=''
           >
             <option disabled value=''>
               {this.props.intl.formatMessage({ id: 'selectDefaultValue' })}
             </option>
-            { this.props.options.map(option => {
+            { this.props.options.map((option, key) => {
               return (
-                <option value={option}>
+                <option key={key} value={option}>
                   {this.props.intl.formatMessage({ id: option })}
                 </option>
               );

@@ -22,7 +22,7 @@ class SchedulePage extends React.PureComponent {
         ]} />
         <h1 className='page-title'>Programação</h1>
         <Schedule>
-          <h2 class='title'>
+          <h2 className='title'>
             23 a 27 de setembro<br />
             <small>2ª a 6ª feira</small>
           </h2>
@@ -81,7 +81,7 @@ class SchedulePage extends React.PureComponent {
             </Article>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             30 de setembro<br />
             <small>2ª feira</small>
           </h2>
@@ -115,7 +115,7 @@ class SchedulePage extends React.PureComponent {
             </Article>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             01 de outubro<br />
             <small>3ª feira</small>
           </h2>
@@ -149,7 +149,7 @@ class SchedulePage extends React.PureComponent {
             </Article>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             02 de outubro<br />
             <small>4ª feira</small>
           </h2>
@@ -205,7 +205,7 @@ class SchedulePage extends React.PureComponent {
             </Article>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             03 de outubro<br />
             <small>5ª feira</small>
           </h2>
@@ -323,7 +323,7 @@ class SchedulePage extends React.PureComponent {
             </div>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             04 de outubro<br />
             <small>6ª feira</small>
           </h2>
@@ -420,7 +420,7 @@ class SchedulePage extends React.PureComponent {
             </Article>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             05 de outubro<br />
             <small>Sábado</small>
           </h2>
@@ -531,7 +531,7 @@ class SchedulePage extends React.PureComponent {
             </div>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             06 de outubro<br />
             <small>Domingo</small>
           </h2>
@@ -646,7 +646,7 @@ class SchedulePage extends React.PureComponent {
             </div>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             07 de outubro<br />
             <small>2ª feira</small>
           </h2>
@@ -759,7 +759,7 @@ class SchedulePage extends React.PureComponent {
             </div>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             08 de outubro<br />
             <small>3ª feira</small>
           </h2>
@@ -857,7 +857,7 @@ class SchedulePage extends React.PureComponent {
             </div>
           </Row>
 
-          <h2 class='title'>
+          <h2 className='title'>
             09 de outubro<br />
             <small>4ª feira</small>
           </h2>
@@ -914,7 +914,7 @@ const Row = styled.div`
     @media (min-width: ${breakpoints.sm}px) {
       width: 49%;
 
-      :nth-child(2n) {
+      :nth-of-type(2n) {
         margin-left: 2%;
       }
     }
@@ -923,8 +923,8 @@ const Row = styled.div`
       width: 23.5%;
       margin-left: 2%;
 
-      :first-child,
-      :nth-child(5n) {
+      :first-of-type,
+      :nth-of-type(5n) {
         margin-left: 0;
       }
     }
