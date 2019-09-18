@@ -73,7 +73,6 @@ class NotificationProvider extends React.Component {
               key={id}
               content={content}
               status={status}
-              // closeMessage={this.props.closeMessage}
               handleDismiss={() => this.remove(id)}
             />
           ))}

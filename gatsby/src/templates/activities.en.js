@@ -4,17 +4,29 @@ import { graphql } from 'gatsby';
 import DefaultLayout from '../layouts/default.en';
 import Breadcrumb from '../components/Breadcrumb';
 import ActivitiesNav from '../components/I18n/en/ActivitiesNav';
+import EnrollmentForm from '../components/EnrollmentForm';
+import ExpandedEnrollmentForm from '../components/ExpandedEnrollmentForm';
+import CourseEnrollmentForm from '../components/CourseEnrollmentForm';
 
 class ActivitiesTemplate extends React.PureComponent {
   getForm(slug) {
     switch (slug) {
-    case 'courses-on-south-african-chinese-indian-and-russian-and-soviet-film-history':
-      return (
-        <CourseEnrollmentForm
-          location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/en_courses_enrollment_form`}
-        />
-      );
+    case 'course_enrollment':
+      return <CourseEnrollmentForm
+        formAction={`${process.env.BASE_WP_REST_API_URL}course_enrollment_form`}
+      />;
+    // case 'preservation_meeting_enrollment':
+    //   return <ExpandedEnrollmentForm
+    //     formAction={`${process.env.BASE_WP_REST_API_URL}preservation_meeting_enrollment_form`}
+    //   />;
+    case 'incubator_meeting_enrollment':
+      return <ExpandedEnrollmentForm
+        formAction={`${process.env.BASE_WP_REST_API_URL}incubator_meeting_enrollment_form`}
+      />;
+    case 'workshop_enrollment':
+      return <EnrollmentForm
+        formAction={`${process.env.BASE_WP_REST_API_URL}workshop_enrollment_form`}
+      />;
     }
   }
 
@@ -49,6 +61,7 @@ class ActivitiesTemplate extends React.PureComponent {
             }
           </h1>
           <div dangerouslySetInnerHTML={{ __html: data.acf.html }} />
+          {this.getForm(data.acf.form)}
         </DefaultLayout>
       </React.Fragment>
     );
@@ -68,6 +81,7 @@ export const query = graphql`
         lang_pt {
           post_name
         }
+        form
       }
     }
   }

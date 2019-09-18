@@ -15,6 +15,22 @@ import {
 } from '../styles/theme';
 
 class BaseLayout extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mainNavHeight: 0,
+    };
+  }
+
+  handleFixedNavigation = () => {
+    const mainNavHeight = document.getElementById('main-nav')
+      .getBoundingClientRect().height;
+
+    this.setState({
+      mainNavHeight: mainNavHeight
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -66,13 +82,13 @@ class BaseLayout extends React.PureComponent {
           </TopContainer>
           <header>
             {this.props.logo}
-            <Navigation />
+            <Navigation onFixed={this.handleFixedNavigation}/>
           </header>
         </TopBackground>
         <Timer />
-        <div id='content'>
+        <Content id='content' mainNavHeight={this.state.mainNavHeight}>
           {this.props.children}
-        </div>
+        </Content>
         <Footer logo={this.props.logoFooter} />
       </React.Fragment>
     );
@@ -165,6 +181,16 @@ const TopBackground = styled.div`
       ${colors.grayDark} 50%,
       transparent 100%
     );
+  }
+`;
+
+const Content = styled.div`
+  .sticky {
+    top: ${props => `${props.mainNavHeight+4}px`};
+  }
+
+  .sub-sticky {
+    top: calc(5em + ${props => `${props.mainNavHeight+4}px`});
   }
 `;
 

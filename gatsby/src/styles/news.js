@@ -34,14 +34,6 @@ export const ArticleContainer = styled.div`
       white-space: nowrap;
       width: 1px;
   `}
-
-  :nth-of-type(2) {
-    animation-duration: 0.3s;
-  }
-
-  :nth-of-type(2) {
-    animation-duration: 0.35s;
-  }
 `;
 
 export const Button = styled.button`

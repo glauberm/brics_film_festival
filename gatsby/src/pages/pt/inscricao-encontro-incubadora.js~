@@ -79,7 +79,7 @@ class IncubatorMeetingEnrollmentPage extends React.PureComponent {
       >
         <IncubatorMeetingEnrollmentForm
           location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/incubator_meeting_enrollment`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}incubator_meeting_enrollment`}
         />
       </DefaultLayout>
     );

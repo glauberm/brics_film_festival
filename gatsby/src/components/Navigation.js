@@ -60,6 +60,8 @@ class Navigation extends React.PureComponent {
       });
     } else if (wrapperRect.bottom >= 0) {
       this.setState({ transition: true });
+    } else {
+      this.props.onFixed();
     }
   }
 

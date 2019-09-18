@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import { colors } from '../styles/theme';
+import loading from '../images/loading.svg';
 
 class Notification extends React.PureComponent {
   constructor(props) {
@@ -51,7 +52,12 @@ class Notification extends React.PureComponent {
         active={this.state.active}
       >
         <Row>
-          <Content>{this.props.content}</Content>
+          <Content status={this.props.status}>
+            {!this.props.status &&
+              <Loading src={loading} alt='' />
+            }
+            {this.props.content}
+          </Content>
           {this.props.status &&
             <Close
               type="button"
@@ -86,6 +92,15 @@ const slideDown = keyframes`
   to {
     transform: translateY(calc(100% + 1em));
     opacity: 0;
+  }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 `;
 
@@ -126,8 +141,26 @@ const Row = styled.div`
   align-items: center;
 `;
 
+const Loading = styled.img`
+  position: relative;
+  top: 1px;
+  width: 1em;
+  height: 1em;
+  margin-right: .5em;
+  animation-name: ${rotate};
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+`;
+
 const Content = styled.div`
   width: 100%;
+
+  ${props => props.status ? '' : css`
+    ::after {
+      content: '...';
+    }
+  `}
 `;
 
 const Close = styled.button`

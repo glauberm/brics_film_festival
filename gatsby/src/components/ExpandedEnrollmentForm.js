@@ -18,7 +18,6 @@ class ExpandedEnrollmentForm extends React.PureComponent {
       profession: '',
       workAt: '',
       formation: '',
-      course: '',
       registrationKnowledge: '',
       address: '',
       activityBriefDescription: '',
@@ -33,6 +32,7 @@ class ExpandedEnrollmentForm extends React.PureComponent {
   render() {
     return (
       <Form
+        id={this.props.intl.formatMessage({ id: 'enrollmentFormTitle' })}
         method='post'
         action={this.props.formAction}
         data={{
@@ -43,7 +43,6 @@ class ExpandedEnrollmentForm extends React.PureComponent {
           profession: this.state.profession,
           workAt: this.state.workAt,
           formation: this.state.formation,
-          course: this.state.course,
           registrationKnowledge: this.state.registrationKnowledge,
           address: this.state.address,
           activityBriefDescription: this.state.activityBriefDescription,
@@ -61,7 +60,6 @@ class ExpandedEnrollmentForm extends React.PureComponent {
             profession: '',
             workAt: '',
             formation: '',
-            course: '',
             registrationKnowledge: '',
             address: '',
             activityBriefDescription: '',
@@ -69,7 +67,6 @@ class ExpandedEnrollmentForm extends React.PureComponent {
           });
         }}
       >
-        <br />
         <h2 className='title'>
           {this.props.intl.formatMessage({ id: 'enrollmentFormTitle' })}
         </h2>

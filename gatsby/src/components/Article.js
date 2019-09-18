@@ -8,11 +8,11 @@ import { colors, headingBaseStyle } from '../styles/theme';
 
 class Article extends React.PureComponent {
   getHtml(html) {
-    if (this.props.shortable && html.length > 1100) {
+    if (this.props.shortable && html.length > 1200) {
       return (
         <React.Fragment>
           <div dangerouslySetInnerHTML={{
-            __html: `${html.substring(0,1100).trim()}...`
+            __html: `${html.substring(0,1200).trim()}...`
           }}/>
           <Link to={this.props.linkTo}>
             <Button>

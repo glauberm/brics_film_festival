@@ -31,6 +31,7 @@ class CourseEnrollmentForm extends React.PureComponent {
   render() {
     return (
       <Form
+        id={this.props.intl.formatMessage({ id: 'enrollmentFormTitle' })}
         method='post'
         action={this.props.formAction}
         data={{
@@ -63,7 +64,6 @@ class CourseEnrollmentForm extends React.PureComponent {
           });
         }}
       >
-        <br/>
         <h2 className='title'>
           {this.props.intl.formatMessage({ id: 'enrollmentFormTitle' })}
         </h2>
@@ -120,9 +120,9 @@ class CourseEnrollmentForm extends React.PureComponent {
             value={this.state.course}
             onValueChange={(e) => this.handleChange(e, 'course')}
             options={[
-              'russianSovietFilmHistory',
+              // 'russianSovietFilmHistory',
               'southAfricanFilmHistory',
-              'chineseFilmHistory',
+              // 'chineseFilmHistory',
               'indianFilmHistory'
             ]}
           />

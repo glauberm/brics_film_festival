@@ -26,7 +26,7 @@ class PreservationMeetingEnrollmentPage extends React.PureComponent {
       >
         <PreservationMeetingEnrollmentForm
           location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/preservation_meeting_enrollment`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}preservation_meeting_enrollment`}
         />
       </DefaultLayout>
     );

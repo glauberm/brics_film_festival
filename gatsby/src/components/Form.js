@@ -11,8 +11,8 @@ import { FormControl } from '../styles/form';
 class Form extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.recaptchaInstance;
     this.state = {
-      notification: 'Carregando...',
       recaptcha: null
     };
   }
@@ -21,6 +21,7 @@ class Form extends React.PureComponent {
     this.setState(
       { recaptcha:
         <Recaptcha
+          ref={e => this.recaptchaInstance = e}
           render="explicit"
           sitekey={process.env.RECAPTCHA_SITE_KEY}
           size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
@@ -46,15 +47,36 @@ class Form extends React.PureComponent {
           this.props.successMessage,
           'success'
         );
-        
         this.props.successAction();
+
+        if (this.recaptchaInstance) {
+          this.recaptchaInstance.reset();
+        }
       })
       .catch(error => {
-        changeNotification(
-          notification,
-          this.handleErrors(error.response.data),
-          'danger'
-        );
+        if (error.response) {
+          changeNotification(
+            notification,
+            this.handleErrors(error.response.data),
+            'danger'
+          );
+        } else if (error.request) {
+          if (process.env.NODE_ENV !== 'production') {
+            changeNotification(
+              notification,
+              this.props.intl.formatMessage({ id: 'unexpectedError' }),
+              'danger'
+            );
+          }
+        } else {
+          if (process.env.NODE_ENV !== 'production') {
+            changeNotification(
+              notification,
+              this.props.intl.formatMessage({ id: 'unexpectedError' }),
+              'danger'
+            );
+          }
+        }
       });
   }
 
@@ -68,6 +90,10 @@ class Form extends React.PureComponent {
       return `
         ${this.props.intl.formatMessage({ id: 'fieldError' })}: ${fields.join(', ')}.
       `;
+    case 'mail_error':
+      return this.props.intl.formatMessage({ id: 'mailError' });
+    case 'insert_error':
+      return this.props.intl.formatMessage({ id: 'mailError' });
     default:
       return this.props.intl.formatMessage({ id: 'unexpectedError' });
     }

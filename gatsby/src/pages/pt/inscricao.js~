@@ -24,7 +24,7 @@ class CoursesEnrollmentPage extends React.PureComponent {
       >
         <CoursesEnrollmentForm
           location={this.props.location}
-          formAction={`${process.env.BASE_WP_REST_API_URL}brics/v1/enrollment`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}enrollment`}
         />
       </DefaultLayout>
     );

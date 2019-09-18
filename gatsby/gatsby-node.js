@@ -161,7 +161,6 @@ exports.createPages = async function ({ graphql, actions }) {
         component: slash(template),
         context: {
           id: edge.node.id,
-          slug: edge.node.slug
         },
       });
     });

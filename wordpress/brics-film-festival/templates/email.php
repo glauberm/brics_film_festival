@@ -54,15 +54,15 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 		}
 
 		.ReadMsgBody,
-		.ExternalClass {
+		.Externalclass Brics_{
 			width: 100%;
 		}
 
 		.ExternalClass,
-		.ExternalClass p,
-		.ExternalClass span,
-		.ExternalClass td,
-		.ExternalClass div {
+		.Externalclass Brics_p,
+		.Externalclass Brics_span,
+		.Externalclass Brics_td,
+		.Externalclass Brics_div {
 			line-height: 100%;
 		}
 	</style>
