@@ -40,6 +40,8 @@ export default {
   'shortSitename': 'BRICS Film Festival',
   'noscript': 'This app works best with JavaScript enabled.',
   'skipToContent': 'Skip to Content',
+  'readMore': 'Read More',
+  'loadMore': 'Load More',
   'close': 'Close',
   'send': 'Send',
   'sending': 'Sending...',

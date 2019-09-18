@@ -79,7 +79,6 @@ const ListItem = styled.li`
   .active {
     background-color: ${colors.white};
     color: ${colors.black};
-    opacity: 1;
   }
 `;
 

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { css, keyframes } from '@emotion/core';
-import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import Article from '../../Article';
+import { ArticleContainer, Button } from '../../../styles/news';
 
 const NewsArticles = (props) => {
   const { allWordpressWpPtNews } = useStaticQuery(
@@ -40,48 +39,30 @@ const NewsArticles = (props) => {
     `
   );
 
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(2);
-  const newsLength = allWordpressWpPtNews.edges.length;
+  const [last, setLast] = useState(2);
+  const length = allWordpressWpPtNews.edges.length;
 
-  const handleFakePagination = (key) => {
-    return (key >= min && key <= max);
+  const handleVisibility = (i) => {
+    return (i <= last);
   };
 
   const increment = () => {
-    if (max < newsLength) {
-      setMin(min + 3);
-
-      if ((max + 3) > newsLength) {
-        setMax(max + (newsLength - max));
+    if (last < length) {
+      if ((last + 3) > length) {
+        setLast(last + (length - last));
       } else {
-        setMax(max + 3);
+        setLast(last + 3);
       }
     }
-
-    console.log(max, min);
-  };
-
-  const decrement = () => {
-    if (min > 0) {
-      setMax(max - 3);
-
-      if ((min - 3) < 0) {
-        setMin(min - (newsLength - min));
-      } else {
-        setMin(min - 3);
-      }
-    }
-
-    console.log(max, min);
   };
 
   return (
     <React.Fragment>
-      {allWordpressWpPtNews.edges.map(({ node }, key) => (
+      {allWordpressWpPtNews.edges.map(({ node }, i) => (
         <ArticleContainer
           key={node.id}
-          isActive={handleFakePagination(key)}
+          number={i}
+          isActive={handleVisibility(i)}
         >
           <Article
             linkTo={
@@ -97,28 +78,13 @@ const NewsArticles = (props) => {
           />
         </ArticleContainer>
       ))}
-      {(min > 0) &&
-        <a href='#banner' onClick={decrement}>Decrement</a>
-      }
-      {(max < newsLength) &&
-        <a href='#banner' onClick={increment}>Increment</a>
+      {(last < length) &&
+        <Button onClick={increment}>
+          {props.intl.formatMessage({ id: 'loadMore' })}
+        </Button>
       }
     </React.Fragment>
   );
 };
-
-const ArticleContainer = styled.div`
-  ${props => props.isActive ? '' : css`
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  `}
-`;
 
 export default injectIntl(NewsArticles);

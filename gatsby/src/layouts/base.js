@@ -106,8 +106,6 @@ const GlobalStyles = css`
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 400;
     line-height: 1.75;
-
-    
   }
 
   h1, h2, h3, h4, h5, h6 {

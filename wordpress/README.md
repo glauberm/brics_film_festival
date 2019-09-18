@@ -52,13 +52,6 @@ Copy the `env.php.example` file to a `env.php` one:
 cp ../brics-film-festival/env.php.example ../brics-film-festival/env.php
 ```
 
-Then, edit the following parameters:
-
-```[php]
-define( 'ENV', 'development' );
-define( 'BASE_SITE_URL', 'http://localhost:8080' );
-```
-
 We'll let `RECAPTCHA_SECRET_KEY` blank for now.
 
 ### Activate the plugin

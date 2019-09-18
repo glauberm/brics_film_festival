@@ -40,6 +40,8 @@ export default {
   'shortSitename': 'Festival de Cinema BRICS',
   'noscript': 'Este site funciona melhor com o JavaScript ativado.',
   'skipToContent': 'Pular para o conteúdo',
+  'readMore': 'Saiba mais',
+  'loadMore': 'Carregar mais',
   'close': 'Fechar',
   'send': 'Enviar',
   'sending': 'Enviando...',
