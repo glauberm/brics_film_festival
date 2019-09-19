@@ -162,7 +162,6 @@ const SubheadingContainer = styled.div`
   z-index: 1;
   height: 2.5em;
   width: 5.5em;
-  margin-left: .5em;
   margin-top: 3em;
   padding: 0 .666em;
   background-color: ${colors.grayLighter};
@@ -177,7 +176,7 @@ const Subheading = styled.h3`
 `;
 
 const Pusher = styled.div`
-  margin-top: -5em;
+  margin-top: -4.5em;
 `;
 
 export default Events;

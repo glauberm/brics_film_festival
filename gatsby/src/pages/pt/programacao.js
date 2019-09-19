@@ -54,7 +54,7 @@ export const query = graphql`
               time
               subtitle
               duration
-              # parental_rating
+              parental_rating
               venue {
                 post_title
               }

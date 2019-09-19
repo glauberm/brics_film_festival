@@ -98,6 +98,8 @@ module.exports = {
           '**/en_screenings',
           '**/pt_activities',
           '**/en_activities',
+          '**/pt_activity_aside',
+          '**/en_activity_aside',
           '**/pt_calls',
           '**/en_calls',
           '**/pt_news',

@@ -13,6 +13,8 @@ require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-pt-screenings
 require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-en-screenings-post-type.php';
 require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-pt-activities-post-type.php';
 require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-en-activities-post-type.php';
+require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-pt-activities-informations-post-type.php';
+require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-en-activities-informations-post-type.php';
 require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-pt-calls-post-type.php';
 require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-en-calls-post-type.php';
 require_once BRICS_FILM_FESTIVAL_ABSPATH . 'post-types/class-brics-pt-news-post-type.php';
@@ -51,6 +53,12 @@ $brics_pt_activities_post_type->boot( true );
 
 $brics_en_activities_post_type = new Brics_En_Activities_Post_Type();
 $brics_en_activities_post_type->boot();
+
+$brics_pt_activities_informations_post_type = new Brics_Pt_Activities_Informations_Post_Type();
+$brics_pt_activities_informations_post_type->boot();
+
+$brics_en_activities_informations_post_type = new Brics_En_Activities_Informations_Post_Type();
+$brics_en_activities_informations_post_type->boot();
 
 $brics_pt_calls_post_type = new Brics_Pt_Calls_Post_Type();
 $brics_pt_calls_post_type->boot( true );

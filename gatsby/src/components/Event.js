@@ -8,22 +8,22 @@ import { colors, breakpoints } from '../styles/theme';
 
 class Event extends React.PureComponent {
   getHeading() {
-    if (this.props.screening) {
+    if (this.props.activity) {
       return (
         <Link to={
-          this.props.intl.formatMessage({ id: 'navigationScreeningsHref' })
-          + this.props.screening
+          this.props.intl.formatMessage({ id: 'navigationActivitiesHref' })
+          + this.props.activity
         }>
           {this.props.title}
         </Link>
       );
     }
 
-    if (this.props.activity) {
+    if (this.props.screening) {
       return (
         <Link to={
-          this.props.intl.formatMessage({ id: 'navigationActivitiesHref' })
-          + this.props.activity
+          this.props.intl.formatMessage({ id: 'navigationScreeningsHref' })
+          + this.props.screening
         }>
           {this.props.title}
         </Link>
@@ -112,7 +112,7 @@ const Container = styled.article`
 `;
 
 const Heading = styled.h4`
-  margin-top: .666em;
+  margin-top: .2em;
   margin-bottom: 0;
   padding-left: 0;
   font-size: 1.425em;
@@ -122,6 +122,7 @@ const Heading = styled.h4`
     ` : ''}
 
   @media (min-width: ${breakpoints.sm}px) {
+    margin-top: .666em;
     padding-top: 0;
 
     ${props => !props.noTime ? css`
