@@ -48,7 +48,7 @@ const BasePtLayout = (props) => {
             <meta property="og:description" content={description} />
             <link
               rel="alternate"
-              href={process.env.BASE_URL + props.langEn}
+              href={'http://bricsfilmfestival.com.br' + props.langEn}
               hreflang="en"
             />
           </Helmet>
