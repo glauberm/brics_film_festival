@@ -14,22 +14,22 @@ import logoFooter from '../images/logo-s.pt.svg';
 addLocaleData(pt);
 
 const BasePtLayout = (props) => {
-  const { wordpressBricsPtSiteInfo } = useStaticQuery(
+  const { wordpressBricsPtGeneralSettings } = useStaticQuery(
     graphql`
       query {
-        wordpressBricsPtSiteInfo {
-          pt_site_info_title
-          pt_site_info_description
+        wordpressBricsPtGeneralSettings {
+          pt_site_title
+          pt_site_description
         }
       }
     `
   );
 
   const pageTitle = (props.pageTitle
-    ? `${props.pageTitle} - ${wordpressBricsPtSiteInfo.pt_site_info_title}`
-    : wordpressBricsPtSiteInfo.pt_site_info_title
+    ? `${props.pageTitle} - ${wordpressBricsPtGeneralSettings.pt_site_title}`
+    : wordpressBricsPtGeneralSettings.pt_site_title
   );
-  const description = wordpressBricsPtSiteInfo.pt_site_info_description;
+  const description = wordpressBricsPtGeneralSettings.pt_site_description;
 
   return (
     <IntlProvider
