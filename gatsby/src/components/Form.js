@@ -23,7 +23,7 @@ class Form extends React.PureComponent {
         <Recaptcha
           ref={e => this.recaptchaInstance = e}
           render="explicit"
-          sitekey={process.env.RECAPTCHA_SITE_KEY}
+          sitekey='6LedcKwUAAAAAN5X9FG34Z4QUgt4NS_LFBVKOx5P'
           size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
         />
       }

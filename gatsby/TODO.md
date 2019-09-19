@@ -1,5 +1,6 @@
 # TO-DO List
 
+- Handle `reCaptcha` as environment variable error
 - Dynamic sidebar on activities
 - Films
 - `PressOffice`
