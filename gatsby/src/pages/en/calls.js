@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import DefaultLayout from '../../layouts/default.en';
 import Breadcrumb from '../../components/Breadcrumb';
-import CallsNav from '../../components/en/CallsNav';
-import CallsArticles from '../../components/en/CallsArticles';
+import CallsNav from '../../components/I18n/en/CallsNav';
+import CallsArticles from '../../components/I18n/en/CallsArticles';
 
-class CallsPage extends PureComponent {
+class CallsPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 

@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from '../layouts/default.pt';
 import Breadcrumb from '../components/Breadcrumb';
-import ScreeningsNav from '../components/pt/ScreeningsNav';
+import ScreeningsNav from '../components/I18n/pt/ScreeningsNav';
 
-class ScreeningsTemplate extends PureComponent {
+class ScreeningsTemplate extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
     const data = this.props.data.wordpressWpPtScreenings;

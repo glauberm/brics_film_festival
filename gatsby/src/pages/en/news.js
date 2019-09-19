@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import DefaultLayout from '../../layouts/default.en';
 import Breadcrumb from '../../components/Breadcrumb';
-import NewsNav from '../../components/en/NewsNav';
-import NewsArticles from '../../components/en/NewsArticles';
+import NewsNav from '../../components/I18n/en/NewsNav';
+import NewsArticles from '../../components/I18n/en/NewsArticles';
 
-class NewsPage extends PureComponent {
+class NewsPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 

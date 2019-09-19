@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
-class SingleColumn extends PureComponent {
+class SingleColumn extends React.PureComponent {
   render() {
-    return(
+    return (
       <Column>
         {this.props.children}
       </Column>

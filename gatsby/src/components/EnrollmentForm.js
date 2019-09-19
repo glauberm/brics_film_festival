@@ -1,174 +1,118 @@
-import React, { PureComponent } from 'react';
-import Recaptcha from 'react-recaptcha';
+import React from 'react';
+import { injectIntl } from 'react-intl';
 
-import { recaptchaSitekey } from '../data/shared';
-import { breakpoints } from '../styles/theme';
-import {
-  ErrorMessage, SuccessMessage, Row, FormControl, Button
-} from '../styles/form';
+import Form from './Form';
+import Input from './Forms/Input';
+import Select from './Forms/Select';
+import Textarea from './Forms/Textarea';
+import { Row } from '../styles/form';
 
-class EnrollmentForm extends PureComponent {
+class EnrollmentForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      recaptcha: null
+      name: '',
+      age: '',
+      email: '',
+      telephone: '',
+      profession: '',
+      formation: '',
+      activityInterest: '',
     };
   }
 
-  handleErrors(error) {
-    switch (error) {
-    case 'empty_recaptcha':
-      return 'O teste reCAPTCHA não foi preenchido. Por favor, preencha-o e tente novamente.';
-    case 'recaptcha_error':
-      return 'Erro na validação do reCAPTCHA. Por favor, tente novamente.';
-    case 'field_error':
-      return 'Erro nos campos do formulário. Por favor, verifique se preencheu corretamente todos os campos e tente novamente.';
-    case 'course_error':
-      return 'O curso que você selecionou já alcançou o seu máximo de vagas. Por favor, selecione outro.';
-    case 'insert_error':
-      return 'Erro ao adicionar informações no banco de dados. Por favor, tente novamente. Se o problema persistir, entre em contato com a coordenação.';
-    default:
-      return false;
-    }
-  }
-
-  componentDidMount() {
-    this.setState(
-      { recaptcha:
-        <Recaptcha
-          render="explicit"
-          sitekey={recaptchaSitekey}
-          size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
-        />
-      }
-    );
+  handleChange = (event, target) => {
+    this.setState({ [target]: event.target.value });
   }
 
   render() {
-    const search = this.props.location.search;
-    const params = new URLSearchParams(search);
-
     return (
-      <React.Fragment>
-        {this.handleErrors(params.get('error')) &&
-          <ErrorMessage>
-            {this.handleErrors(params.get('error'))}
-          </ErrorMessage>
+      <Form
+        method='post'
+        action={this.props.formAction}
+        data={{
+          name: this.state.name,
+          age: this.state.age,
+          email: this.state.email,
+          telephone: this.state.telephone,
+          profession: this.state.profession,
+          formation: this.state.formation,
+          activityInterest: this.state.activityInterest,
+        }}
+        successMessage={
+          this.props.intl.formatMessage({ id: 'enrollmentFormSuccess' })
         }
-        {params.get('success') &&
-          <SuccessMessage>
-            Inscrição realizada com sucesso! Em breve entraremos em contato com você.
-          </SuccessMessage>
-        }
-        <form name='contact' method='POST' action={this.props.formAction}>
-          <h1 className='title'>
-            Inscrição nos cursos para o público em geral
-          </h1>
-          <Row>
-            <FormControl>
-              <label>
-                <span>Nome</span>
-                <input required type='text' name='name' />
-              </label>
-            </FormControl>
-            <FormControl>
-              <label>
-                <span>Idade</span>
-                <input required type='text' name='age' />
-              </label>
-            </FormControl>
-          </Row>
-          <Row>
-            <FormControl>
-              <label>
-                <span>E-mail</span>
-                <input required type='email' name='email' />
-              </label>
-            </FormControl>
-            <FormControl>
-              <label>
-                <span>Telefone</span>
-                <input required type='text' name='telephone' />
-              </label>
-            </FormControl>
-          </Row>
-          <Row>
-            <FormControl>
-              <label>
-                <span>Profissão</span>
-                <input required type='text' name='profession' />
-              </label>
-            </FormControl>
-            <FormControl>
-              <label>
-                <span>Formação Acadêmica</span>
-                <select required name='formation' defaultValue="">
-                  <option disabled value="">
-                    Selecione uma opção...
-                  </option>
-                  <option value="fundamental">Ensino Fundamental</option>
-                  <option value="medio">Ensino Médio</option>
-                  <option value="superior">Ensino Superior</option>
-                  <option value="mestrado">Mestrado</option>
-                  <option value="doutorado">Doutorado</option>
-                </select>
-              </label>
-            </FormControl>
-          </Row>
-          <Row>
-            <FormControl>
-              <label>
-                <span>Curso</span>
-                <select required name='course' defaultValue="">
-                  <option disabled value="">Selecione uma opção...</option>
-                  <option disabled value="russian_soviet">História do cinema russo e soviético (Inscrições Encerradas!)</option>
-                  <option value="south_african">História do cinema sul-africano</option>
-                  <option disabled value="chinese">História do cinema chinês (Inscrições Encerradas!)</option>
-                  <option value="indian">História do cinema indiano</option>
-                </select>
-              </label>
-            </FormControl>
-            <FormControl>
-              <label>
-                <span>Como soube do curso</span>
-                <select required name='knowledge' defaultValue="">
-                  <option disabled value="">
-                    Selecione uma opção...
-                  </option>
-                  <option value="site">Site do Festival</option>
-                  <option value="email">E-mail</option>
-                  <option value="social">Redes Sociais</option>
-                  <option value="others">Outros</option>
-                </select>
-              </label>
-            </FormControl>
-          </Row>
-          <FormControl>
-            <label>
-              <span>Endereço</span>
-              <input required type='text' name='address' />
-            </label>
-          </FormControl>
-          <FormControl>
-            <label>
-              <span>Qual é o motivo do interesse pelo curso</span>
-              <textarea required name='interests'></textarea>
-            </label>
-          </FormControl>
-          {process.env.NODE_ENV === 'production' && this.state.recaptcha &&
-            <FormControl>
-              {this.state.recaptcha}
-            </FormControl>
-          }
-          <FormControl>
-            <Button type="submit">
-              Enviar
-            </Button>
-          </FormControl>
-        </form>
-      </React.Fragment>
+        successAction={() => {
+          this.setState({
+            name: '',
+            age: '',
+            email: '',
+            telephone: '',
+            profession: '',
+            formation: '',
+            activityInterest: '',
+          });
+        }}
+      >
+        <br />
+        <h2 className='title'>
+          {this.props.intl.formatMessage({ id: 'enrollmentFormTitle' })}
+        </h2>
+        <Row>
+          <Input
+            label='name'
+            value={this.state.name}
+            onValueChange={(e) => this.handleChange(e, 'name')}
+          />
+          <Input
+            label='age'
+            type='number'
+            min='1'
+            value={this.state.age}
+            onValueChange={(e) => this.handleChange(e, 'age')}
+          />
+        </Row>
+        <Row>
+          <Input
+            label='email'
+            type='email'
+            value={this.state.email}
+            onValueChange={(e) => this.handleChange(e, 'email')}
+          />
+          <Input
+            label='telephone'
+            type='tel'
+            value={this.state.telephone}
+            onValueChange={(e) => this.handleChange(e, 'telephone')}
+          />
+        </Row>
+        <Row>
+          <Input
+            label='profession'
+            value={this.state.profession}
+            onValueChange={(e) => this.handleChange(e, 'profession')}
+          />
+          <Select
+            label='formation'
+            value={this.state.formation}
+            onValueChange={(e) => this.handleChange(e, 'formation')}
+            options={[
+              'middleSchool',
+              'highSchool',
+              'bachelorsDegree',
+              'mastersDegree',
+              'doctorsDegree'
+            ]}
+          />
+        </Row>
+        <Textarea
+          label='activityInterest'
+          value={this.state.activityInterest}
+          onValueChange={(e) => this.handleChange(e, 'activityInterest')}
+        />
+      </Form>
     );
   }
 }
 
-export default EnrollmentForm;
+export default injectIntl(EnrollmentForm);

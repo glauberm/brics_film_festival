@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
@@ -6,9 +6,9 @@ import { injectIntl } from 'react-intl';
 import { colors, breakpoints, containerSize, linkBaseStyle, headingBaseStyle } from '../styles/theme';
 import SocialMedia from './SocialMedia';
 import Decoration from './Decoration';
-import { navigationLinks } from '../data/shared';
+import { navigationLinks } from '../data/navigation';
 
-class Footer extends PureComponent {
+class Footer extends React.PureComponent {
   render() {
     const links = navigationLinks(this.props.intl);
 

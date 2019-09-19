@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
 import { breakpoints } from '../styles/theme';
 
-class PrimaryColumn extends PureComponent {
+class PrimaryColumn extends React.PureComponent {
   render() {
-    return(
+    return (
       <Column>
         {this.props.children}
       </Column>

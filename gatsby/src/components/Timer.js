@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import countdown from 'countdown';
 import { injectIntl } from 'react-intl';
 
 import { colors } from '../styles/theme';
 
-class Timer extends PureComponent {
+class Timer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.interval = null;
@@ -32,7 +32,7 @@ class Timer extends PureComponent {
   render() {
     const timespan = this.state.timespan;
 
-    return(
+    return (
       <Container>
         <Item>
           <Number>{timespan.months !== undefined ? timespan.months : '?'}</Number>

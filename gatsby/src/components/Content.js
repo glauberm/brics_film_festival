@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 
 import { colors, breakpoints, containerSize, linkBaseStyle } from '../styles/theme';
 
-class Content extends PureComponent {
+class Content extends React.PureComponent {
   render() {
-    return(
+    return (
       <Inner>
         {this.props.children}
       </Inner>

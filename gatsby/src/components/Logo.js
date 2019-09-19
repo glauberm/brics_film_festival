@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import { breakpoints, colors, linkBaseStyle, headingBaseStyle } from '../styles/theme';
 
-class Logo extends PureComponent {
+class Logo extends React.PureComponent {
   render() {
-    return(
+    return (
       <Container>
         <Link to={this.props.intl.formatMessage({ id: 'navigationHomeHref' })}>
           {(this.props.pathname == '/pt/' || this.props.pathname == '/en/') ? (

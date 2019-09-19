@@ -1,12 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 
 import { colors, breakpoints } from '../styles/theme';
 
-class SelectLanguage extends PureComponent {
+class SelectLanguage extends React.PureComponent {
   render() {
-    return(
+    return (
       <List>
         <ListItem itemScope itemType="http://schema.org/Language">
           <Link
@@ -79,7 +79,6 @@ const ListItem = styled.li`
   .active {
     background-color: ${colors.white};
     color: ${colors.black};
-    opacity: 1;
   }
 `;
 

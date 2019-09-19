@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import DefaultLayout from '../layouts/default.pt';
 import Breadcrumb from '../components/Breadcrumb';
-import CallsNav from '../components/pt/CallsNav';
+import CallsNav from '../components/I18n/pt/CallsNav';
 
-class CallsTemplate extends PureComponent {
+class CallsTemplate extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
     const data = this.props.data.wordpressWpPtCalls;

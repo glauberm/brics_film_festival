@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import Jumbotron from './Jumbotron';
 
-class NotFound extends PureComponent {
+class NotFound extends React.PureComponent {
   render() {
     return (
       <Main>

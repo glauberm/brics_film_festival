@@ -1,8 +1,1 @@
-# Composer packages
 vendor/
-
-# Wordpress local installation directory
-wp/
-
-# Environment parameters
-theme/env.php

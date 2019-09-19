@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -6,13 +6,14 @@ import { injectIntl } from 'react-intl';
 
 import { colors, breakpoints, containerSize } from '../styles/theme';
 import Decoration from './Decoration';
-import { navigationLinks } from '../data/shared';
+import { navigationLinks } from '../data/navigation';
 import logo from '../images/icon.svg';
 
-class Navigation extends PureComponent {
+class Navigation extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.timeout = null;
+    this.timeoutFadeOut;
+    this.timeoutFadeIn;
     this.state = {
       fixed: false,
       transition: false
@@ -25,25 +26,24 @@ class Navigation extends PureComponent {
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handleScroll);
+    clearTimeout(this.timeoutFadeOut);
+    clearTimeout(this.timeoutFadeIn);
   }
 
   componentDidUpdate() {
-    let timeoutfadeOut;
-    let timeoutfadeIn;
-
     const fadeOut = () => {
       this.setState({ fixed: false });
-      clearTimeout(timeoutfadeOut);
+      clearTimeout(this.timeoutFadeOut);
     };
 
     const fadeIn = () => {
       this.setState({ transition: false });
-      clearTimeout(timeoutfadeIn);
+      clearTimeout(this.timeoutFadeIn);
     };
 
-    if(this.state.transition == true) {
-      timeoutfadeOut = setTimeout(fadeOut, 250);
-      timeoutfadeIn = setTimeout(fadeIn, 250);
+    if (this.state.transition == true) {
+      this.timeoutFadeOut = setTimeout(fadeOut, 250);
+      this.timeoutFadeIn = setTimeout(fadeIn, 250);
     }
   }
 
@@ -60,6 +60,8 @@ class Navigation extends PureComponent {
       });
     } else if (wrapperRect.bottom >= 0) {
       this.setState({ transition: true });
+    } else {
+      this.props.onFixed();
     }
   }
 
@@ -177,6 +179,17 @@ const Nav = styled.nav`
   color: ${colors.white};
   overflow-y: hidden;
   overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: ${colors.gray} ${colors.grayDark};
+
+  ::-webkit-scrollbar {
+    height: 6px;
+    background-color: ${colors.grayDark};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${colors.gray};
+  }
 `;
 
 const List = styled.ul`

@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 
 import { breakpoints, colors, headingBaseStyle } from '../styles/theme';
 import Decoration from './Decoration';
 
-class Jumbotron extends PureComponent {
+class Jumbotron extends React.PureComponent {
   render() {
     return (
       <Container>

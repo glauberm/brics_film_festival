@@ -36,6 +36,10 @@
     "semi": [
         "error",
         "always"
+    ],
+    "keyword-spacing": [
+      "error",
+      { "after": true }
     ]
   }
 }

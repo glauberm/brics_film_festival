@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { IntlProvider, addLocaleData } from 'react-intl';
@@ -7,12 +7,12 @@ import en from 'react-intl/locale-data/en';
 import messages from '../../data/messages/en';
 import BaseLayout from '../../layouts/base.en';
 import NotFound from '../../components/NotFound';
-import Logo from '../../components/en/Logo';
+import Logo from '../../components/I18n/en/Logo';
 import logoFooter from '../../images/logo-s.en.svg';
 
 addLocaleData(en);
 
-class PageNotFound extends PureComponent {
+class PageNotFound extends React.PureComponent {
   render() {
     const data = this.props.data.wordpressBricsEnSiteInfo;
     const pathname = this.props.location.pathname;

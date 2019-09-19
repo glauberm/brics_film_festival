@@ -1,82 +1,127 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { Global, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Helmet from 'react-helmet';
 import { injectIntl } from 'react-intl';
+import 'normalize.css';
 
-import '../styles/imports.css';
-import { colors, breakpoints, containerSize, headingBaseStyle } from '../styles/theme';
 import SelectLanguage from '../components/SelectLanguage';
 import SocialMedia from '../components/SocialMedia';
 import Navigation from '../components/Navigation';
 import Timer from '../components/Timer';
 import Footer from '../components/Footer';
-import { baseUrl } from '../data/shared';
+import {
+  colors, breakpoints, containerSize, headingBaseStyle
+} from '../styles/theme';
 
-class BaseLayout extends PureComponent {
+class BaseLayout extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mainNavHeight: 0,
+    };
+  }
+
+  handleFixedNavigation = () => {
+    const mainNavHeight = document.getElementById('main-nav')
+      .getBoundingClientRect().height;
+
+    this.setState({
+      mainNavHeight: mainNavHeight
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
         <Helmet>
-          <meta name="robots"
+          <meta
+            name="robots"
             content={ this.props.noRobots ? 'noindex,nofollow' : 'index,follow' }
           />
-          <meta name="googlebot"
+          <meta
+            name="googlebot"
             content={ this.props.noRobots ? 'noindex,nofollow' : 'index,follow' }
           />
-          <meta property="og:url" content={baseUrl + this.props.pathname} />
+          <meta
+            property="og:url"
+            content={process.env.BASE_URL + this.props.pathname}
+          />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="BRICS Film Festival" />
-          <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Montserrat:700&display=swap" rel="stylesheet" />
-          <link rel="canonical" href={baseUrl + this.props.pathname} />
+          <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Montserrat:700display=swap"
+            rel="stylesheet"
+          />
+          <link
+            rel="canonical"
+            href={process.env.BASE_URL + this.props.pathname}
+          />
         </Helmet>
-        <Body>
-          <NoScript key='noscript' id='gatsby-noscript'>
-            {this.props.intl.formatMessage({ id: 'noscript' })}
-          </NoScript>
-          <SkipToContent href='#content'>
-            {this.props.intl.formatMessage({ id: 'skipToContent' })}
-          </SkipToContent>
-          <TopBackground>
-            <TopContainer>
-              <SelectLanguageContainer>
-                <SelectLanguage
-                  pathname={this.props.pathname}
-                  langPt={this.props.langPt}
-                  langEn={this.props.langEn}
-                />
-              </SelectLanguageContainer>
-              <SocialMediaContainer>
-                <SocialMedia />
-              </SocialMediaContainer>
-            </TopContainer>
-            <header>
-              {this.props.logo}
-              <Navigation />
-            </header>
-          </TopBackground>
-          <Timer />
-          <div id='content'>
-            {this.props.children}
-          </div>
-          <Footer logo={this.props.logoFooter} />
-        </Body>
+        <Global
+          styles={(colors, headingBaseStyle) => GlobalStyles}
+        />
+        <NoScript key='noscript' id='gatsby-noscript'>
+          {this.props.intl.formatMessage({ id: 'noscript' })}
+        </NoScript>
+        <SkipToContent href='#content'>
+          {this.props.intl.formatMessage({ id: 'skipToContent' })}
+        </SkipToContent>
+        <TopBackground>
+          <TopContainer>
+            <SelectLanguageContainer>
+              <SelectLanguage
+                pathname={this.props.pathname}
+                langPt={this.props.langPt}
+                langEn={this.props.langEn}
+              />
+            </SelectLanguageContainer>
+            <SocialMediaContainer>
+              <SocialMedia />
+            </SocialMediaContainer>
+          </TopContainer>
+          <header>
+            {this.props.logo}
+            <Navigation onFixed={this.handleFixedNavigation}/>
+          </header>
+        </TopBackground>
+        <Timer />
+        <Content id='content' mainNavHeight={this.state.mainNavHeight}>
+          {this.props.children}
+        </Content>
+        <Footer logo={this.props.logoFooter} />
       </React.Fragment>
     );
   }
 }
 
-const Body = styled.div`
-  color: ${colors.black};
-  background-color: ${colors.white};
-  font-size: 14px;
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-weight: 400;
-  line-height: 1.75;
-
+const GlobalStyles = css`
   *,
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+
+  html {
+    scrollbar-color: ${colors.green} ${colors.blackLight};
+
+    ::-webkit-scrollbar {
+      width: 12px;
+      background-color: ${colors.blackLight};
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: ${colors.green};
+    }
+  }
+
+  body {
+    color: ${colors.black};
+    background-color: ${colors.white};
+    font-size: 14px;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+    line-height: 1.75;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -136,6 +181,16 @@ const TopBackground = styled.div`
       ${colors.grayDark} 50%,
       transparent 100%
     );
+  }
+`;
+
+const Content = styled.div`
+  .sticky {
+    top: ${props => `${props.mainNavHeight+4}px`};
+  }
+
+  .sub-sticky {
+    top: calc(5em + ${props => `${props.mainNavHeight+4}px`});
   }
 `;
 

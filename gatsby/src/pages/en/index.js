@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import HomeLayout from '../../layouts/home.en';
-import CallsNav from '../../components/en/CallsNav';
-import ActivitiesNav from '../../components/en/ActivitiesNav';
-import ScreeningsNav from '../../components/en/ScreeningsNav';
-import FestivalNav from '../../components/en/FestivalNav';
-import NewsArticles from '../../components/en/NewsArticles';
+import CallsNav from '../../components/I18n/en/CallsNav';
+import ActivitiesNav from '../../components/I18n/en/ActivitiesNav';
+import ScreeningsNav from '../../components/I18n/en/ScreeningsNav';
+import FestivalNav from '../../components/I18n/en/FestivalNav';
+import NewsArticles from '../../components/I18n/en/NewsArticles';
 
-class HomePage extends PureComponent {
+class HomePage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 

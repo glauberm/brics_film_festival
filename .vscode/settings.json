@@ -4,6 +4,7 @@
     "gatsby/node_modules": true,
     "gatsby/.cache": true,
     "gatsby/public": true,
+    "wordpress/vendor": true,
   },
   "[js]": {
     "editor.tabSize": 2,
@@ -12,6 +13,5 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": false,
   },
-  "phpcs.executablePath": "wordpress/vendor/squizlabs/php_codesniffer/bin/phpcs",
-  "phpcs.standard": "WordPress-Extra",
+  "phpcs.executablePath": "wordpress/vendor/bin/phpcs"
 }

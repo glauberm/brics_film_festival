@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import { colors } from '../styles/theme';
 
-class Breadcrumb extends PureComponent {
+class Breadcrumb extends React.PureComponent {
   render() {
     return (
       <Nav aria-label={this.props.intl.formatMessage({ id: 'breadcrumbLabel' })}>
@@ -47,6 +47,17 @@ const Nav = styled.nav`
   border: 1px solid ${colors.grayLighter};
   overflow-x: auto;
   width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: ${colors.grayLight} ${colors.white};
+
+  ::-webkit-scrollbar {
+    height: 6px;
+    background-color: ${colors.white};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${colors.grayLight};
+  }
 `;
 
 const List = styled.ol`

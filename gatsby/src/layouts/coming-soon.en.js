@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import BaseLayout from './base.en';
 import Content from '../components/Content';
 import ComingSoon from '../components/ComingSoon';
 
-class ComingSoonLayout extends PureComponent {
+class ComingSoonLayout extends React.PureComponent {
   render() {
     return (
       <BaseLayout

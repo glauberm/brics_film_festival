@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import BaseLayout from './base.pt';
 import PrimaryColumn from '../components/PrimaryColumn';
 import SecondaryColumn from '../components/SecondaryColumn';
 import Content from '../components/Content';
 
-class HomeLayout extends PureComponent {
+class HomeLayout extends React.PureComponent {
   render() {
     return (
       <BaseLayout

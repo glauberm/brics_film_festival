@@ -2,3 +2,10 @@
 /       /pt            302
 /en/*   /en/404.html   404
 /pt/*   /pt/404.html   404
+/*      /pt/404.html   404
+/schedule      /en/schedule/
+/programacao   /pt/programacao/
+/pt/inscricao                         /pt/atividades/cursos-de-historia-do-cinema-indiano-chines-sul-africano-russo-e-sovietico/
+/pt/inscricao-oficina                 /pt/atividades/oficina-relacoes-audiovisuais-entre-os-paises-do-brics-passado-presente-e-futuro/
+/pt/inscricao-encontro-incubadora/    /pt/atividades/perspectivas-para-a-criacao-de-incubadoras-na-industria-criativa/
+/pt/inscricao-encontro-preservacao/   /pt/atividades/encontro-de-preservacao-audiovisual-do-brics/

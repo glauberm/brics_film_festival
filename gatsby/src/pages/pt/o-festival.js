@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import DefaultLayout from '../../layouts/default.pt';
 import Breadcrumb from '../../components/Breadcrumb';
-import FestivalNav from '../../components/pt/FestivalNav';
-import FestivalArticles from '../../components/pt/FestivalArticles';
+import FestivalNav from '../../components/I18n/pt/FestivalNav';
+import FestivalArticles from '../../components/I18n/pt/FestivalArticles';
 
-class FestivalPage extends PureComponent {
+class FestivalPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 

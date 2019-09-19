@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import { colors } from '../styles/theme';
 
-class Decoration extends PureComponent {
+class Decoration extends React.PureComponent {
   render() {
     return (
       <Bar emboss={this.props.emboss ? this.props.emboss : false}>

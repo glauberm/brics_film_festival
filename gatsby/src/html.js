@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class HTML extends PureComponent {
+class HTML extends React.PureComponent {
   render() {
     return (
       <html {...this.props.htmlAttributes}>

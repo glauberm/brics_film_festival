@@ -1,12 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import DefaultLayout from '../layouts/default.en';
 import Breadcrumb from '../components/Breadcrumb';
-import NewsNav from '../components/en/NewsNav';
+import NewsNav from '../components/I18n/en/NewsNav';
 
-class NewsTemplate extends PureComponent {
+class NewsTemplate extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
     const data = this.props.data.wordpressWpEnNews;

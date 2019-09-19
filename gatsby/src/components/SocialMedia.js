@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
 
-class SocialMedia extends PureComponent {
+class SocialMedia extends React.PureComponent {
   render() {
-    return(
+    return (
       <List>
         <ListItem>
           <Link

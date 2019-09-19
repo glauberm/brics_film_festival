@@ -1,12 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
 import { colors } from '../styles/theme';
 
-class Section extends PureComponent {
+class Section extends React.PureComponent {
   render() {
-    return(
+    return (
       <SectionElement>
         <header>
           <h2 className='title'>

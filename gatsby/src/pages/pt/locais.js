@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import ComingSoonLayout from '../../layouts/coming-soon.pt';
 
-class VenuesPage extends PureComponent {
+class VenuesPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 

@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import DefaultLayout from '../../layouts/default.pt';
 import PressOffice from '../../components/PressOffice';
 import ContactForm from '../../components/ContactForm';
 
-class PressPage extends PureComponent {
+class PressPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 
@@ -19,8 +19,7 @@ class PressPage extends PureComponent {
         }
       >
         <ContactForm
-          location={this.props.location}
-          formAction={`${process.env.GATSBY_BASE_WP_URL}/wp-json/brics/v1/pt_contact_form`}
+          formAction={`${process.env.BASE_WP_REST_API_URL}contact_form`}
         />
       </DefaultLayout>
     );

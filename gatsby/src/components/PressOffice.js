@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import { colors } from '../styles/theme';
 import Section from './Section';
 
-class PressOffice extends PureComponent {
+class PressOffice extends React.PureComponent {
   render() {
     return (
       <React.Fragment>

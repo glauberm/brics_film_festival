@@ -1,11 +1,11 @@
 {
     "name": "glauberm/brics_film_festival",
-    "description": "Wordpress theme for the 4th BRICS Film Festival.",
-    "type": "wordpress-theme",
+    "description": "WordPress plugin for the 4th BRICS Film Festival.",
+    "type": "wordpress-plugin",
     "license": "GPLv3",
     "keywords": [
         "wordpress",
-        "wordpress-theme"
+        "wordpress-plugin"
     ],
     "authors": [
         {
@@ -13,17 +13,27 @@
             "email": "glaubernm@gmail.com"
         }
     ],
-    "require": {},
-    "require-dev": {
-        "wp-coding-standards/wpcs": "^2.1",
-        "squizlabs/php_codesniffer": "^3.4"
+    "require": {
     },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "squizlabs/php_codesniffer": "*",
+        "wp-coding-standards/wpcs": "*"
+    },
+    "prefer-stable" : true,
     "scripts": {
+        "install-codestandards": [
+            "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+        ],
+        "copy-wpcs": [
+            "cp -r vendor\/wp-coding-standards\/wpcs\/WordPress vendor\/squizlabs\/php_codesniffer\/src\/Standards\/ && cp -r vendor\/wp-coding-standards\/wpcs\/WordPress-Core vendor\/squizlabs\/php_codesniffer\/src\/Standards\/ && cp -r vendor\/wp-coding-standards\/wpcs\/WordPress-Extra vendor\/squizlabs\/php_codesniffer\/src\/Standards\/"
+        ],
         "post-install-cmd": [
-            "cp -r vendor/wp-coding-standards/wpcs/WordPress vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Core vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Docs vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Extra vendor/squizlabs/php_codesniffer/src/Standards/"
+            "@install-codestandards && @copy-wpcs"
         ],
         "post-update-cmd": [
-            "cp -r vendor/wp-coding-standards/wpcs/WordPress vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Core vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Docs vendor/squizlabs/php_codesniffer/src/Standards/ && cp -r vendor/wp-coding-standards/wpcs/WordPress-Extra vendor/squizlabs/php_codesniffer/src/Standards/"
+            "@install-codestandards && @copy-wpcs"
         ]
     }
 }

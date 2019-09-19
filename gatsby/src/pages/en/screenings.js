@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import DefaultLayout from '../../layouts/default.en';
 import Breadcrumb from '../../components/Breadcrumb';
-import ScreeningsNav from '../../components/en/ScreeningsNav';
-import ScreeningsArticles from '../../components/en/ScreeningsArticles';
+import ScreeningsNav from '../../components/I18n/en/ScreeningsNav';
+import ScreeningsArticles from '../../components/I18n/en/ScreeningsArticles';
 
-class ScreeningsPage extends PureComponent {
+class ScreeningsPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 
