@@ -13,19 +13,19 @@ class ActivitiesTemplate extends React.PureComponent {
     switch (slug) {
     case 'course_enrollment':
       return <CourseEnrollmentForm
-        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/course_enrollment_form'}
+        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/course_enrollment_form'}
       />;
     // case 'preservation_meeting_enrollment':
     //   return <ExpandedEnrollmentForm
-    //     formAction={'https://wp.bricsfilmfestival.com.br/wp-json/preservation_meeting_enrollment_form'}
+    //     formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/preservation_meeting_enrollment_form'}
     //   />;
     case 'incubator_meeting_enrollment':
       return <ExpandedEnrollmentForm
-        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/incubator_meeting_enrollment_form'}
+        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/incubator_meeting_enrollment_form'}
       />;
     case 'workshop_enrollment':
       return <EnrollmentForm
-        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/workshop_enrollment_form'}
+        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/workshop_enrollment_form'}
       />;
     }
   }

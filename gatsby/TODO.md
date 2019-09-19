@@ -1,6 +1,6 @@
 # TO-DO List
 
-- Handle environment variables error
+- Handle environment variables error (there was a `.env` before?)
 - Dynamic sidebar on activities
 - Films
 - `PressOffice`
