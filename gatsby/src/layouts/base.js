@@ -45,7 +45,7 @@ class BaseLayout extends React.PureComponent {
           />
           <meta
             property="og:url"
-            content={process.env.BASE_URL + this.props.pathname}
+            content={`${process.env.GATSBY_BASE_URL}${props.pathname}`}
           />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="BRICS Film Festival" />
@@ -55,7 +55,7 @@ class BaseLayout extends React.PureComponent {
           />
           <link
             rel="canonical"
-            href={process.env.BASE_URL + this.props.pathname}
+            href={`${process.env.GATSBY_BASE_URL}${props.pathname}`}
           />
         </Helmet>
         <Global

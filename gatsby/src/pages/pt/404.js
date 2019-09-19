@@ -14,7 +14,7 @@ addLocaleData(pt);
 
 class PageNotFound extends React.PureComponent {
   render() {
-    const data = this.props.data.wordpressBricsPtSiteInfo;
+    const data = this.props.data.wordpressBricsPtGeneralSettings;
     const pathname = this.props.location.pathname;
 
     return (
@@ -24,7 +24,7 @@ class PageNotFound extends React.PureComponent {
       >
         <React.Fragment>
           <Helmet htmlAttributes={{'lang': 'pt-BR'}}>
-            <title>Página não encontrada - {data.pt_site_info_title}</title>
+            <title>Página não encontrada - {data.pt_site_title}</title>
           </Helmet>
           <BaseLayout
             pathname={this.props.pathname}
@@ -41,8 +41,8 @@ class PageNotFound extends React.PureComponent {
 
 export const query = graphql`
   query {
-    wordpressBricsPtSiteInfo {
-      pt_site_info_title
+    wordpressBricsPtGeneralSettings {
+      pt_site_title
     }
   }
 `;

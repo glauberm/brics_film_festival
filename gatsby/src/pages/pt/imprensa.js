@@ -19,7 +19,7 @@ class PressPage extends React.PureComponent {
         }
       >
         <ContactForm
-          formAction={`${process.env.BASE_WP_REST_API_URL}contact_form`}
+          formAction={`${process.env.GATSBY_BASE_WP_REST_API_URL}contact_form`}
         />
       </DefaultLayout>
     );

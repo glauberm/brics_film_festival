@@ -17,7 +17,7 @@ class Input extends React.PureComponent {
             type={this.props.type ? this.props.type : 'text'}
             value={this.props.value}
             min={this.props.min}
-            // required={this.props.notRequired ? false : true}
+            required={this.props.notRequired ? false : true}
             onChange={this.props.onValueChange}
           />
         </label>

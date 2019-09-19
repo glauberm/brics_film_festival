@@ -15,7 +15,7 @@ class Message extends React.PureComponent {
           <textarea
             name={this.props.label}
             value={this.props.value}
-            // required={this.props.notRequired ? false : true}
+            required={this.props.notRequired ? false : true}
             onChange={this.props.onValueChange}
           ></textarea>
         </label>

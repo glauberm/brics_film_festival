@@ -68,7 +68,7 @@ abstract class Brics_Abstract_Form {
 		if ( ENV === 'production' ) {
 			return array_merge(
 				array(
-					'g-recaptcha-response' => array(
+					'recaptcha' => array(
 						'required'          => true,
 						'validate_callback' => function( $param, $request, $key ) {
 							$recaptcha_response = wp_remote_post(

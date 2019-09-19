@@ -103,7 +103,6 @@ class Brics_Workshop_Enrollment_Form extends Brics_Abstract_Enrollment_Form {
 	protected function get_mail_to() {
 		if ( ENV === 'production' ) {
 			return array(
-				'rafaeldeluna@hotmail.com',
 				'alice.castanhom@gmail.com',
 				'glaubernm@gmail.com',
 			);

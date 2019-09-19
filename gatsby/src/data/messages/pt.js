@@ -52,7 +52,6 @@ export default {
   'selectDefaultValue': 'Selecione uma opção',
   'noTime': 'Sem horário',
   'notRequired': 'Não obrigatório',
-  'g-recaptcha-response': 'reCAPTCHA',
   'name': 'Nome',
   'email': 'E-mail',
   'subject': 'Assunto',

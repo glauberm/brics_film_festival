@@ -5,11 +5,11 @@ import BaseLogo from '../../Logo';
 import logo from '../../../images/logo.pt.svg';
 
 const Logo = (props) => {
-  const { wordpressBricsPtSiteInfo } = useStaticQuery(
+  const { wordpressBricsPtGeneralSettings } = useStaticQuery(
     graphql`
       query {
-        wordpressBricsPtSiteInfo {
-          pt_site_info_title
+        wordpressBricsPtGeneralSettings {
+          pt_site_title
         }
       }
     `
@@ -18,7 +18,7 @@ const Logo = (props) => {
   return (
     <BaseLogo pathname={props.pathname}>
       <img src={logo}
-        alt={wordpressBricsPtSiteInfo.pt_site_info_title}
+        alt={wordpressBricsPtGeneralSettings.pt_site_title}
       />
     </BaseLogo>
   );
