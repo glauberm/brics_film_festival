@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'http://bricsfilmfestival.com.br',
+    siteUrl: 'https://bricsfilmfestival.com.br',
   },
   plugins: [
     /*

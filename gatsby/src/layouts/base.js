@@ -45,7 +45,7 @@ class BaseLayout extends React.PureComponent {
           />
           <meta
             property="og:url"
-            content={'http://bricsfilmfestival.com.br' + this.props.pathname}
+            content={'https://bricsfilmfestival.com.br' + this.props.pathname}
           />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="BRICS Film Festival" />
@@ -55,7 +55,7 @@ class BaseLayout extends React.PureComponent {
           />
           <link
             rel="canonical"
-            href={'http://bricsfilmfestival.com.br' + this.props.pathname}
+            href={'https://bricsfilmfestival.com.br' + this.props.pathname}
           />
         </Helmet>
         <Global

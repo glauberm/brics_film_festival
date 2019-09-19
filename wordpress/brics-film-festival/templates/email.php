@@ -117,7 +117,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 										</div>
 										<div class="footer" style="margin: 30px 0 10px; text-align: center;">
 											<small>
-												<a href="http://bricsfilmfestival.com.br" class="a" style="color: #93938A; text-decoration: none; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif;"><span class="a__text" style="color: #93938A; text-decoration: none;"> bricsfilmfestival.com.br </span></a>
+												<a href="https://bricsfilmfestival.com.br" class="a" style="color: #93938A; text-decoration: none; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif;"><span class="a__text" style="color: #93938A; text-decoration: none;"> bricsfilmfestival.com.br </span></a>
 											</small>
 										</div>
 									</td>
