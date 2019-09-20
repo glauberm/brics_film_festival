@@ -72,7 +72,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 			table td { border-collapse: collapse; }
 		</style>
 	<![endif]-->
-	<title><?php echo esc_attr( $data['subject'] ); ?></title>
+	<title><?php echo esc_attr( $subject ); ?></title>
 	<!-- content -->
 	<!--[if gte mso 9]><xml>
 		<o:OfficeDocumentSettings>
@@ -81,7 +81,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 		</o:OfficeDocumentSettings>
 	</xml><![endif]-->
 	</head>
-	<body class="body" style="background-color: #FFFFFF; margin: 0; padding: 0 10px; width: 100%;">
+	<body class="body" style="background-color: #FFFFFF; margin: 0; width: 100%;">
 		<table class="bodyTable" role="presentation" width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; background-color: #FFFFFF; margin: 0;" bgcolor="#FFFFFF">
 			<tr>
 				<td class="body__content" align="left" width="100%" valign="top" style="color: #1D1D1B; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif; font-size: 16px; line-height: 1.5;">
@@ -93,7 +93,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 								<td class="container__cell" width="100%" align="left" valign="top">
 									<img src="<?php echo esc_attr( BRICS_FILM_FESTIVAL_ABSPATH . 'images/email-logo.png' ); ?>" alt="4º Festival de Cinema BRICS" border="0" class="img__block" width="108" style="margin: 20px auto 0; display: block; max-width: 100%; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif; color: #93938a; text-align: center;" />
 									<h1 class="header h1" style="margin: 20px 0; line-height: 40px; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif; text-align: center; color: #009641;">
-										<?php echo esc_attr( $data['subject'] ); ?>
+										<?php echo esc_attr( $subject ); ?>
 									</h1>
 								</td>
 							</tr>
@@ -107,7 +107,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 							<td> <![endif]--> <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
 								<tr class="container__row">
 									<td class="container__cell" width="100%" align="left" valign="top">
-										<div class="content" style="margin-top: 30px; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif; color: #1D1D1B;">
+										<div class="content" style="margin-top: 30px; padding: 0 15px;  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif; color: #1D1D1B;">
 											<?php
 												echo wp_kses(
 													$body,

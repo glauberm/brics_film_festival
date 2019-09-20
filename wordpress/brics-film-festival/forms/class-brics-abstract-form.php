@@ -104,11 +104,8 @@ abstract class Brics_Abstract_Form {
 	 * @return string
 	 */
 	protected function build_mail_message( $data ) {
-		if ( ( ! array_key_exists( 'subject', $data ) || ! $data['subject'] )
-			&& ( array_key_exists( 'subject', $name ) && $data['name'] )
-		) {
-			$data['subject'] = $this->subject . ': ' . $data['name'];
-		}
+		$subject = $this->get_subject( $data );
+
 		ob_start();
 		require_once BRICS_FILM_FESTIVAL_ABSPATH
 			. 'templates/emails/' . $this->email . '.php';
@@ -120,5 +117,20 @@ abstract class Brics_Abstract_Form {
 		require_once BRICS_FILM_FESTIVAL_ABSPATH . 'templates/email.php';
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Build mail subject.
+	 *
+	 * @param mixed $request
+	 */
+	protected function get_subject( $request ) {
+		if ( $request['subject'] ) {
+			return $request['subject'];
+		} elseif ( ( ! $request['subject'] ) && ( $request['name'] ) ) {
+			return $this->subject . ': ' . $request['name'];
+		}
+
+		return $this->subject;
 	}
 }

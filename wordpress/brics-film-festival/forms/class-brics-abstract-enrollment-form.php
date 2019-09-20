@@ -113,7 +113,7 @@ abstract class Brics_Abstract_Enrollment_Form extends Brics_Abstract_Form {
 			if (
 				wp_mail(
 					$this->get_mail_to(),
-					$this->subject,
+					$this->get_subject( $request ),
 					$this->build_mail_message( $request ),
 					array( 'Content-Type: text/html; charset=UTF-8' )
 				)
