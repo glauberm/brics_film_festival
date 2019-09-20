@@ -47,7 +47,9 @@ class Brics_Pt_Films_Post_Type extends Brics_Abstract_Post_Type {
 				}
 				break;
 			case 'country':
-				echo get_field( 'country', $post->ID );
+				echo $this->transform_country(
+					get_field( 'country', $post->ID )
+				);
 				break;
 			case 'year':
 				echo get_field( 'year', $post->ID );
@@ -67,6 +69,8 @@ class Brics_Pt_Films_Post_Type extends Brics_Abstract_Post_Type {
 				return 'China';
 			case 'south_africa':
 				return 'África do Sul';
+			default:
+				return '';
 		}
 	}
 }
