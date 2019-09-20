@@ -45,7 +45,7 @@ class BaseLayout extends React.PureComponent {
           />
           <meta
             property="og:url"
-            content={'https://bricsfilmfestival.com.br' + this.props.pathname}
+            content={`${process.env.GATSBY_BASE_URL}${this.props.pathname}`}
           />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="BRICS Film Festival" />
@@ -55,7 +55,7 @@ class BaseLayout extends React.PureComponent {
           />
           <link
             rel="canonical"
-            href={'https://bricsfilmfestival.com.br' + this.props.pathname}
+            href={`${process.env.GATSBY_BASE_URL}${this.props.pathname}`}
           />
         </Helmet>
         <Global
@@ -101,6 +101,11 @@ const GlobalStyles = css`
   *::after {
     box-sizing: border-box;
   }
+
+  ::selection {
+    color: ${colors.white};
+    background-color: ${colors.green};
+  } 
 
   html {
     scrollbar-color: ${colors.green} ${colors.blackLight};
@@ -185,12 +190,14 @@ const TopBackground = styled.div`
 `;
 
 const Content = styled.div`
-  .sticky {
-    top: ${props => `${props.mainNavHeight+4}px`};
-  }
+  @media (min-height: 480px) {
+    .sticky {
+      top: ${props => `${props.mainNavHeight+4}px`};
+    }
 
-  .sub-sticky {
-    top: calc(5em + ${props => `${props.mainNavHeight+4}px`});
+    .sub-sticky {
+      top: calc(5em + ${props => `${props.mainNavHeight+4}px`});
+    }
   }
 `;
 

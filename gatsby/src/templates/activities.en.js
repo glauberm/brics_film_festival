@@ -4,32 +4,9 @@ import { graphql } from 'gatsby';
 import DefaultLayout from '../layouts/default.en';
 import Breadcrumb from '../components/Breadcrumb';
 import ActivitiesNav from '../components/I18n/en/ActivitiesNav';
-import EnrollmentForm from '../components/EnrollmentForm';
-import ExpandedEnrollmentForm from '../components/ExpandedEnrollmentForm';
-import CourseEnrollmentForm from '../components/CourseEnrollmentForm';
+import { getActivityForm } from '../utils';
 
 class ActivitiesTemplate extends React.PureComponent {
-  getForm(slug) {
-    switch (slug) {
-    case 'course_enrollment':
-      return <CourseEnrollmentForm
-        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/course_enrollment_form'}
-      />;
-    // case 'preservation_meeting_enrollment':
-    //   return <ExpandedEnrollmentForm
-    //     formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/preservation_meeting_enrollment_form'}
-    //   />;
-    case 'incubator_meeting_enrollment':
-      return <ExpandedEnrollmentForm
-        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/incubator_meeting_enrollment_form'}
-      />;
-    case 'workshop_enrollment':
-      return <EnrollmentForm
-        formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/workshop_enrollment_form'}
-      />;
-    }
-  }
-
   render() {
     const pathname = this.props.location.pathname;
     const data = this.props.data.wordpressWpEnActivities;
@@ -61,7 +38,7 @@ class ActivitiesTemplate extends React.PureComponent {
             }
           </h1>
           <div dangerouslySetInnerHTML={{ __html: data.acf.html }} />
-          {this.getForm(data.acf.form)}
+          {getActivityForm(data.acf.form)}
         </DefaultLayout>
       </React.Fragment>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 
-import { breakpoints, colors, headingBaseStyle } from '../styles/theme';
+import { breakpoints, colors, headingBaseStyle, linkBaseStyle } from '../styles/theme';
 import Decoration from './Decoration';
 
 class Jumbotron extends React.PureComponent {
@@ -72,6 +72,10 @@ const Text = styled.p`
 
 const LinkContainer = styled.div`
   margin-bottom: 2em;
+
+  a {
+    ${linkBaseStyle}
+  }
 `;
 
 export default Jumbotron;

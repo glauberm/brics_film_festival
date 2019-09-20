@@ -117,6 +117,8 @@ const Sitemap = styled.div`
 
 const SitemapColumn = styled.div`
   width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   ul {
     margin: 0;

@@ -5,6 +5,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 abstract class Brics_Abstract_Form {
 	protected $route;
 	protected $email;
+	protected $subject;
 	private $route_namespace = 'brics/v1';
 
 	/**
@@ -56,7 +57,7 @@ abstract class Brics_Abstract_Form {
 	public function handle_form( $request ) {
 		$this->form_action( $request );
 
-		return new Brics_WP_REST_Response( array( 'code' => 'success' ) );
+		return new WP_REST_Response( array( 'code' => 'success' ) );
 	}
 
 	/**
@@ -65,10 +66,10 @@ abstract class Brics_Abstract_Form {
 	 * @return void
 	 */
 	protected function get_args() {
-		if ( ENV === 'production' ) {
+		if ( ENV === 'production' || ENV === 'staging' ) {
 			return array_merge(
 				array(
-					'g-recaptcha-response' => array(
+					'recaptcha' => array(
 						'required'          => true,
 						'validate_callback' => function( $param, $request, $key ) {
 							$recaptcha_response = wp_remote_post(
@@ -103,6 +104,8 @@ abstract class Brics_Abstract_Form {
 	 * @return string
 	 */
 	protected function build_mail_message( $data ) {
+		$subject = $this->get_subject( $data );
+
 		ob_start();
 		require_once BRICS_FILM_FESTIVAL_ABSPATH
 			. 'templates/emails/' . $this->email . '.php';
@@ -114,5 +117,20 @@ abstract class Brics_Abstract_Form {
 		require_once BRICS_FILM_FESTIVAL_ABSPATH . 'templates/email.php';
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Build mail subject.
+	 *
+	 * @param mixed $request
+	 */
+	protected function get_subject( $request ) {
+		if ( $request['subject'] ) {
+			return $request['subject'];
+		} elseif ( ( ! $request['subject'] ) && ( $request['name'] ) ) {
+			return $this->subject . ': ' . $request['name'];
+		}
+
+		return $this->subject;
 	}
 }

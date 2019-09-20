@@ -52,10 +52,10 @@ class Notification extends React.PureComponent {
         active={this.state.active}
       >
         <Row>
+          {!this.props.status &&
+            <Loading src={loading} alt='' />
+          }
           <Content status={this.props.status}>
-            {!this.props.status &&
-              <Loading src={loading} alt='' />
-            }
             {this.props.content}
           </Content>
           {this.props.status &&
@@ -109,7 +109,7 @@ const NotificationElement = styled.div`
   margin-bottom: 1em;
   padding: 0.75em 1.25em;
   border-top: 1px solid ${colors.grayLightest};
-  border-left: 4px solid ${colors.grayDark};
+  border-left: 4px solid ${colors.blue};
   border-right: 1px solid ${colors.grayLighter};
   border-bottom: 1px solid ${colors.grayLight};
   border-radius: 4px;
@@ -143,10 +143,12 @@ const Row = styled.div`
 
 const Loading = styled.img`
   position: relative;
-  top: 1px;
-  width: 1em;
-  height: 1em;
+  width: 0.75em;
+  height: 0.75em;
+  margin-top: .25em;
   margin-right: .5em;
+  margin-bottom: .25em;
+  font-size: 2em;
   animation-name: ${rotate};
   animation-duration: 0.5s;
   animation-iteration-count: infinite;

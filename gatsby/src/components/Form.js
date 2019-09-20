@@ -13,7 +13,8 @@ class Form extends React.PureComponent {
     super(props);
     this.recaptchaInstance;
     this.state = {
-      recaptcha: null
+      recaptcha: null,
+      recaptchaResponse: null
     };
   }
 
@@ -23,8 +24,12 @@ class Form extends React.PureComponent {
         <Recaptcha
           ref={e => this.recaptchaInstance = e}
           render="explicit"
-          sitekey='6LedcKwUAAAAAN5X9FG34Z4QUgt4NS_LFBVKOx5P'
+          sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
           size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
+          hl={this.props.intl.formatMessage({ id: 'langString' })}
+          verifyCallback={(response) => this.setState({
+            recaptchaResponse: response
+          }) }
         />
       }
     );
@@ -32,14 +37,18 @@ class Form extends React.PureComponent {
 
   handleSubmit = (event, addNotification, changeNotification) => {
     event.preventDefault();
+
     const notification = addNotification(
       this.props.intl.formatMessage({ id: 'sending' })
     );
+
+    let data = this.props.data;
+    data.recaptcha = this.state.recaptchaResponse;
     
     axios({
       method: this.props.method,
       url: this.props.action,
-      data: this.props.data
+      data: data
     })
       .then(response => {
         changeNotification(
@@ -112,11 +121,9 @@ class Form extends React.PureComponent {
             }
           >
             {this.props.children}
-            {process.env.NODE_ENV === 'production' && this.state.recaptcha &&
-              <FormControl>
-                {this.state.recaptcha}
-              </FormControl>
-            }
+            <FormControl>
+              {this.state.recaptcha}
+            </FormControl>
             <FormControl>
               <Button
                 type="submit"

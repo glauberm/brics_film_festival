@@ -19,7 +19,7 @@ class PressPage extends React.PureComponent {
         }
       >
         <ContactForm
-          formAction={'https://wp.bricsfilmfestival.com.br/wp-json/brics/v1/contact_form'}
+          formAction={`${process.env.GATSBY_BASE_WP_REST_API_URL}contact_form`}
         />
       </DefaultLayout>
     );
