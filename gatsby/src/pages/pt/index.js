@@ -25,6 +25,7 @@ class HomePage extends React.Component {
           </React.Fragment>
         }
       >
+        <h1>Veja a programação completa</h1>
         <NewsArticles />
       </HomeLayout>
     );
