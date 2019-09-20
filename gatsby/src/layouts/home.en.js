@@ -5,7 +5,7 @@ import PrimaryColumn from '../components/PrimaryColumn';
 import SecondaryColumn from '../components/SecondaryColumn';
 import Content from '../components/Content';
 
-class HomeLayout extends React.Component {
+class HomeLayout extends React.PureComponent {
   render() {
     return (
       <BaseLayout

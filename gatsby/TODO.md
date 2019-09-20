@@ -4,6 +4,7 @@
 - Films
 - `PressOffice`
 - Transform `Timer` on `Banner`
+- Field not required is in?
 - Get schedule of `Activities` and `Screenings`
 - Add Schemas to Events and Schedule.
 - `twitter:image`

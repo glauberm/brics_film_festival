@@ -66,7 +66,7 @@ abstract class Brics_Abstract_Form {
 	 * @return void
 	 */
 	protected function get_args() {
-		if ( ENV === 'production' ) {
+		if ( ENV === 'production' || ENV === 'staging' ) {
 			return array_merge(
 				array(
 					'recaptcha' => array(

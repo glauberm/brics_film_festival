@@ -70,6 +70,7 @@ export default {
   'unexpectedError': 'An unexpected error has ocurred. Please, try again.',
   'selectDefaultValue': 'Select an option',
   'notRequired': 'Not required',
+  'recaptcha': 'reCAPTCHA',
   'name': 'Name',
   'email': 'Email',
   'subject': 'Subject',

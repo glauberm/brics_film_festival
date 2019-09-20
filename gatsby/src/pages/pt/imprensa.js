@@ -4,7 +4,7 @@ import DefaultLayout from '../../layouts/default.pt';
 import PressOffice from '../../components/PressOffice';
 import ContactForm from '../../components/ContactForm';
 
-class PressPage extends React.Component {
+class PressPage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
 
