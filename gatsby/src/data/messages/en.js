@@ -36,7 +36,7 @@ export default {
   'notFoundText': 'It looks like the page you are looking for does not exist or has been removed.',
   'notFoundTextLink': 'Back to home',
   'copyrightText': 'All rights reserved.',
-  'creditsCode': 'Code',
+  'creditsCode': 'Website',
   'creditsBy': 'by',
   'shortSitename': 'BRICS Film Festival',
   'noscript': 'This app works best with JavaScript enabled.',

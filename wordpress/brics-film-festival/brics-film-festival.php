@@ -15,6 +15,7 @@ defined( 'ABSPATH' ) || die();
 
 define( 'BRICS_FILM_FESTIVAL_VERSION', '1.0.0' );
 define( 'BRICS_FILM_FESTIVAL_ABSPATH', plugin_dir_path( __FILE__ ) );
+define( 'BRICS_FILM_FESTIVAL_ABSURL', plugin_dir_url( __FILE__ ) );
 
 require_once BRICS_FILM_FESTIVAL_ABSPATH . 'env.php';
 
