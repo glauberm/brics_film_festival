@@ -26,6 +26,9 @@ class Form extends React.PureComponent {
           sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
           size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
           hl={this.props.intl.formatMessage({ id: 'langString' })}
+          verifyCallback={
+            console.log( this.recaptchaInstance.getResponse )
+          }
         />
       }
     );
