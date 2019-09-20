@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
-import { colors, breakpoints } from '../styles/theme';
+import { colors } from '../styles/theme';
 
 class Event extends React.PureComponent {
   getHeading() {
@@ -36,7 +35,12 @@ class Event extends React.PureComponent {
   render() {
     return (
       <Container>
-        <Heading noTime={this.props.noTime} className='title'>
+        { this.props.time &&
+          <HeadingContainer className='sub-sticky'>
+            <Heading>{this.props.time}</Heading>
+          </HeadingContainer>
+        }
+        <Subheading noTime={this.props.noTime}>
           {this.getHeading()}
           {this.props.subtitle &&
             <React.Fragment>
@@ -44,50 +48,62 @@ class Event extends React.PureComponent {
               <small>{this.props.subtitle}</small>
             </React.Fragment>
           }
-        </Heading>
-        {this.props.duration &&
-          <React.Fragment>
-            <Subheading>Duração</Subheading>
-            <span>{this.props.duration}</span>
-            <br/>
-          </React.Fragment>
-        }
-        {this.props.parentalRating &&
-          <React.Fragment>
-            <Subheading>Classificação Indicativa</Subheading>
-            <span>{this.props.parentalRating}</span>
-            <br/>
-          </React.Fragment>
-        }
-        <Subheading>Local</Subheading>
-        <span>{this.props.venue}</span>
-        {this.props.films &&
-          <React.Fragment>
-            <FilmSubheading>Filmes</FilmSubheading>
-            <List>
-              {this.props.films.map((film, i) => (
-                <li key={i}>
-                  <span>{film.post_title}</span>
-                  {/* <Link to={film.post_name}>
-                    {film.post_title}
-                  </Link> */}
-                </li>
-              ))}
-            </List>
-          </React.Fragment>
-        }
-        {this.props.obs &&
-          <p>{this.props.obs}</p>
-        }
+        </Subheading>
+        <Content>
+          {this.props.duration &&
+            <React.Fragment>
+              <Subsubheading>
+                {this.props.intl.formatMessage({ id: 'duration' })}
+              </Subsubheading>
+              <span>{this.props.duration}</span>
+              <br/>
+            </React.Fragment>
+          }
+          {this.props.parentalRating &&
+            <React.Fragment>
+              <Subsubheading>
+                {this.props.intl.formatMessage({ id: 'parentalRating' })}
+              </Subsubheading>
+              <span>{this.props.parentalRating}</span>
+              <br/>
+            </React.Fragment>
+          }
+          <Subsubheading>
+            {this.props.intl.formatMessage({ id: 'venue' })}
+          </Subsubheading>
+          <span>{this.props.venue}</span>
+          {this.props.films &&
+            <React.Fragment>
+              <FilmSubsubheading>
+                {this.props.intl.formatMessage({ id: 'films' })}
+              </FilmSubsubheading>
+              <List>
+                {this.props.films.map((film, i) => (
+                  <li key={i}>
+                    <span>{film.post_title}</span>
+                    {/* <Link to={film.post_name}>
+                      {film.post_title}
+                    </Link> */}
+                  </li>
+                ))}
+              </List>
+            </React.Fragment>
+          }
+          {this.props.obs &&
+            <p>{this.props.obs}</p>
+          }
+        </Content>
       </Container>
     );
   }
 }
 
 const Container = styled.article`
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 2em;
   margin-bottom: 0 !important;
-  padding: 0 1em 1em;
+  padding: 0.75em 1em 1em;
   border-top: 1px solid ${colors.grayLightest};
   border-left: 1px solid ${colors.grayLighter};
   border-right: 1px solid ${colors.grayLighter};
@@ -100,38 +116,56 @@ const Container = styled.article`
     0 0 .333em ${colors.grayLightest} inset
   ;
 
-  .title {
-    ::after {
-      content: none;
-    }
-  }
-
   p:last-of-type {
     margin-bottom: 0;
   }
 `;
 
-const Heading = styled.h4`
-  margin-top: .2em;
+const HeadingContainer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  position: sticky;
+  z-index: 1;
+  margin-right: 1em;
+  margin-bottom: .25em;
+  padding: 0.333em .666em;
+  background-color: ${colors.grayLighter};
+  border-radius: .5em;
+  box-shadow: 0 1px 2px rgba(29,29,27,0.2);
+`;
+
+const Heading = styled.h3`
+  margin: 0 auto;
+  font-size: 1.333em;
+  color: ${colors.blue};
+`;
+
+const Subheading = styled.h4`
+  margin-top: 0;
   margin-bottom: 0;
-  padding-left: 0;
+  padding-top: 0.25em;
   font-size: 1.425em;
 
-  ${props => !props.noTime ? css`
-    padding-top: 2em;
-    ` : ''}
+  a {
+    color: ${colors.black};
 
-  @media (min-width: ${breakpoints.sm}px) {
-    margin-top: .666em;
-    padding-top: 0;
+    :hover,
+    :focus {
+      text-decoration-color: ${colors.green};
+    }
+  }
 
-    ${props => !props.noTime ? css`
-      padding-left: 4em;
-    ` : ''}
+  small {
+    color: ${colors.grayDark};
   }
 `;
 
-const Subheading = styled.h5`
+const Content = styled.div`
+  width: 100%;
+  padding-top: .5em;
+`;
+
+const Subsubheading = styled.h5`
   display: inline-block;
   margin: 0;
   font-size: 1em;
@@ -142,7 +176,7 @@ const Subheading = styled.h5`
   }
 `;
 
-const FilmSubheading = styled.h5`
+const FilmSubsubheading = styled.h5`
   margin: .333em 0 0;
   font-size: 1em;
 

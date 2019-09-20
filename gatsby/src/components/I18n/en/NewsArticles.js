@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import Article from '../../Article';
@@ -57,7 +58,7 @@ const NewsArticles = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <Container>
       {allWordpressWpEnNews.edges.map(({ node }, i) => (
         <ArticleContainer
           key={node.id}
@@ -84,9 +85,12 @@ const NewsArticles = (props) => {
           {props.intl.formatMessage({ id: 'loadMore' })}
         </Button>
       }
-    </React.Fragment>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  padding-bottom: 3em;
+`;
 
 export default injectIntl(NewsArticles);

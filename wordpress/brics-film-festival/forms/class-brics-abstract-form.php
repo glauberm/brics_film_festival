@@ -5,6 +5,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 abstract class Brics_Abstract_Form {
 	protected $route;
 	protected $email;
+	protected $subject;
 	private $route_namespace = 'brics/v1';
 
 	/**
@@ -103,6 +104,11 @@ abstract class Brics_Abstract_Form {
 	 * @return string
 	 */
 	protected function build_mail_message( $data ) {
+		if ( ( ! array_key_exists( 'subject', $data ) || ! $data['subject'] )
+			&& ( array_key_exists( 'subject', $name ) && $data['name'] )
+		) {
+			$data['subject'] = $this->subject . ': ' . $data['name'];
+		}
 		ob_start();
 		require_once BRICS_FILM_FESTIVAL_ABSPATH
 			. 'templates/emails/' . $this->email . '.php';

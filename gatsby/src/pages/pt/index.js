@@ -7,7 +7,7 @@ import ScreeningsNav from '../../components/I18n/pt/ScreeningsNav';
 import FestivalNav from '../../components/I18n/pt/FestivalNav';
 import NewsArticles from '../../components/I18n/pt/NewsArticles';
 
-class HomePage extends React.PureComponent {
+class HomePage extends React.Component {
   render() {
     const pathname = this.props.location.pathname;
 

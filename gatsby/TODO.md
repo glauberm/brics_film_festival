@@ -1,20 +1,11 @@
 # TO-DO List
 
-- Notifications disappearing on page change. `BaseLayout` to class component? `Base(Pt|En)Layout` from `PureComponent` to `Component`?
-- `::selection`
-- Flex on time and heading of schedule? Kill the `Pusher` element
-- [reCAPTCHA `hl`](https://developers.google.com/recaptcha/docs/language)
-- Handle environment variables error (there was a `.env` before?)
 - Dynamic sidebar on activities
 - Films
 - `PressOffice`
-- `position: sticky` polyfill
-- `position: sticky` breakpoint on `min-height: 480px`
 - Transform `Timer` on `Banner`
 - Get schedule of `Activities` and `Screenings`
 - Add Schemas to Events and Schedule.
 - `twitter:image`
-- I18n reCAPTCHA
 - Reuse `Button` component (on `Form` and `Article`)
 - Better reusability from `NewsArticles` components code?
-- Improve notification animation on `Sending...`

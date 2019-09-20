@@ -25,6 +25,7 @@ class Form extends React.PureComponent {
           render="explicit"
           sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
           size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
+          hl={this.props.intl.formatMessage({ id: 'langString' })}
         />
       }
     );
@@ -112,11 +113,9 @@ class Form extends React.PureComponent {
             }
           >
             {this.props.children}
-            {process.env.NODE_ENV === 'production' && this.state.recaptcha &&
-              <FormControl>
-                {this.state.recaptcha}
-              </FormControl>
-            }
+            <FormControl>
+              {this.state.recaptcha}
+            </FormControl>
             <FormControl>
               <Button
                 type="submit"

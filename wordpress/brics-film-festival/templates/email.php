@@ -81,7 +81,7 @@ defined( 'BRICS_FILM_FESTIVAL_ABSPATH' ) || die();
 		</o:OfficeDocumentSettings>
 	</xml><![endif]-->
 	</head>
-	<body class="body" style="background-color: #FFFFFF; margin: 0; width: 100%;">
+	<body class="body" style="background-color: #FFFFFF; margin: 0; padding: 0 10px; width: 100%;">
 		<table class="bodyTable" role="presentation" width="100%" align="left" border="0" cellpadding="0" cellspacing="0" style="width: 100%; background-color: #FFFFFF; margin: 0;" bgcolor="#FFFFFF">
 			<tr>
 				<td class="body__content" align="left" width="100%" valign="top" style="color: #1D1D1B; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif; font-size: 16px; line-height: 1.5;">
