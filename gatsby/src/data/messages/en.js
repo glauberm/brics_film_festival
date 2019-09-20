@@ -43,7 +43,7 @@ export default {
   'skipToContent': 'Skip to Content',
   'readMore': 'Read More',
   'loadMore': 'Load More',
-  '2019-09-23-27': 'September 27th to 23th',
+  '2019-09-23-27': 'September 23th to 27th',
   '2019-09-27': 'September 27th',
   '2019-09-28': 'September 28th',
   '2019-09-29': 'September 29th',

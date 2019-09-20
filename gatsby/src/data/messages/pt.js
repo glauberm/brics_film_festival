@@ -43,7 +43,7 @@ export default {
   'skipToContent': 'Pular para o conteúdo',
   'readMore': 'Saiba mais',
   'loadMore': 'Carregar mais',
-  '2019-09-23-27': '27 a 30 de setembro',
+  '2019-09-23-27': '23 a 27 de setembro',
   '2019-09-27': '27 de setembro',
   '2019-09-28': '28 de setembro',
   '2019-09-29': '29 de setembro',
