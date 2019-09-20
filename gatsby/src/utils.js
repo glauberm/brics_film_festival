@@ -8,10 +8,10 @@ export const getActivityForm = (slug) => {
     return <CourseEnrollmentForm
       formAction={`${process.env.GATSBY_BASE_WP_REST_API_URL}course_enrollment_form`}
     />;
-  // case 'preservation_meeting_enrollment':
-  //   return <ExpandedEnrollmentForm
-  //     formAction={`${process.env.GATSBY_BASE_WP_REST_API_URL}preservation_meeting_enrollment_form`}
-  //   />;
+  case 'preservation_meeting_enrollment':
+    return <ExpandedEnrollmentForm
+      formAction={`${process.env.GATSBY_BASE_WP_REST_API_URL}preservation_meeting_enrollment_form`}
+    />;
   case 'incubator_meeting_enrollment':
     return <ExpandedEnrollmentForm
       formAction={`${process.env.GATSBY_BASE_WP_REST_API_URL}incubator_meeting_enrollment_form`}

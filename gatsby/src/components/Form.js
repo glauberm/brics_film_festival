@@ -13,7 +13,8 @@ class Form extends React.PureComponent {
     super(props);
     this.recaptchaInstance;
     this.state = {
-      recaptcha: null
+      recaptcha: null,
+      recaptchaResponse: null
     };
   }
 
@@ -26,9 +27,9 @@ class Form extends React.PureComponent {
           sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
           size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
           hl={this.props.intl.formatMessage({ id: 'langString' })}
-          verifyCallback={function (response) {
-            console.log(response);
-          }}
+          verifyCallback={(response) => this.setState({
+            recaptchaResponse: response
+          }) }
         />
       }
     );
@@ -36,14 +37,18 @@ class Form extends React.PureComponent {
 
   handleSubmit = (event, addNotification, changeNotification) => {
     event.preventDefault();
+
     const notification = addNotification(
       this.props.intl.formatMessage({ id: 'sending' })
     );
+
+    let data = this.props.data;
+    data.recaptcha = this.state.recaptchaResponse;
     
     axios({
       method: this.props.method,
       url: this.props.action,
-      data: this.props.data
+      data: data
     })
       .then(response => {
         changeNotification(

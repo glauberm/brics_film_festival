@@ -57,7 +57,7 @@ abstract class Brics_Abstract_Form {
 	public function handle_form( $request ) {
 		$this->form_action( $request );
 
-		return new Brics_WP_REST_Response( array( 'code' => 'success' ) );
+		return new WP_REST_Response( array( 'code' => 'success' ) );
 	}
 
 	/**
