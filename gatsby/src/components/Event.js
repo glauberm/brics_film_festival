@@ -131,7 +131,7 @@ const HeadingContainer = styled.div`
   margin-bottom: .25em;
   padding: 0.333em .666em;
   background-color: ${colors.yellow};
-  border-radius: .5em;
+  border-radius: .333em;
 `;
 
 const Heading = styled.h3`

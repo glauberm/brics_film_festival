@@ -12,7 +12,7 @@ class Article extends React.PureComponent {
     if (this.props.shortable && html.length > 999) {
       return (
         <React.Fragment>
-          <StrippedTextContainer dangerouslySetInnerHTML={{
+          <TextContainer dangerouslySetInnerHTML={{
             __html: html_substring(html, 999, { suffix: '...'})
           }}/>
           <Link to={this.props.linkTo}>
@@ -24,7 +24,7 @@ class Article extends React.PureComponent {
       );
     }
     
-    return <div dangerouslySetInnerHTML={{ __html: html }}/>;
+    return <TextContainer dangerouslySetInnerHTML={{ __html: html }}/>;
   }
 
   render() {
@@ -51,8 +51,9 @@ class Article extends React.PureComponent {
   }
 }
 
-const StrippedTextContainer = styled.div`
+const TextContainer = styled.div`
   margin-bottom: 1em;
+  word-break: break-word;
 
   p:last-of-type {
     display: inline;
