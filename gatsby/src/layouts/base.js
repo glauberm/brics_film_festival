@@ -49,6 +49,7 @@ class BaseLayout extends React.PureComponent {
           />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="BRICS Film Festival" />
+          <meta name="twitter:card" content="summary" />
           <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Montserrat:700display=swap"
             rel="stylesheet"
