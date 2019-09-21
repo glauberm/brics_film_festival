@@ -3,16 +3,17 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
+import html_substring from 'html-substring';
 
 import { colors, headingBaseStyle } from '../styles/theme';
 
 class Article extends React.PureComponent {
   getHtml(html) {
-    if (this.props.shortable && html.length > 1024) {
+    if (this.props.shortable && html.length > 999) {
       return (
         <React.Fragment>
-          <div dangerouslySetInnerHTML={{
-            __html: `${html.substring(0,1024).trim()}...`
+          <StrippedTextContainer dangerouslySetInnerHTML={{
+            __html: html_substring(html, 999, { suffix: '...'})
           }}/>
           <Link to={this.props.linkTo}>
             <Button>
@@ -49,6 +50,14 @@ class Article extends React.PureComponent {
     );
   }
 }
+
+const StrippedTextContainer = styled.div`
+  margin-bottom: 1em;
+
+  p:last-of-type {
+    display: inline;
+  }
+`;
 
 const Button = styled.span`
   ${headingBaseStyle}

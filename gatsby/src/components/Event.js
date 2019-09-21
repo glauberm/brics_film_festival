@@ -148,7 +148,6 @@ const Subheading = styled.h4`
 
   a {
     color: ${colors.black};
-    text-decoration: underline;
 
     :hover,
     :focus {
