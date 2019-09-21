@@ -38,11 +38,9 @@ const BasePtLayout = (props) => {
         <meta property="og:locale" content="pt" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:image" content={ogImg} />
+        <meta property="og:image:secure_url" content={ogImg} />
         <meta property="og:image:alt" content="BRICS Film Festival" />
         <meta property="og:description" content={description} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={ogImg} />
         <link
           rel="alternate"
           href={`${process.env.GATSBY_BASE_URL}${props.langPt}`}
