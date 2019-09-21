@@ -37,7 +37,7 @@ const BaseEnLayout = (props) => {
         <meta name="description" content={description}/>
         <meta property="og:locale" content="en" />
         <meta property="og:title" content={pageTitle} />
-        <meta property="og:image" content={ogImg} />
+        <meta property="og:image:secure_url" content={ogImg} />
         <meta property="og:image:alt" content="BRICS Film Festival" />
         <meta property="og:description" content={description} />
         <link
