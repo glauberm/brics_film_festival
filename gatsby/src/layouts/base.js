@@ -193,10 +193,12 @@ const Content = styled.div`
   @media (min-height: 480px) {
     .sticky {
       top: ${props => `${props.mainNavHeight+4}px`};
+      transition: top .5s;
     }
 
     .sub-sticky {
       top: calc(5em + ${props => `${props.mainNavHeight+4}px`});
+      transition: top .5s;
     }
   }
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import styled from '@emotion/styled';
 
 import DefaultLayout from '../../layouts/default.pt';
 import Breadcrumb from '../../components/Breadcrumb';
@@ -28,18 +29,26 @@ class SchedulePage extends React.PureComponent {
         <Breadcrumb crumbs={[
           {href: '/pt/programacao/', text: 'Programação'}
         ]} />
-        <h1 className='page-title'>Programação</h1>
+        <Container>
+          <h1 className='page-title'>Programação</h1>
+        </Container>
         <Events events={data.group}/>
       </DefaultLayout>
     );
   }
 }
 
+const Container = styled.div`
+  h1.page-title {
+    padding-bottom: 0;
+  }
+`;
+
 export const query = graphql`
   query {
     allWordpressWpPtSchedule(
       sort: {
-        fields: [acf___days, acf___time]
+        fields: [acf___days, acf___time, menu_order]
         order: [ASC]
       }
     ) {

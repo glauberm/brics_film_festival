@@ -103,7 +103,7 @@ const Container = styled.article`
   flex-wrap: wrap;
   margin-top: 2em;
   margin-bottom: 0 !important;
-  padding: 0.75em 1em 1em;
+  padding: 0.75em 1em 0;
   border-top: 1px solid ${colors.grayLightest};
   border-left: 1px solid ${colors.grayLighter};
   border-right: 1px solid ${colors.grayLighter};
@@ -127,27 +127,28 @@ const HeadingContainer = styled.div`
   position: sticky;
   z-index: 1;
   margin-right: 1em;
+  margin-top: .25em;
   margin-bottom: .25em;
   padding: 0.333em .666em;
-  background-color: ${colors.grayLighter};
+  background-color: ${colors.yellow};
   border-radius: .5em;
-  box-shadow: 0 1px 2px rgba(29,29,27,0.2);
 `;
 
 const Heading = styled.h3`
   margin: 0 auto;
   font-size: 1.333em;
-  color: ${colors.blue};
+  color: ${colors.blackLight};
 `;
 
 const Subheading = styled.h4`
   margin-top: 0;
   margin-bottom: 0;
-  padding-top: 0.25em;
+  padding-top: 0.375em;
   font-size: 1.425em;
 
   a {
     color: ${colors.black};
+    text-decoration: underline;
 
     :hover,
     :focus {
@@ -162,7 +163,7 @@ const Subheading = styled.h4`
 
 const Content = styled.div`
   width: 100%;
-  padding-top: .5em;
+  padding: 1em 0;
 `;
 
 const Subsubheading = styled.h5`

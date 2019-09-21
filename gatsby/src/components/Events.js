@@ -70,12 +70,25 @@ const HeadingContainer = styled.div`
   :first-of-type {
     margin-top: 0;
   }
+
+  ::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -1em;
+    left: 0;
+    height: 2em;
+    width: 100%;
+    background: linear-gradient(
+      to top, ${colors.white} 50%, transparent 100%
+    );
+  }
 `;
 
 const Heading = styled.h2`
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-y: hidden;
+  overflow-x: auto;
   margin: 0;
   font-size: 1.666em;
   color: ${colors.blackLight};

@@ -67,7 +67,6 @@ class ExpandedEnrollmentForm extends React.PureComponent {
           });
         }}
       >
-        <br />
         <h2 className='title'>
           {this.props.intl.formatMessage({ id: 'enrollmentFormTitle' })}
         </h2>
