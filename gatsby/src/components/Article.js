@@ -12,9 +12,11 @@ class Article extends React.PureComponent {
     if (this.props.shortable && html.length > 999) {
       return (
         <React.Fragment>
-          <TextContainer dangerouslySetInnerHTML={{
-            __html: html_substring(html, 999, { suffix: '...'})
-          }}/>
+          <TextContainer
+            dangerouslySetInnerHTML={{
+              __html: html_substring(html, 999, { suffix: '...'})
+            }}
+          />
           <Link to={this.props.linkTo}>
             <Button>
               {this.props.intl.formatMessage({ id: 'readMore' })}
@@ -24,26 +26,31 @@ class Article extends React.PureComponent {
       );
     }
     
-    return <TextContainer dangerouslySetInnerHTML={{ __html: html }}/>;
+    return (
+      <TextContainer dangerouslySetInnerHTML={{ __html: html }} />
+    );
   }
 
   render() {
     return (
-      <article itemScope itemType="http://schema.org/Article">
-        <h2 className='title' itemProp="name">
+      <article>
+        <h2 className='title'>
           <Link to={this.props.linkTo}
             dangerouslySetInnerHTML={{ __html: this.props.title }} 
           />
           {
             this.props.subtitle &&
-            <small
-              dangerouslySetInnerHTML={{ __html: this.props.subtitle }}
-            />
+            <React.Fragment>
+              <br />
+              <small
+                dangerouslySetInnerHTML={{ __html: this.props.subtitle }}
+              />
+            </React.Fragment>
           }
         </h2>
         {
           this.props.imgFluid &&
-          <Img fluid={this.props.imgFluid}/>
+          <Img fluid={this.props.imgFluid} />
         }
         {this.getHtml(this.props.content)}
       </article>

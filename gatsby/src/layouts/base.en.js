@@ -55,6 +55,32 @@ const BaseEnLayout = (props) => {
         logo={<Logo pathname={props.pathname} />}
         logoFooter={logoFooter}
       >
+        <div itemScope itemType='http://schema.org/Event'>
+          <meta
+            itemProp='startDate'
+            content='2019-09-23T00:00'
+          />
+          <meta
+            itemProp='endDate'
+            content='2019-10-09T23:59'
+          />
+          <meta
+            itemProp='name'
+            content='4th BRICS Film Festival'
+          />
+          <meta
+            itemProp='description'
+            content={description}
+          />
+          <meta
+            itemProp='image'
+            content={ogImg}
+          />
+          <meta itemProp='duration' content="P17D" />
+          <div itemProp='location' itemScope itemType='http://schema.org/Place'>
+            <meta itemProp='name address' content='Niterói - Brazil' />
+          </div>
+        </div>
         {props.children}
       </BaseLayout>
     </React.Fragment>

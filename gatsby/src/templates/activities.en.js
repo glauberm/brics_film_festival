@@ -35,9 +35,12 @@ class ActivitiesTemplate extends React.PureComponent {
           <h1 className='title'>
             <span dangerouslySetInnerHTML={{ __html: activity.title }} />
             { activity.acf.subtitle && 
-              <small
-                dangerouslySetInnerHTML={{ __html: activity.acf.subtitle }}
-              />
+              <React.Fragment>
+                <br />
+                <small
+                  dangerouslySetInnerHTML={{ __html: activity.acf.subtitle }}
+                />
+              </React.Fragment>
             }
           </h1>
           <div dangerouslySetInnerHTML={{ __html: activity.acf.html }} />

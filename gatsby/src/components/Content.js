@@ -74,9 +74,7 @@ const Inner = styled.div`
     }
 
     small {
-      display: block;
       color: ${colors.grayDark};
-      margin-top: 0.25em;
     }
   }
 

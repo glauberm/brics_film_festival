@@ -8,16 +8,20 @@ class Film extends React.PureComponent {
     const film = this.props.film;
 
     return (
-      <div itemscope itemtype='http://schema.org/Movie'>
+      <div itemScope itemType='http://schema.org/Movie'>
         <h1 className='title' itemProp='name'>
           <span dangerouslySetInnerHTML={{ __html: film.title }} />
           { film.acf.subtitle &&
-            <small dangerouslySetInnerHTML={{ __html: film.acf.subtitle }} />
+            <React.Fragment>
+              <br />
+              <small dangerouslySetInnerHTML={{ __html: film.acf.subtitle }} />
+            </React.Fragment>
           }
         </h1>
         { film.acf.image &&
           <Img
             fluid={film.acf.image.localFile.childImageSharp.fluid}
+            itemProp="image"
           />
         }
         { film.acf.country &&

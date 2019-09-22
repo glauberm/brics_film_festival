@@ -10,7 +10,8 @@ class Timer extends React.PureComponent {
     super(props);
     this.interval = null;
     this.state = {
-      timespan: {}
+      timespan: {},
+      started: false
     };
   }
 
@@ -24,37 +25,71 @@ class Timer extends React.PureComponent {
   }
 
   setCountdown = () => {
-    this.setState({
-      timespan: countdown(new Date(2019, 8, 23))
-    });
+    const date = new Date(2019, 8, 23);
+    const now = new Date();
+    
+    if (now < date) {
+      this.setState({
+        timespan: countdown(date)
+      });
+    } else {
+      this.setState({
+        started: true
+      });
+      clearInterval(this.interval);
+    }
   }
 
   render() {
     const timespan = this.state.timespan;
 
     return (
-      <Container>
-        <Item>
-          <Number>{timespan.months !== undefined ? timespan.months : '?'}</Number>
-          <Label>{this.props.intl.formatMessage({ id: 'months' })}</Label>
-        </Item>
-        <Item>
-          <Number>{timespan.days !== undefined ? timespan.days : '?'}</Number>
-          <Label>{this.props.intl.formatMessage({ id: 'days' })}</Label>
-        </Item>
-        <Item>
-          <Number>{timespan.hours !== undefined ? timespan.hours : '?'}</Number>
-          <Label>{this.props.intl.formatMessage({ id: 'hours' })}</Label>
-        </Item>
-        <Item>
-          <Number>{timespan.minutes !== undefined ? timespan.minutes : '?'}</Number>
-          <Label>{this.props.intl.formatMessage({ id: 'minutes' })}</Label>
-        </Item>
-        <Item>
-          <Number>{timespan.seconds !== undefined ? timespan.seconds : '?'}</Number>
-          <Label>{this.props.intl.formatMessage({ id: 'seconds' })}</Label>
-        </Item>
-      </Container>
+      this.state.started ?
+        <Container>
+          <Item>
+            <Number>5</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'countries' })}</Label>
+          </Item>
+          <Item>
+            <Number>17</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'days' })}</Label>
+          </Item>
+          <Item>
+            <Number>54</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'films' })}</Label>
+          </Item>
+          <Item>
+            <Number>4</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'screenings' })}</Label>
+          </Item>
+          <Item>
+            <Number>7</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'activities' })}</Label>
+          </Item>
+        </Container>
+        :
+        <Container>
+          <Item>
+            <Number>{timespan.months !== undefined ? timespan.months : '?'}</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'months' })}</Label>
+          </Item>
+          <Item>
+            <Number>{timespan.days !== undefined ? timespan.days : '?'}</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'days' })}</Label>
+          </Item>
+          <Item>
+            <Number>{timespan.hours !== undefined ? timespan.hours : '?'}</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'hours' })}</Label>
+          </Item>
+          <Item>
+            <Number>{timespan.minutes !== undefined ? timespan.minutes : '?'}</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'minutes' })}</Label>
+          </Item>
+          <Item>
+            <Number>{timespan.seconds !== undefined ? timespan.seconds : '?'}</Number>
+            <Label>{this.props.intl.formatMessage({ id: 'seconds' })}</Label>
+          </Item>
+        </Container>
     );
   }
 }
@@ -93,7 +128,11 @@ const Number = styled.span`
 
 const Label = styled.span`
   display: block;
-  padding: 0.1em 0.6em;
+  padding: 0.4em 0.6em 0;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  line-height: 1;
   text-transform: uppercase;
   background-color: ${colors.white};
   color: ${colors.black};

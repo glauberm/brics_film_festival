@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 
 import DefaultLayout from '../layouts/default.pt';
 import Breadcrumb from '../components/Breadcrumb';
 import NewsNav from '../components/I18n/pt/NewsNav';
+import News from '../components/News';
+import ogImg from '../images/og.pt.png';
 
 class NewsTemplate extends React.PureComponent {
   render() {
@@ -29,11 +30,7 @@ class NewsTemplate extends React.PureComponent {
             {href: '/pt/noticias/', text: 'Notícias'},
             {href: `/pt/noticias/${data.slug}/`, text: data.title}
           ]} />
-          <h1 className='title' dangerouslySetInnerHTML={{ __html: data.title }} />
-          { data.acf.image &&
-            <Img fluid={data.acf.image.localFile.childImageSharp.fluid}/>
-          }
-          <div dangerouslySetInnerHTML={{ __html: data.acf.html }} />
+          <News news={data} image={ogImg} />
         </DefaultLayout>
       </React.Fragment>
     );
@@ -47,6 +44,8 @@ export const query = graphql`
     ) {
       title
       slug
+      date
+      modified
       acf {
         html
         image {

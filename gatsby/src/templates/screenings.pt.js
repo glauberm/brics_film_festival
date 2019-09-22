@@ -33,9 +33,12 @@ class ScreeningsTemplate extends React.PureComponent {
           <h1 className='title'>
             <span dangerouslySetInnerHTML={{ __html: screening.title }} />
             { screening.acf.subtitle && 
-              <small
-                dangerouslySetInnerHTML={{ __html: screening.acf.subtitle }}
-              />
+              <React.Fragment>
+                <br />
+                <small
+                  dangerouslySetInnerHTML={{ __html: screening.acf.subtitle }}
+                />
+              </React.Fragment>
             }
           </h1>
           <div dangerouslySetInnerHTML={{ __html: screening.acf.html }} />

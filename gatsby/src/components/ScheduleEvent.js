@@ -35,7 +35,7 @@ class ScheduleEvent extends React.PureComponent {
 
   render() {
     return (
-      <Container itemscope itemtype='http://schema.org/Event'>
+      <Container itemScope itemType='http://schema.org/Event'>
         { this.props.time &&
           <HeadingContainer
             itemProp='startDate'
@@ -78,16 +78,18 @@ class ScheduleEvent extends React.PureComponent {
               <br/>
             </React.Fragment>
           }
-          <Subsubheading itemProp='location' itemscope itemtype='http://schema.org/Place'>
-            <span itemProp='name'>
-              {this.props.intl.formatMessage({ id: 'venue' })}
-            </span>
+          <Subsubheading>
+            {this.props.intl.formatMessage({ id: 'venue' })}
           </Subsubheading>
-          <span>{this.props.venue}</span>
+          <span itemProp='location' itemScope itemType='http://schema.org/Place'>
+            <span itemProp='name address'>
+              {this.props.venue}
+            </span>
+          </span>
           {this.props.films && this.props.films.length &&
             <React.Fragment>
               <FilmSubsubheading>
-                {this.props.intl.formatMessage({ id: 'films' })}
+                {this.props.intl.formatMessage({ id: 'film(s)' })}
               </FilmSubsubheading>
               <FilmGrid films={this.props.films} />
             </React.Fragment>
