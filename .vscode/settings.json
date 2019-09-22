@@ -5,6 +5,7 @@
     "gatsby/.cache": true,
     "gatsby/public": true,
     "wordpress/vendor": true,
+    "wordpress": true,
   },
   "[js]": {
     "editor.tabSize": 2,

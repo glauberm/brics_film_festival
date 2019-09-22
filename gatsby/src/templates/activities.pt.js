@@ -9,16 +9,17 @@ import { getActivityForm } from '../utils';
 class ActivitiesTemplate extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
-    const data = this.props.data.wordpressWpPtActivities;
+    const activity = this.props.data.wordpressWpPtActivities;
+    const aside = this.props.data.allWordpressWpPtActivityAside;
 
     return (
       <React.Fragment>
         <DefaultLayout
-          pageTitle={data.title}
+          pageTitle={activity.title}
           pathname={pathname}
           langPt={pathname}
-          langEn={ data.acf.lang_en
-            ? '/en/activities/' + data.acf.lang_en.post_name + '/'
+          langEn={ activity.acf.lang_en
+            ? '/en/activities/' + activity.acf.lang_en.post_name + '/'
             : ''
           }
           secondaryColumn={
@@ -27,18 +28,26 @@ class ActivitiesTemplate extends React.PureComponent {
         >
           <Breadcrumb crumbs={[
             {href: '/pt/atividades/', text: 'Atividades'},
-            {href: `/pt/atividades/${data.slug}/`, text: data.title}
+            {href: `/pt/atividades/${activity.slug}/`, text: activity.title}
           ]} />
           <h1 className='title'>
-            <span dangerouslySetInnerHTML={{ __html: data.title }} />
-            { data.acf.subtitle && 
+            <span dangerouslySetInnerHTML={{ __html: activity.title }} />
+            { activity.acf.subtitle && 
               <small
-                dangerouslySetInnerHTML={{ __html: data.acf.subtitle }}
+                dangerouslySetInnerHTML={{ __html: activity.acf.subtitle }}
               />
             }
           </h1>
-          <div dangerouslySetInnerHTML={{ __html: data.acf.html }} />
-          {getActivityForm(data.acf.form)}
+          <div dangerouslySetInnerHTML={{ __html: activity.acf.html }} />
+          {getActivityForm(activity.acf.form)}
+          {
+            aside.edges.map(({ node }, i) => (
+              <React.Fragment key={i}>
+                <h2 className='title'>{node.title}</h2>
+                <div dangerouslySetInnerHTML={{ __html: node.acf.informations }} />
+              </React.Fragment>
+            ))
+          }
         </DefaultLayout>
       </React.Fragment>
     );
@@ -46,7 +55,7 @@ class ActivitiesTemplate extends React.PureComponent {
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String!, $wordpressId: Int!) {
     wordpressWpPtActivities(
       id: {eq: $id}
     ) {
@@ -59,6 +68,24 @@ export const query = graphql`
           post_name
         }
         form
+      }
+    }
+    allWordpressWpPtActivityAside(
+      filter: {
+        acf: {
+          activity: {
+            wordpress_id: {eq: $wordpressId}
+          }
+        }
+      }
+    ) {
+      edges {
+        node {
+          title
+          acf {
+            informations
+          }
+        }
       }
     }
   }
