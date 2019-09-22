@@ -197,7 +197,7 @@ const Content = styled.div`
     }
 
     .sub-sticky {
-      top: calc(5em + ${props => `${props.mainNavHeight+4}px`});
+      top: calc(5.25em + ${props => `${props.mainNavHeight+4}px`});
       transition: top .5s;
     }
   }
