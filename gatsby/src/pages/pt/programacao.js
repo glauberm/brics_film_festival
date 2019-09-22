@@ -4,14 +4,16 @@ import styled from '@emotion/styled';
 
 import DefaultLayout from '../../layouts/default.pt';
 import Breadcrumb from '../../components/Breadcrumb';
-import Events from '../../components/Events';
-import ScreeningsNav from '../../components/I18n/pt/ScreeningsNav';
+import Schedule from '../../components/Schedule';
 import ActivitiesNav from '../../components/I18n/pt/ActivitiesNav';
+import ScreeningsNav from '../../components/I18n/pt/ScreeningsNav';
+import FilmsNav from '../../components/I18n/pt/FilmsNav';
 
 class SchedulePage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
-    const data = this.props.data.allWordpressWpPtSchedule;
+    const schedule = this.props.data.allWordpressWpPtSchedule;
+    const films = this.props.data.allWordpressWpPtFilms;
 
     return (
       <DefaultLayout
@@ -21,8 +23,9 @@ class SchedulePage extends React.PureComponent {
         langEn='/en/schedule/'
         secondaryColumn={
           <React.Fragment>
-            <ScreeningsNav />
             <ActivitiesNav />
+            <ScreeningsNav />
+            <FilmsNav />
           </React.Fragment>
         }
       >
@@ -32,7 +35,10 @@ class SchedulePage extends React.PureComponent {
         <Container>
           <h1 className='page-title'>Programação</h1>
         </Container>
-        <Events events={data.group}/>
+        <Schedule
+          schedule={schedule.group}
+          films={films}
+        />
       </DefaultLayout>
     );
   }
@@ -74,10 +80,33 @@ export const query = graphql`
                 post_name
               }
               films {
-                post_title
-                post_name
+                wordpress_id
               }
               obs
+            }
+          }
+        }
+      }
+    }
+    allWordpressWpPtFilms {
+      edges {
+        node {
+          wordpress_id
+          title
+          slug
+          acf {
+            country
+            image {
+              localFile {
+                childImageSharp {
+                  resize(width: 400, height: 200, cropFocus: CENTER) {
+                    src
+                  }
+                }
+              }
+            }
+            screening {
+              post_name
             }
           }
         }

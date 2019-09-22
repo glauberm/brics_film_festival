@@ -11,6 +11,7 @@ class Message extends React.PureComponent {
         <label>
           <Label
             label={this.props.label}
+            notRequired={this.props.notRequired}
           />
           <textarea
             name={this.props.label}

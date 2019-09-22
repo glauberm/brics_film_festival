@@ -11,6 +11,7 @@ class Select extends React.PureComponent {
         <label>
           <Label
             label={this.props.label}
+            notRequired={this.props.notRequired}
           />
           <select
             name={this.props.label}

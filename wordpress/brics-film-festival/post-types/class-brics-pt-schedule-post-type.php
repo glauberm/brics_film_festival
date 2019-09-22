@@ -45,14 +45,8 @@ class Brics_Pt_Schedule_Post_Type extends Brics_Abstract_Post_Type {
 
 	private function transform_day( $day ) {
 		switch ( $day ) {
-			case '2019-09-23-27':
+			case '2019-09-23/2019-09-27':
 				return '23 a 27 de setembro';
-			case '2019-09-27':
-				return '27 de setembro';
-			case '2019-09-28':
-				return '28 de setembro';
-			case '2019-09-29':
-				return '29 de setembro';
 			case '2019-09-30':
 				return '30 de setembro';
 			case '2019-10-01':

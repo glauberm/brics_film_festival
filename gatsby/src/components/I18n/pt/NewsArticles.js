@@ -63,7 +63,7 @@ const NewsArticles = (props) => {
         <ArticleContainer
           key={node.id}
           number={i}
-          isActive={handleVisibility(i)}
+          isVisible={handleVisibility(i)}
         >
           <Article
             linkTo={

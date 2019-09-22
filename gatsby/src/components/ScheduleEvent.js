@@ -3,9 +3,10 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
+import FilmGrid from './FilmGrid';
 import { colors } from '../styles/theme';
 
-class Event extends React.PureComponent {
+class ScheduleEvent extends React.PureComponent {
   getHeading() {
     if (this.props.activity) {
       return (
@@ -34,13 +35,17 @@ class Event extends React.PureComponent {
 
   render() {
     return (
-      <Container>
+      <Container itemscope itemtype='http://schema.org/Event'>
         { this.props.time &&
-          <HeadingContainer className='sub-sticky'>
+          <HeadingContainer
+            itemProp='startDate'
+            content={`${this.props.date}T${this.props.time}`}
+            className='sub-sticky'
+          >
             <Heading>{this.props.time}</Heading>
           </HeadingContainer>
         }
-        <Subheading noTime={this.props.noTime}>
+        <Subheading itemProp='name'>
           {this.getHeading()}
           {this.props.subtitle &&
             <React.Fragment>
@@ -55,7 +60,12 @@ class Event extends React.PureComponent {
               <Subsubheading>
                 {this.props.intl.formatMessage({ id: 'duration' })}
               </Subsubheading>
-              <span>{this.props.duration}</span>
+              <span
+                itemProp='duration'
+                content={`T${parseInt(this.props.duration)}H`}
+              >
+                {this.props.duration}
+              </span>
               <br/>
             </React.Fragment>
           }
@@ -68,25 +78,18 @@ class Event extends React.PureComponent {
               <br/>
             </React.Fragment>
           }
-          <Subsubheading>
-            {this.props.intl.formatMessage({ id: 'venue' })}
+          <Subsubheading itemProp='location' itemscope itemtype='http://schema.org/Place'>
+            <span itemProp='name'>
+              {this.props.intl.formatMessage({ id: 'venue' })}
+            </span>
           </Subsubheading>
           <span>{this.props.venue}</span>
-          {this.props.films &&
+          {this.props.films && this.props.films.length &&
             <React.Fragment>
               <FilmSubsubheading>
                 {this.props.intl.formatMessage({ id: 'films' })}
               </FilmSubsubheading>
-              <List>
-                {this.props.films.map((film, i) => (
-                  <li key={i}>
-                    <span>{film.post_title}</span>
-                    {/* <Link to={film.post_name}>
-                      {film.post_title}
-                    </Link> */}
-                  </li>
-                ))}
-              </List>
+              <FilmGrid films={this.props.films} />
             </React.Fragment>
           }
           {this.props.obs &&
@@ -185,18 +188,4 @@ const FilmSubsubheading = styled.h5`
   }
 `;
 
-const List = styled.ul`
-  margin: .5em 0 0;
-
-  li {
-    margin-bottom: .25em;
-    font-weight: bold;
-    color: ${colors.orange};
-
-    span {
-      color: ${colors.blackLight};
-    }
-  }
-`;
-
-export default injectIntl(Event);
+export default injectIntl(ScheduleEvent);

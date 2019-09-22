@@ -69,6 +69,8 @@ class Brics_Pt_Films_Post_Type extends Brics_Abstract_Post_Type {
 				return 'China';
 			case 'south_africa':
 				return 'África do Sul';
+			case 'china_brazil':
+				return 'China/Brasil';
 			default:
 				return '';
 		}

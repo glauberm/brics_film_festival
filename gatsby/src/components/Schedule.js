@@ -2,14 +2,30 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
-import Event from './Event';
+import ScheduleEvent from './ScheduleEvent';
 import { colors, breakpoints } from '../styles/theme';
 
-class Events extends React.PureComponent {
+class Schedule extends React.PureComponent {
+  getFilms(eventFilms) {
+    if (!eventFilms || !this.props.films) return;
+    let films = [];
+    
+    this.props.films.edges.forEach(({ node }) => {
+      for (let i = 0; i < eventFilms.length; i++) {
+        if (eventFilms[i].wordpress_id === node.wordpress_id) {
+          films.push(node);
+          break;
+        }
+      }
+    });
+
+    return films;
+  }
+
   render() {
     return (
       <Container>
-        {this.props.events.map((event, i) => (
+        {this.props.schedule.map((event, i) => (
           <React.Fragment key={i}>
             <HeadingContainer className='sticky'>
               <Heading>
@@ -19,8 +35,9 @@ class Events extends React.PureComponent {
               </Heading>
             </HeadingContainer>
             {event.edges.map(({ node }, j) => (
-              <Event
+              <ScheduleEvent
                 key={j}
+                date={event.edges[0].node.acf.days}
                 time={node.acf.time}
                 title={node.title}
                 subtitle={node.acf.subtitle}
@@ -41,7 +58,7 @@ class Events extends React.PureComponent {
                     ? node.acf.activity.post_name
                     : null
                 }
-                films={node.acf.films}
+                films={this.getFilms(node.acf.films)}
                 obs={node.acf.obs}
               />
             ))}
@@ -120,4 +137,4 @@ const Heading = styled.h2`
   }
 `;
 
-export default injectIntl(Events);
+export default injectIntl(Schedule);

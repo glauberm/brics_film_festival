@@ -11,6 +11,7 @@ class Input extends React.PureComponent {
         <label>
           <Label
             label={this.props.label}
+            notRequired={this.props.notRequired}
           />
           <input
             name={this.props.label}

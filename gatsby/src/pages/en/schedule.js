@@ -4,14 +4,15 @@ import styled from '@emotion/styled';
 
 import DefaultLayout from '../../layouts/default.en';
 import Breadcrumb from '../../components/Breadcrumb';
-import Events from '../../components/Events';
+import Schedule from '../../components/Schedule';
 import ScreeningsNav from '../../components/I18n/en/ScreeningsNav';
 import ActivitiesNav from '../../components/I18n/en/ActivitiesNav';
 
 class SchedulePage extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
-    const data = this.props.data.allWordpressWpEnSchedule;
+    const schedule = this.props.data.allWordpressWpEnSchedule;
+    const films = this.props.data.allWordpressWpEnFilms;
 
     return (
       <DefaultLayout
@@ -21,8 +22,8 @@ class SchedulePage extends React.PureComponent {
         langEn={pathname}
         secondaryColumn={
           <React.Fragment>
-            <ScreeningsNav />
             <ActivitiesNav />
+            <ScreeningsNav />
           </React.Fragment>
         }
       >
@@ -32,7 +33,9 @@ class SchedulePage extends React.PureComponent {
         <Container>
           <h1 className='page-title'>Schedule</h1>
         </Container>
-        <Events events={data.group}/>
+        <Schedule
+          schedule={schedule.group}
+        />
       </DefaultLayout>
     );
   }
@@ -74,10 +77,33 @@ export const query = graphql`
                 post_name
               }
               films {
-                post_title
-                post_name
+                wordpress_id
               }
               obs
+            }
+          }
+        }
+      }
+    }
+    allWordpressWpEnFilms {
+      edges {
+        node {
+          wordpress_id
+          title
+          slug
+          acf {
+            country
+            image {
+              localFile {
+                childImageSharp {
+                  resize(width: 400, height: 200, cropFocus: CENTER) {
+                    src
+                  }
+                }
+              }
+            }
+            screening {
+              post_name
             }
           }
         }
