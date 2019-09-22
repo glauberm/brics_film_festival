@@ -82,6 +82,7 @@ exports.createPages = async function ({ graphql, actions }) {
             node {
               id
               slug
+              wordpress_id
             }
           }
         }
@@ -99,6 +100,7 @@ exports.createPages = async function ({ graphql, actions }) {
         component: slash(template),
         context: {
           id: edge.node.id,
+          wordpressId: edge.node.wordpress_id
         },
       });
     });
@@ -113,6 +115,7 @@ exports.createPages = async function ({ graphql, actions }) {
             node {
               id
               slug
+              wordpress_id
             }
           }
         }
@@ -130,6 +133,7 @@ exports.createPages = async function ({ graphql, actions }) {
         component: slash(template),
         context: {
           id: edge.node.id,
+          wordpressId: edge.node.wordpress_id
         },
       });
     });

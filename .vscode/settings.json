@@ -4,8 +4,7 @@
     "gatsby/node_modules": true,
     "gatsby/.cache": true,
     "gatsby/public": true,
-    "wordpress/vendor": true,
-    "wordpress": true,
+    "wordpress/vendor": true
   },
   "[js]": {
     "editor.tabSize": 2,

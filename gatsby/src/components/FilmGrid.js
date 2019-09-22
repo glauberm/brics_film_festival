@@ -3,24 +3,24 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
-import { colors, breakpoints } from '../styles/theme';
+import { colors } from '../styles/theme';
 
 class FilmGrid extends React.PureComponent {
   render() {
     return (
       <List>
-        {this.props.films.map((film, i) => (
+        {this.props.films.map(({node}, i) => (
           <ListItem key={i}>
             <Link
-              to={`${this.props.intl.formatMessage({ id: 'navigationScreeningsHref'} )}${film.acf.screening.post_name}/${film.slug}/`}
+              to={`${this.props.intl.formatMessage({ id: 'navigationScreeningsHref'} )}${node.acf.screening.post_name}/${node.slug}/`}
             >
               <Image
-                src={film.acf.image.localFile.childImageSharp.resize.src}
+                src={node.acf.image.localFile.childImageSharp.resize.src}
                 alt=''
                 width='355'
                 height='172.5'
               />
-              <FilmTitle>{film.title}</FilmTitle>
+              <FilmTitle>{node.title}</FilmTitle>
             </Link>
           </ListItem>
         ))}
@@ -75,6 +75,7 @@ const ListItem = styled.li`
 
 const Image = styled.img`
   max-width: 100%;
+  width: 100%;
   height: 100%;
   border-radius: .25em .25em 0 0;
   transition: opacity 0.3s ease;

@@ -95,7 +95,6 @@ export const query = graphql`
           title
           slug
           acf {
-            country
             image {
               localFile {
                 childImageSharp {

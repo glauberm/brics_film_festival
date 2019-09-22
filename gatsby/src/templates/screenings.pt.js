@@ -4,20 +4,22 @@ import { graphql } from 'gatsby';
 import DefaultLayout from '../layouts/default.pt';
 import Breadcrumb from '../components/Breadcrumb';
 import ScreeningsNav from '../components/I18n/pt/ScreeningsNav';
+import FilmGrid from '../components/FilmGrid';
 
 class ScreeningsTemplate extends React.PureComponent {
   render() {
     const pathname = this.props.location.pathname;
-    const data = this.props.data.wordpressWpPtScreenings;
+    const screening = this.props.data.wordpressWpPtScreenings;
+    const films = this.props.data.allWordpressWpPtFilms;
 
     return (
       <React.Fragment>
         <DefaultLayout
-          pageTitle={data.title}
+          pageTitle={screening.title}
           pathname={pathname}
           langPt={pathname}
-          langEn={ data.acf.lang_en
-            ? '/en/screenings/' + data.acf.lang_en.post_name + '/'
+          langEn={ screening.acf.lang_en
+            ? '/en/screenings/' + screening.acf.lang_en.post_name + '/'
             : ''
           }
           secondaryColumn={
@@ -26,17 +28,19 @@ class ScreeningsTemplate extends React.PureComponent {
         >
           <Breadcrumb crumbs={[
             {href: '/pt/mostras/', text: 'Mostras'},
-            {href: `/pt/mostras/${data.slug}/`, text: data.title}
+            {href: `/pt/mostras/${screening.slug}/`, text: screening.title}
           ]} />
           <h1 className='title'>
-            <span dangerouslySetInnerHTML={{ __html: data.title }} />
-            { data.acf.subtitle && 
+            <span dangerouslySetInnerHTML={{ __html: screening.title }} />
+            { screening.acf.subtitle && 
               <small
-                dangerouslySetInnerHTML={{ __html: data.acf.subtitle }}
+                dangerouslySetInnerHTML={{ __html: screening.acf.subtitle }}
               />
             }
           </h1>
-          <div dangerouslySetInnerHTML={{ __html: data.acf.html }} />
+          <div dangerouslySetInnerHTML={{ __html: screening.acf.html }} />
+          <h2 className='title'>Filmes</h2>
+          <FilmGrid films={films.edges} />
         </DefaultLayout>
       </React.Fragment>
     );
@@ -44,7 +48,7 @@ class ScreeningsTemplate extends React.PureComponent {
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query($id: String!, $wordpressId: Int!) {
     wordpressWpPtScreenings(
       id: {eq: $id}
     ) {
@@ -55,6 +59,41 @@ export const query = graphql`
         html
         lang_en {
           post_name
+        }
+      }
+    }
+    allWordpressWpPtFilms(
+      filter: {
+        acf: {
+          screening: {
+            wordpress_id: {eq: $wordpressId}
+          }
+        }
+      },
+      sort: {
+        fields: title,
+        order: ASC
+      }
+    ) {
+      edges {
+        node {
+          wordpress_id
+          title
+          slug
+          acf {
+            image {
+              localFile {
+                childImageSharp {
+                  resize(width: 400, height: 200, cropFocus: CENTER) {
+                    src
+                  }
+                }
+              }
+            }
+            screening {
+              post_name
+            }
+          }
         }
       }
     }

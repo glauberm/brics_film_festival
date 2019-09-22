@@ -13,7 +13,7 @@ class Schedule extends React.PureComponent {
     this.props.films.edges.forEach(({ node }) => {
       for (let i = 0; i < eventFilms.length; i++) {
         if (eventFilms[i].wordpress_id === node.wordpress_id) {
-          films.push(node);
+          films.push({node});
           break;
         }
       }

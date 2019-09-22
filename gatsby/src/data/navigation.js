@@ -31,8 +31,4 @@ export const navigationLinks = (intl) => [
     href: intl.formatMessage({ id: 'navigationNewsHref' }),
     text: intl.formatMessage({ id: 'navigationNewsText' })
   },
-  {
-    href: intl.formatMessage({ id: 'navigationVenuesHref' }),
-    text: intl.formatMessage({ id: 'navigationVenuesText' })
-  },
 ];
