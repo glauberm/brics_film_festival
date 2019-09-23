@@ -4,14 +4,26 @@ import { injectIntl } from 'react-intl';
 import Schedule from './Schedule';
 
 class TodaySchedule extends React.PureComponent {
-  handleToday(day) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      today: null
+    };
+  }
+
+  componentDidMount() {
     const now = new Date();
     const fullYear = now.getFullYear();
     const month = now.getMonth();
     const date = now.getDate();
-    const today = `${fullYear}-${month}-${date}`;
 
-    switch (today) {
+    this.setState({
+      today: `${fullYear}-${month}-${date}`
+    });
+  }
+
+  handleToday(day) {
+    switch (this.state.today) {
     case '2019-8-23':
     case '2019-8-24':
     case '2019-8-25':
@@ -42,21 +54,23 @@ class TodaySchedule extends React.PureComponent {
   }
 
   render() {
-    let todayEvents;
-    this.props.schedule.map((events) => {
-      if (this.handleToday(events.edges[0].node.acf.days)) {
-        todayEvents = [events];
-      }
-    });
+    if (this.state.today) {
+      let todayEvents;
+      this.props.schedule.map((events) => {
+        if (this.handleToday(events.edges[0].node.acf.days)) {
+          todayEvents = [events];
+        }
+      });
 
-    if (todayEvents && todayEvents.length) {
-      return (
-        <Schedule
-          schedule={todayEvents}
-          films={this.props.films}
-          title={this.props.intl.formatMessage({ id: 'todayAtTheFestival' })}
-        />
-      );
+      if (todayEvents && todayEvents.length) {
+        return (
+          <Schedule
+            schedule={todayEvents}
+            films={this.props.films}
+            title={this.props.intl.formatMessage({ id: 'todayAtTheFestival' })}
+          />
+        );
+      }
     }
 
     return null;

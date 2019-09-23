@@ -11,7 +11,7 @@ class Timer extends React.PureComponent {
     this.interval = null;
     this.state = {
       timespan: {},
-      started: false
+      started: true
     };
   }
 
@@ -30,7 +30,8 @@ class Timer extends React.PureComponent {
     
     if (now < date) {
       this.setState({
-        timespan: countdown(date)
+        timespan: countdown(date),
+        started: false
       });
     } else {
       this.setState({

@@ -131,11 +131,13 @@ const HeadingContainer = styled.div`
   align-items: center;
   position: sticky;
   z-index: 1;
+  height: 2em;
   margin-right: 1em;
   margin-top: .25em;
   margin-bottom: .25em;
   margin-left: -.25em;
   padding: 0.333em .666em;
+  text-align: center;
   background-color: ${colors.yellow};
   border-radius: .333em;
 `;
