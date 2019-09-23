@@ -22,12 +22,9 @@ class BaseLayout extends React.PureComponent {
     };
   }
 
-  handleFixedNavigation = () => {
-    const mainNavHeight = document.getElementById('main-nav')
-      .getBoundingClientRect().height;
-
+  handleFixedNavigation = (height) => {
     this.setState({
-      mainNavHeight: mainNavHeight
+      mainNavHeight: height
     });
   }
 
@@ -197,7 +194,7 @@ const Content = styled.div`
     }
 
     .sub-sticky {
-      top: calc(5.25em + ${props => `${props.mainNavHeight+4}px`});
+      top: calc(5em + ${props => `${props.mainNavHeight+4}px`});
       transition: top .5s;
     }
   }

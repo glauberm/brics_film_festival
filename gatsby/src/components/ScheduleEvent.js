@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import FilmGrid from './FilmGrid';
-import { colors } from '../styles/theme';
+import { colors, breakpoints } from '../styles/theme';
 
 class ScheduleEvent extends React.PureComponent {
   getHeading() {
@@ -127,32 +127,49 @@ const Container = styled.article`
 `;
 
 const HeadingContainer = styled.div`
-  display: inline-flex;
-  align-items: center;
   position: sticky;
   z-index: 1;
-  height: 2em;
+  height: 2.25em;
+  width: 100%;
   margin-right: 1em;
-  margin-top: .25em;
-  margin-bottom: .25em;
   margin-left: -.25em;
-  padding: 0.333em .666em;
-  text-align: center;
-  background-color: ${colors.yellow};
-  border-radius: .333em;
+
+  @media (min-width: ${breakpoints.sm}px) and (max-width: ${breakpoints.md-1}px) {
+    width: auto;
+  }
+
+  @media (min-width: ${breakpoints.lg}px) {
+    width: auto;
+  }
 `;
 
 const Heading = styled.h3`
-  margin: 0 auto;
+  width: 4.25em;
+  margin: 0;
+  padding: 0.333em .666em;
+  background-color: ${colors.yellow};
+  border-radius: .333em;
+  line-height: 1;
+  text-align: center;
   font-size: 1.333em;
   color: ${colors.blackLight};
 `;
 
 const Subheading = styled.h4`
-  margin-top: 0;
+  margin-top: .25em;
   margin-bottom: 0;
   padding-top: 0.375em;
   font-size: 1.425em;
+
+  @media (min-width: ${breakpoints.sm}px) and (max-width: ${breakpoints.md-1}px) {
+    width: calc(100% - 4.575em);
+    margin-top: 0;
+  }
+  
+  @media (min-width: ${breakpoints.lg}px) {
+    width: calc(100% - 4.575em);
+    margin-top: 0;
+  }
 
   a {
     color: ${colors.black};
@@ -173,6 +190,14 @@ const Subheading = styled.h4`
 const Content = styled.div`
   width: 100%;
   padding: 1em 0;
+
+  @media (min-width: ${breakpoints.sm}px) and (max-width: ${breakpoints.md-1}px) {
+    padding-left: 6.575em;
+  }
+
+  @media (min-width: ${breakpoints.lg}px) {
+    padding-left: 6.575em;
+  }
 `;
 
 const Subsubheading = styled.h5`

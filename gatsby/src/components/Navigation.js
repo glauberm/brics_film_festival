@@ -58,10 +58,11 @@ class Navigation extends React.PureComponent {
       this.setState({
         fixed: (elRect.bottom + elRect.height * 3) < elRect.height
       });
+      this.props.onFixed(0);
     } else if (wrapperRect.bottom >= 0) {
       this.setState({ transition: true });
     } else {
-      this.props.onFixed();
+      this.props.onFixed(elRect.height);
     }
   }
 
