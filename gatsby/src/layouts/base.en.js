@@ -78,7 +78,13 @@ const BaseEnLayout = (props) => {
           />
           <meta itemProp='duration' content="P17D" />
           <div itemProp='location' itemScope itemType='http://schema.org/Place'>
-            <meta itemProp='name address' content='Niterói - Brazil' />
+            <meta itemProp='name' content='Niterói - Brazil' />
+            <div itemProp='address'
+              itemScope itemType='http://schema.org/PostalAddress'
+            >
+              <meta itemProp='addressCountry' content='Brazil' />
+              <meta itemProp='addressRegion' content='Niterói' />
+            </div>
           </div>
         </div>
         {props.children}

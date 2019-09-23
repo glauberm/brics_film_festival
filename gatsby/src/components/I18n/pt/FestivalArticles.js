@@ -31,9 +31,9 @@ const FestivalArticles = (props) => {
 
   return (
     <React.Fragment>
-      {allWordpressWpPtFestival.edges.map(({ node }) => (
+      {allWordpressWpPtFestival.edges.map(({ node }, i) => (
         <Article
-          key={node.id}
+          key={i}
           linkTo={
             props.intl.formatMessage({ id: 'navigationFestivalHref' })
             + node.slug + '/'

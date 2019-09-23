@@ -43,6 +43,18 @@ export const Button = styled.button`
   margin-top: 1em;
   color: ${colors.grayDark};
   cursor: pointer;
+  transition: color .3s ease;
+
+  :hover,
+  :focus {
+    outline: none;
+    color: ${colors.orange};
+  }
+
+  :active {
+    outline: none;
+    color: ${colors.yellow};
+  }
 
   ::after {
     content: '...';

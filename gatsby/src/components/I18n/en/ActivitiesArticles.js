@@ -32,9 +32,9 @@ const ActivitiesArticles = (props) => {
 
   return (
     <React.Fragment>
-      {allWordpressWpEnActivities.edges.map(({ node }) => (
+      {allWordpressWpEnActivities.edges.map(({ node }, i) => (
         <Article
-          key={node.id}
+          key={i}
           linkTo={
             props.intl.formatMessage({ id: 'navigationActivitiesHref' })
             + node.slug + '/'

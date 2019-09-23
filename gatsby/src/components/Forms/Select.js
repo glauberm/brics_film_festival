@@ -22,13 +22,11 @@ class Select extends React.PureComponent {
             <option disabled value=''>
               {this.props.intl.formatMessage({ id: 'selectDefaultValue' })}
             </option>
-            { this.props.options.map((option, key) => {
-              return (
-                <option key={key} value={option}>
-                  {this.props.intl.formatMessage({ id: option })}
-                </option>
-              );
-            })}
+            { this.props.options.map((option, key) => (
+              <option key={key} value={option}>
+                {this.props.intl.formatMessage({ id: option })}
+              </option>
+            ))}
           </select>
         </label>
       </FormControl>

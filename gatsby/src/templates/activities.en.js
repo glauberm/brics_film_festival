@@ -5,6 +5,7 @@ import DefaultLayout from '../layouts/default.en';
 import Breadcrumb from '../components/Breadcrumb';
 import ActivitiesNav from '../components/I18n/en/ActivitiesNav';
 import { getActivityForm } from '../utils';
+import { Aside } from '../styles/activity';
 
 class ActivitiesTemplate extends React.PureComponent {
   render() {
@@ -47,10 +48,10 @@ class ActivitiesTemplate extends React.PureComponent {
           {getActivityForm(activity.acf.form)}
           {
             aside.edges.map(({ node }, i) => (
-              <React.Fragment key={i}>
+              <Aside key={i}>
                 <h2 className='title'>{node.title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: node.acf.informations }} />
-              </React.Fragment>
+              </Aside>
             ))
           }
         </DefaultLayout>

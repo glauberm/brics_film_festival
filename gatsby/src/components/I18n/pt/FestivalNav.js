@@ -33,8 +33,8 @@ const FestivalNav = (props) => {
     >
       <nav aria-label={props.intl.formatMessage({ id: 'navigationFestivalText' })}>
         <ul>
-          {allWordpressWpPtFestival.edges.map(({ node }) => (
-            <li key={node.id}>
+          {allWordpressWpPtFestival.edges.map(({ node }, i) => (
+            <li key={i}>
               <Link
                 to={
                   props.intl.formatMessage({ id: 'navigationFestivalHref' })

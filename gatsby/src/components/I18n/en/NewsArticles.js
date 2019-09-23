@@ -61,7 +61,7 @@ const NewsArticles = (props) => {
     <Container>
       {allWordpressWpEnNews.edges.map(({ node }, i) => (
         <ArticleContainer
-          key={node.id}
+          key={i}
           number={i}
           isVisible={handleVisibility(i)}
         >

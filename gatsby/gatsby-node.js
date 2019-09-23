@@ -365,38 +365,39 @@ exports.createPages = async function ({ graphql, actions }) {
     });
   });
 
-  // // ==== FILMS (EN) ====
-  // await graphql(
-  //   `
-  //     {
-  //       allWordpressWpEnFilms {
-  //         edges {
-  //           node {
-  //             id
-  //             acf {
-  //               screening {
-  //                 post_name
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // ).then(result => {
-  //   if (result.errors) {
-  //     console.log(result.errors);
-  //   }
+  // ==== FILMS (EN) ====
+  await graphql(
+    `
+      {
+        allWordpressWpEnFilms {
+          edges {
+            node {
+              id
+              slug
+              acf {
+                screening {
+                  post_name
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then(result => {
+    if (result.errors) {
+      console.log(result.errors);
+    }
 
-  //   const template = path.resolve('./src/templates/films.en.js');
-  //   _.each(result.data.allWordpressWpEnFilms.edges, edge => {
-  //     createPage({
-  //       path: `/en/screenings/${edge.node.acf.screening.post_name}/${edge.node.slug }/`,
-  //       component: slash(template),
-  //       context: {
-  //         id: edge.node.id,
-  //       },
-  //     });
-  //   });
-  // });
+    const template = path.resolve('./src/templates/films.en.js');
+    _.each(result.data.allWordpressWpEnFilms.edges, edge => {
+      createPage({
+        path: `/en/screenings/${edge.node.acf.screening.post_name}/${edge.node.slug }/`,
+        component: slash(template),
+        context: {
+          id: edge.node.id,
+        },
+      });
+    });
+  });
 };

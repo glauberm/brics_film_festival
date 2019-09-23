@@ -19,10 +19,12 @@ class Film extends React.PureComponent {
           }
         </h1>
         { film.acf.image &&
-          <Img
-            fluid={film.acf.image.localFile.childImageSharp.fluid}
-            itemProp="image"
-          />
+          <React.Fragment>
+            <meta itemProp="image" content={film.acf.image.localFile.url} />
+            <Img
+              fluid={film.acf.image.localFile.childImageSharp.fluid}
+            />
+          </React.Fragment>
         }
         { film.acf.country &&
           <div>

@@ -25,19 +25,23 @@ class Schedule extends React.PureComponent {
   render() {
     return (
       <Container>
-        {this.props.schedule.map((event, i) => (
+        {this.props.schedule.map((events, i) => (
           <React.Fragment key={i}>
             <HeadingContainer className='sticky'>
-              <Heading>
-                {this.props.intl.formatMessage({
-                  id: event.edges[0].node.acf.days
-                })}
-              </Heading>
+              { this.props.title ?
+                <Heading>{this.props.title}</Heading>
+                :
+                <Heading>
+                  {this.props.intl.formatMessage({
+                    id: events.edges[0].node.acf.days
+                  })}
+                </Heading>
+              }
             </HeadingContainer>
-            {event.edges.map(({ node }, j) => (
+            {events.edges.map(({ node }, j) => (
               <ScheduleEvent
                 key={j}
-                date={event.edges[0].node.acf.days}
+                date={events.edges[0].node.acf.days}
                 time={node.acf.time}
                 title={node.title}
                 subtitle={node.acf.subtitle}

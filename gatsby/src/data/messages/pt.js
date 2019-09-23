@@ -31,6 +31,7 @@ export default {
   'navigationVenuesHref': '/pt/locais/',
   'navigationVenuesText': 'Locais',
   'navigationFilmsText': 'Filmes',
+  'todayAtTheFestival': 'Hoje no Festival',
   'breadcrumbLabel': 'Rastro',
   'comingSoonTitle': 'Em breve',
   'comingSoonSubtitle': 'Estamos trabalhando nesta página',

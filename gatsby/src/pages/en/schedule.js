@@ -5,8 +5,9 @@ import styled from '@emotion/styled';
 import DefaultLayout from '../../layouts/default.en';
 import Breadcrumb from '../../components/Breadcrumb';
 import Schedule from '../../components/Schedule';
-import ScreeningsNav from '../../components/I18n/en/ScreeningsNav';
 import ActivitiesNav from '../../components/I18n/en/ActivitiesNav';
+import ScreeningsNav from '../../components/I18n/en/ScreeningsNav';
+import FilmsNav from '../../components/I18n/pt/FilmsNav';
 
 class SchedulePage extends React.PureComponent {
   render() {
@@ -24,6 +25,7 @@ class SchedulePage extends React.PureComponent {
           <React.Fragment>
             <ActivitiesNav />
             <ScreeningsNav />
+            <FilmsNav />
           </React.Fragment>
         }
       >
@@ -35,6 +37,7 @@ class SchedulePage extends React.PureComponent {
         </Container>
         <Schedule
           schedule={schedule.group}
+          films={films}
         />
       </DefaultLayout>
     );

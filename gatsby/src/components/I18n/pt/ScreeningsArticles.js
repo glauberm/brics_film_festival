@@ -32,9 +32,9 @@ const ScreeningsArticles = (props) => {
 
   return (
     <React.Fragment>
-      {allWordpressWpPtScreenings.edges.map(({ node }) => (
+      {allWordpressWpPtScreenings.edges.map(({ node }, i) => (
         <Article
-          key={node.id}
+          key={i}
           linkTo={
             props.intl.formatMessage({ id: 'navigationScreeningsHref' })
             + node.slug + '/'

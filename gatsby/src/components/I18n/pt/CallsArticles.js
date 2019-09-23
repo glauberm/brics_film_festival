@@ -35,9 +35,9 @@ const CallsArticles = (props) => {
 
   return (
     <React.Fragment>
-      {allWordpressWpPtCalls.edges.map(({ node }) => (
+      {allWordpressWpPtCalls.edges.map(({ node }, i) => (
         <Article
-          key={node.id}
+          key={i}
           linkTo={
             props.intl.formatMessage({ id: 'navigationCallsHref' })
             + node.slug + '/'

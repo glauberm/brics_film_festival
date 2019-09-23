@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import { injectIntl } from 'react-intl';
 
 import Section from '../../Section';

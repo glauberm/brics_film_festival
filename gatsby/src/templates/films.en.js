@@ -3,6 +3,8 @@ import { graphql } from 'gatsby';
 
 import DefaultLayout from '../layouts/default.en';
 import Breadcrumb from '../components/Breadcrumb';
+import Film from '../components/Film';
+import FilmsNav from '../components/I18n/en/FilmsNav';
 
 class FilmsTemplate extends React.PureComponent {
   render() {
@@ -16,7 +18,9 @@ class FilmsTemplate extends React.PureComponent {
           pathname={pathname}
           langPt=''
           langEn={pathname}
-          secondaryColumn=''
+          secondaryColumn={
+            <FilmsNav />
+          }
         >
           <Breadcrumb crumbs={[
             {href: '/en/screenings/', text: 'Screenings'},
@@ -29,7 +33,7 @@ class FilmsTemplate extends React.PureComponent {
               text: data.title
             }
           ]} />
-          <h1 className='title' dangerouslySetInnerHTML={{ __html: data.title }} />
+          <Film film={data} />
         </DefaultLayout>
       </React.Fragment>
     );
@@ -44,12 +48,12 @@ export const query = graphql`
       title
       slug
       acf {
+        subtitle
         country
         director
         duration
         institution
         parental_rating
-        subtitle
         synopsis
         year
         image {

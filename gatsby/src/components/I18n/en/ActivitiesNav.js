@@ -33,8 +33,8 @@ const ActivitiesNav = (props) => {
     >
       <nav aria-label={props.intl.formatMessage({ id: 'navigationActivitiesText' })}>
         <ul>
-          {allWordpressWpEnActivities.edges.map(({ node }) => (
-            <li key={node.id}>
+          {allWordpressWpEnActivities.edges.map(({ node }, i) => (
+            <li key={i}>
               <Link
                 to={
                   props.intl.formatMessage({ id: 'navigationActivitiesHref' })

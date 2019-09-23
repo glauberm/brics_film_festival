@@ -33,8 +33,8 @@ const ScreeningsNav = (props) => {
     >
       <nav aria-label={props.intl.formatMessage({ id: 'navigationScreeningsText' })}>
         <ul>
-          {allWordpressWpPtScreenings.edges.map(({ node }) => (
-            <li key={node.id}>
+          {allWordpressWpPtScreenings.edges.map(({ node }, i) => (
+            <li key={i}>
               <Link
                 to={
                   props.intl.formatMessage({ id: 'navigationScreeningsHref' })

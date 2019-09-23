@@ -33,8 +33,8 @@ const CallsNav = (props) => {
     >
       <nav aria-label={props.intl.formatMessage({ id: 'navigationCallsText' })}>
         <ul>
-          {allWordpressWpEnCalls.edges.map(({ node }) => (
-            <li key={node.id}>
+          {allWordpressWpEnCalls.edges.map(({ node }, i) => (
+            <li key={i}>
               <Link
                 to={
                   props.intl.formatMessage({ id: 'navigationCallsHref' })

@@ -33,8 +33,8 @@ const NewsNav = (props) => {
     >
       <nav aria-label={props.intl.formatMessage({ id: 'navigationNewsText' })}>
         <ul>
-          {allWordpressWpEnNews.edges.map(({ node }) => (
-            <li key={node.id}>
+          {allWordpressWpEnNews.edges.map(({ node }, i) => (
+            <li key={i}>
               <Link
                 to={
                   props.intl.formatMessage({ id: 'navigationNewsHref' })

@@ -38,10 +38,12 @@ class News extends React.PureComponent {
         }
         
         { data.acf.image ?
-          <Img
-            fluid={data.acf.image.localFile.childImageSharp.fluid}
-            itemProp="image"
-          />
+          <React.Fragment>
+            <meta itemProp="image" content={data.acf.image.localFile.url} />
+            <Img
+              fluid={data.acf.image.localFile.childImageSharp.fluid}
+            />
+          </React.Fragment>
           :
           <meta itemProp="image" content={this.props.image} />
         }
