@@ -5,7 +5,7 @@ import { injectIntl } from 'react-intl';
 import Recaptcha from 'react-recaptcha';
 
 import { NotificationContext } from './Notifications';
-import { colors, breakpoints, headingBaseStyle } from '../styles/theme';
+import { breakpoints, bigButtonStyle } from '../styles/theme';
 import { FormControl } from '../styles/form';
 
 class Form extends React.PureComponent {
@@ -121,9 +121,11 @@ class Form extends React.PureComponent {
             }
           >
             {this.props.children}
-            <FormControl>
-              {this.state.recaptcha}
-            </FormControl>
+            { process.env.NODE_ENV !== 'development' &&
+              <FormControl>
+                {this.state.recaptcha}
+              </FormControl>
+            }
             <FormControl>
               <Button
                 type="submit"
@@ -139,38 +141,8 @@ class Form extends React.PureComponent {
 }
 
 const Button = styled.button`
-  ${headingBaseStyle}
-  padding: 0.75em 2.5em;
   margin: 0 auto;
-  background-color: ${colors.orange};
-  color: ${colors.black};
-  border: 0 none;
-  border-radius: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 1.25em;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 -2em 2em -2em rgba(29,29,27,0.25) inset;
-  
-  :hover,
-  :focus,
-  :active {
-    outline: none;
-  }
-
-  :hover,
-  :focus {
-    background-color: ${colors.yellow};
-  }
-
-  :active {
-    box-shadow:
-      0 -2em 2em -2em rgba(29,29,27,0.25) inset,
-      0 2px 2px 2px rgba(29,29,27,0.175) inset
-    ;
-  }
+  ${bigButtonStyle}
 `;
 
 export default injectIntl(Form);

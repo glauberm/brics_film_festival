@@ -40,8 +40,7 @@ export const FormControl = styled.div`
       margin-bottom: 0.5em;
 
       small {
-        display: block;
-        margin-top: .25em;
+        display: inline;
         color: ${colors.grayDark};
       }
     }

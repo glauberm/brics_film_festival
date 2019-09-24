@@ -11,6 +11,7 @@ export default {
   'films': 'Filmes',
   'screenings': 'Mostras',
   'activities': 'Atividades',
+  'seeFullSchedule': 'Ver programação completa',
   'navigationLabel': 'Navegação Principal',
   'navigationHomeHref': '/pt/',
   'navigationHomeText': 'Home',

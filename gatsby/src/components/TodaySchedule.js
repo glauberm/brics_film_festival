@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'gatsby';
+import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
 import Schedule from './Schedule';
+import { colors, bigButtonStyle } from '../styles/theme';
 
 class TodaySchedule extends React.PureComponent {
   constructor(props) {
@@ -64,11 +67,20 @@ class TodaySchedule extends React.PureComponent {
 
       if (todayEvents && todayEvents.length) {
         return (
-          <Schedule
-            schedule={todayEvents}
-            films={this.props.films}
-            title={this.props.intl.formatMessage({ id: 'todayAtTheFestival' })}
-          />
+          <React.Fragment>
+            <Schedule
+              schedule={todayEvents}
+              films={this.props.films}
+              title={this.props.intl.formatMessage({ id: 'todayAtTheFestival' })}
+            />
+            <LinkButton>
+              <Link to={this.props.intl.formatMessage({ id: 'navigationScheduleHref' })}>
+                <Button>
+                  {this.props.intl.formatMessage({ id: 'seeFullSchedule' })}
+                </Button>
+              </Link>
+            </LinkButton>
+          </React.Fragment>
         );
       }
     }
@@ -76,5 +88,20 @@ class TodaySchedule extends React.PureComponent {
     return null;
   }
 }
+
+const LinkButton = styled.div`
+  a,
+  a:hover,
+  a:focus,
+  a:active {
+    color: ${colors.black};
+    text-decoration: none;
+  }
+`;
+
+const Button = styled.button`
+  margin: -1em auto 3em;
+  ${bigButtonStyle}
+`;
 
 export default injectIntl(TodaySchedule);

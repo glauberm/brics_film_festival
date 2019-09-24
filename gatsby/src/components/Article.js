@@ -73,7 +73,7 @@ const Button = styled.span`
   padding: 0.75em 1.5em;
   background-color: ${colors.grayLightest};
   border: 1px solid ${colors.grayLight};
-  color: ${colors.black};
+  color: ${colors.blackLight};
   border-radius: 2em;
   transition:
     color 0.3s ease,

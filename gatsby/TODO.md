@@ -6,6 +6,5 @@
 - `PressOffice`
 - Country flags on films?
 - Check for hardcoded strings...
-- Reuse `Button` component (on `Form` and `Article`)
 - Better reusability from `NewsArticles` components code?
 - Tests.

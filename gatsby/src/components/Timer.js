@@ -131,8 +131,7 @@ const Label = styled.span`
   display: block;
   padding: 0.4em 0.6em 0;
   white-space: nowrap;
-  overflow-y: hidden;
-  overflow-x: auto;
+  overflow: hidden;
   line-height: 1;
   text-transform: uppercase;
   background-color: ${colors.white};

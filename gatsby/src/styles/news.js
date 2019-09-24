@@ -1,7 +1,7 @@
 import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 
-import { colors, headingBaseStyle } from './theme';
+import { bigButtonStyle } from './theme';
 
 const fadeInTop = keyframes`
   from {
@@ -37,36 +37,6 @@ export const ArticleContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  ${headingBaseStyle}
-  padding: 0.75em 2.5em;
-  margin: 0 auto;
-  background-color: ${colors.orange};
-  color: ${colors.black};
-  border: 0 none;
-  border-radius: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 1.25em;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 -2em 2em -2em rgba(29,29,27,0.25) inset;
-
-  :hover,
-  :focus,
-  :active {
-    outline: none;
-  }
-
-  :hover,
-  :focus {
-    background-color: ${colors.yellow};
-  }
-
-  :active {
-    box-shadow:
-      0 -2em 2em -2em rgba(29,29,27,0.25) inset,
-      0 2px 2px 2px rgba(29,29,27,0.175) inset
-    ;
-  }
+  margin: -1em auto 0;
+  ${bigButtonStyle}
 `;
