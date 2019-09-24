@@ -5,6 +5,6 @@
 - Films `hreflang`
 - `PressOffice`
 - Country flags on films?
-- Check for hardcoded strings...
+- Review: Check for hardcoded strings; Styles reuse and encapsulation.
 - Better reusability from `NewsArticles` components code?
 - Tests.
