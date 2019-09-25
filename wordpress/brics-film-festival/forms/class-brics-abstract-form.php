@@ -72,23 +72,30 @@ abstract class Brics_Abstract_Form {
 					'recaptcha' => array(
 						'required'          => false,
 						'validate_callback' => function( $param, $request, $key ) {
-							$recaptcha_response = wp_remote_post(
-								'https://www.google.com/recaptcha/api/siteverify',
-								array(
-									'body' => array(
-										'secret'   => RECAPTCHA_SECRET_KEY,
-										'response' => $param,
-									),
-								)
-							);
-
-							$recaptcha = json_decode(
-								$recaptcha_response['body'],
-								true
-							);
-
-							if ($recaptcha['success'] === true) {
-								return $recaptcha['success'];
+							if ( ! empty( $param ) ) {
+								$recaptcha_response = wp_remote_post(
+									'https://www.google.com/recaptcha/api/siteverify',
+									array(
+										'body' => array(
+											'secret'   => RECAPTCHA_SECRET_KEY,
+											'response' => $param,
+										),
+									)
+								);
+	
+								$recaptcha = json_decode(
+									$recaptcha_response['body'],
+									true
+								);
+	
+								if ($recaptcha['success'] === true) {
+									return $recaptcha['success'];
+								} else {
+									return new WP_Error(
+										'recaptcha-error',
+										'Error verifying reCAPTCHA. Please try again.'
+									);
+								}
 							} else {
 								return new WP_Error(
 									'recaptcha-error',
