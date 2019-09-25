@@ -72,7 +72,7 @@ class Form extends React.PureComponent {
         this.props.successAction();
       })
       .catch(error => {
-        console.error(error);
+        console.error(error, error.response, error.request);
         if (error.response) {
           changeNotification(
             notification,
