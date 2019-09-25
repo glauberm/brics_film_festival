@@ -71,6 +71,7 @@ export default {
   'fieldError': 'O formulário possui erro no(s) campo(s)',
   'mailError': 'Erro ao enviar e-mail, por favor tente novamente.',
   'insertError': 'Erro ao inserir dados no sistema, por favor tente novamente.',
+  'insertError': 'Erro ao verificar reCAPTCHA, por favor tente novamente.',
   'unexpectedError': 'Ocorreu um erro inesperado. Por favor, tente novamente.',
   'selectDefaultValue': 'Selecione uma opção',
   'notRequired': 'Não obrigatório',

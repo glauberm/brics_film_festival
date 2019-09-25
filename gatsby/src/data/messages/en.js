@@ -71,6 +71,7 @@ export default {
   'fieldError': 'Form has error in field(s)',
   'mailError': 'Error sending mail, please try again.',
   'insertError': 'Error inserting data on system, please try again.',
+  'insertError': 'Error verifying reCAPTCHA, please try again.',
   'unexpectedError': 'An unexpected error has ocurred. Please, try again.',
   'selectDefaultValue': 'Select an option',
   'notRequired': 'Not required',

@@ -1,5 +1,6 @@
 # TO-DO List
 
+- `recaptchaInstance.reset()` every two minutes
 - `dangerouslySetInnerHtml` in all fields from WordPress...
 - "Load More" on `NewsNav`
 - Films `hreflang`

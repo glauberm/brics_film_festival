@@ -12,6 +12,7 @@ class Form extends React.PureComponent {
   constructor(props) {
     super(props);
     this.recaptchaInstance;
+    this.resetRecaptchaInterval;
     this.state = {
       recaptcha: null,
       recaptchaResponse: null
@@ -33,6 +34,18 @@ class Form extends React.PureComponent {
         />
       }
     );
+
+    const resetRecaptcha = () => {
+      if (this.recaptchaInstance) {
+        this.recaptchaInstance.reset();
+      }
+    };
+
+    this.resetRecaptchaInterval = setInterval(resetRecaptcha, 2000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.resetRecaptchaInterval);
   }
 
   handleSubmit = (event, addNotification, changeNotification) => {
@@ -57,10 +70,6 @@ class Form extends React.PureComponent {
           'success'
         );
         this.props.successAction();
-
-        if (this.recaptchaInstance) {
-          this.recaptchaInstance.reset();
-        }
       })
       .catch(error => {
         if (error.response) {
@@ -87,6 +96,10 @@ class Form extends React.PureComponent {
           }
         }
       });
+
+    if (this.recaptchaInstance) {
+      this.recaptchaInstance.reset();
+    }
   }
 
   handleErrors = (error) => {
@@ -103,6 +116,8 @@ class Form extends React.PureComponent {
       return this.props.intl.formatMessage({ id: 'mailError' });
     case 'insert_error':
       return this.props.intl.formatMessage({ id: 'mailError' });
+    case 'recaptcha-error':
+      return this.props.intl.formatMessage({ id: 'recaptchaError' });
     default:
       return this.props.intl.formatMessage({ id: 'unexpectedError' });
     }

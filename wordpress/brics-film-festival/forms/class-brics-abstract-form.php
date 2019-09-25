@@ -87,7 +87,11 @@ abstract class Brics_Abstract_Form {
 								true
 							);
 
-							return $recaptcha['success'];
+							if ($recaptcha['success'] === true) {
+								return $recaptcha['success'];
+							} else {
+								return new WP_Error( 'recaptcha-error', 'Error verifying reCAPTCHA. Please try again.' );
+							}
 						},
 					),
 				),
