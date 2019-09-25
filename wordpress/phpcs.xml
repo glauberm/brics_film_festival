@@ -7,6 +7,6 @@
     <exclude name="WordPress.Security.NonceVerification" />
   </rule>
 
-  <config name="testVersion" value="5.6-"/>
+  <config name="testVersion" value="5.2-"/>
   
 </ruleset>

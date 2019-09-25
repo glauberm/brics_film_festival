@@ -66,7 +66,7 @@ abstract class Brics_Abstract_Form {
 	 * @return void
 	 */
 	protected function get_args() {
-		if ( ENV === 'production' || ENV === 'staging' ) {
+		// if ( ENV === 'production' || ENV === 'staging' ) {
 			return array_merge(
 				array(
 					'recaptcha' => array(
@@ -97,7 +97,7 @@ abstract class Brics_Abstract_Form {
 				),
 				$this->get_data()
 			);
-		}
+		// }
 
 		return $this->get_data();
 	}

@@ -41,7 +41,7 @@ class Form extends React.PureComponent {
       }
     };
 
-    this.resetRecaptchaInterval = setInterval(resetRecaptcha, 120000);
+    this.resetRecaptchaInterval = setInterval(resetRecaptcha, 60000);
   }
 
   componentWillUnmount() {
@@ -78,14 +78,6 @@ class Form extends React.PureComponent {
             this.handleErrors(error.response.data),
             'danger'
           );
-        } else if (error.request) {
-          if (process.env.NODE_ENV !== 'production') {
-            changeNotification(
-              notification,
-              this.props.intl.formatMessage({ id: 'unexpectedError' }),
-              'danger'
-            );
-          }
         } else {
           if (process.env.NODE_ENV !== 'production') {
             changeNotification(
@@ -115,7 +107,7 @@ class Form extends React.PureComponent {
     case 'mail_error':
       return this.props.intl.formatMessage({ id: 'mailError' });
     case 'insert_error':
-      return this.props.intl.formatMessage({ id: 'mailError' });
+      return this.props.intl.formatMessage({ id: 'insertError' });
     case 'rest_missing_callback_param':
     case 'recaptcha-error':
       return this.props.intl.formatMessage({ id: 'recaptchaError' });
