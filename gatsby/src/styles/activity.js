@@ -8,7 +8,6 @@ export const Aside = styled.aside`
   }
 
   small {
-    font-size: 100%;
     display: inline-block;
     margin-bottom: 0.25em;
     color: ${colors.grayDark};
