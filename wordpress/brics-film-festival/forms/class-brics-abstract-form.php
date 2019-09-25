@@ -70,7 +70,7 @@ abstract class Brics_Abstract_Form {
 			return array_merge(
 				array(
 					'recaptcha' => array(
-						'required'          => true,
+						'required'          => false,
 						'validate_callback' => function( $param, $request, $key ) {
 							$recaptcha_response = wp_remote_post(
 								'https://www.google.com/recaptcha/api/siteverify',
@@ -90,7 +90,10 @@ abstract class Brics_Abstract_Form {
 							if ($recaptcha['success'] === true) {
 								return $recaptcha['success'];
 							} else {
-								return new WP_Error( 'recaptcha-error', 'Error verifying reCAPTCHA. Please try again.' );
+								return new WP_Error(
+									'recaptcha-error',
+									'Error verifying reCAPTCHA. Please try again.'
+								);
 							}
 						},
 					),

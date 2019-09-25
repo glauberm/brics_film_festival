@@ -41,7 +41,7 @@ class Form extends React.PureComponent {
       }
     };
 
-    this.resetRecaptchaInterval = setInterval(resetRecaptcha, 2000);
+    this.resetRecaptchaInterval = setInterval(resetRecaptcha, 20000);
   }
 
   componentWillUnmount() {
