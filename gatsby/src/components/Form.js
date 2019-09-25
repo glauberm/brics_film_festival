@@ -106,7 +106,6 @@ class Form extends React.PureComponent {
   handleErrors = (error) => {
     switch (error.code) {
     case 'rest_invalid_param':
-    case 'rest_missing_callback_param':
       const fields = Object.keys(error.data.params).map((field) => {
         return this.props.intl.formatMessage({ id: field });
       });
@@ -118,6 +117,7 @@ class Form extends React.PureComponent {
       return this.props.intl.formatMessage({ id: 'mailError' });
     case 'insert_error':
       return this.props.intl.formatMessage({ id: 'mailError' });
+    case 'rest_missing_callback_param':
     case 'recaptcha-error':
       return this.props.intl.formatMessage({ id: 'recaptchaError' });
     default:
