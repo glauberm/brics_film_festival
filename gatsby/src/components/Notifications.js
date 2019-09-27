@@ -71,6 +71,7 @@ class NotificationProvider extends React.Component {
           {this.state.notifications.map(({ id, content, status }) => (
             <Notification
               key={id}
+              id={id}
               content={content}
               status={status}
               handleDismiss={() => this.remove(id)}

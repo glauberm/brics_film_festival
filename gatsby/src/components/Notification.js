@@ -12,8 +12,12 @@ class Notification extends React.PureComponent {
     this.timeoutSlideOut;
     this.timeoutDismiss;
     this.state = {
-      active: true,
+      active: null,
     };
+  }
+
+  componentDidMount() {
+    this.setState({ active: true });
   }
 
   componentDidUpdate() {
@@ -28,11 +32,11 @@ class Notification extends React.PureComponent {
         clearTimeout(this.timeoutDismiss);
       };
   
-      if (this.state.active == true) {
+      if (this.state.active == true && !this.timeoutSlideOut) {
         this.timeoutSlideOut = setTimeout(slideOut, 5000);
       }
 
-      if (this.state.active == false) {
+      if (this.state.active == false && !this.timeoutDismiss) {
         this.timeoutDismiss = setTimeout(dismiss, 250);
       }
     }
@@ -129,11 +133,13 @@ const NotificationElement = styled.div`
     color: ${colors.green};
   `: ''}
 
-  ${props => props.active ? css`
+  ${props => props.active == true ? css`
     animation-name: ${slideTop};
-  ` : css`
+  `: ''}
+  
+  ${props => props.active == false ? css`
     animation-name: ${slideDown};
-  `}
+  `: ''}
 `;
 
 const Row = styled.div`

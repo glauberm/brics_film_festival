@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
-import Recaptcha from 'react-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { NotificationContext } from './Notifications';
 import { breakpoints, bigButtonStyle } from '../styles/theme';
@@ -11,41 +11,11 @@ import { FormControl } from '../styles/form';
 class Form extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.recaptchaInstance;
+    this.recaptchaInstance = React.createRef();
     this.resetRecaptchaInterval;
     this.state = {
-      recaptcha: null,
       recaptchaResponse: null
     };
-  }
-
-  componentDidMount() {
-    this.setState(
-      { recaptcha:
-        <Recaptcha
-          ref={e => this.recaptchaInstance = e}
-          render="explicit"
-          sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
-          size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
-          hl={this.props.intl.formatMessage({ id: 'langString' })}
-          verifyCallback={(response) => this.setState({
-            recaptchaResponse: response
-          }) }
-        />
-      }
-    );
-
-    const resetRecaptcha = () => {
-      if (this.recaptchaInstance) {
-        this.recaptchaInstance.reset();
-      }
-    };
-
-    this.resetRecaptchaInterval = setInterval(resetRecaptcha, 60000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.resetRecaptchaInterval);
   }
 
   handleSubmit = (event, addNotification, changeNotification) => {
@@ -89,9 +59,7 @@ class Form extends React.PureComponent {
         }
       });
 
-    if (this.recaptchaInstance) {
-      this.recaptchaInstance.reset();
-    }
+    this.recaptchaInstance.current.reset();
   }
 
   handleErrors = (error) => {
@@ -116,6 +84,20 @@ class Form extends React.PureComponent {
     }
   }
 
+  onRecaptchaChange = (value) => {
+    this.setState({
+      recaptchaResponse: value
+    });
+  };
+
+  onRecaptchaErrored = (addNotification) => {
+    addNotification('Chave do reCAPTCHA expirada. Por favor, marque o campo novamente.', 'danger');
+  };
+
+  onRecaptchaExpired = (addNotification) => {
+    addNotification('Erro ao validar reCAPTCHA. Por favor, cheque a sua conexão e tente novamente', 'danger');
+  };
+
   render() {
     return (
       <NotificationContext.Consumer>
@@ -129,11 +111,17 @@ class Form extends React.PureComponent {
             }
           >
             {this.props.children}
-            { process.env.NODE_ENV !== 'development' &&
-              <FormControl>
-                {this.state.recaptcha}
-              </FormControl>
-            }
+            <FormControl>
+              <ReCAPTCHA
+                ref={this.recaptchaInstance}
+                sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
+                onChange={this.onRecaptchaChange}
+                onExpired={() => this.onRecaptchaExpired(context.add)}
+                onErrored={() => this.onRecaptchaErrored(context.add)}
+                hl={this.props.intl.formatMessage({ id: 'langString' })}
+                size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
+              />
+            </FormControl>
             <FormControl>
               <Button
                 type="submit"

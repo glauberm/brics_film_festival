@@ -30,10 +30,6 @@ class FilmGrid extends React.PureComponent {
 }
 
 const List = styled.ul`
-  /* display: grid;
-  grid-template-columns: 1fr;
-  grid-column-gap: 2em;
-  grid-row-gap: 1em; */
   display: flex;
   flex-wrap: wrap;
   list-style: none;
