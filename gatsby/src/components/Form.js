@@ -98,6 +98,14 @@ class Form extends React.PureComponent {
     addNotification('Erro ao validar reCAPTCHA. Por favor, cheque a sua conexão e tente novamente', 'danger');
   };
 
+  getRecaptchaSize = () => {
+    if (typeof window !== 'undefined' && window) {
+      return window.innerWidth >= breakpoints.sm ? 'normal' : 'compact';
+    }
+
+    return 'compact';
+  }
+
   render() {
     return (
       <NotificationContext.Consumer>
@@ -119,7 +127,7 @@ class Form extends React.PureComponent {
                 onExpired={() => this.onRecaptchaExpired(context.add)}
                 onErrored={() => this.onRecaptchaErrored(context.add)}
                 hl={this.props.intl.formatMessage({ id: 'langString' })}
-                size={window.innerWidth >= breakpoints.sm ? 'normal' : 'compact'}
+                size={this.getRecaptchaSize}
               />
             </FormControl>
             <FormControl>
