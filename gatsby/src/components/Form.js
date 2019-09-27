@@ -63,6 +63,8 @@ class Form extends React.PureComponent {
   }
 
   handleErrors = (error) => {
+    console.log(error);
+    
     switch (error.code) {
     case 'rest_invalid_param':
       const fields = Object.keys(error.data.params).map((field) => {
