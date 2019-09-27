@@ -87,16 +87,16 @@ class Form extends React.PureComponent {
   }
 
   onRecaptchaChange = (value) => {
-    this.setState({
-      recaptchaResponse: value
-    });
+    this.setState({ recaptchaResponse: value });
   };
 
   onRecaptchaErrored = (addNotification) => {
+    this.setState({ recaptchaResponse: null });
     addNotification('Chave do reCAPTCHA expirada. Por favor, marque o campo novamente.', 'danger');
   };
 
   onRecaptchaExpired = (addNotification) => {
+    this.setState({ recaptchaResponse: null });
     addNotification('Erro ao validar reCAPTCHA. Por favor, cheque a sua conexão e tente novamente', 'danger');
   };
 
