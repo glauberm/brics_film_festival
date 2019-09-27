@@ -60,5 +60,10 @@
     "jest": "^24.9.0",
     "react-test-renderer": "^16.9.0",
     "typescript": "^3.6.3"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 version",
+    "not dead"
+  ]
 }

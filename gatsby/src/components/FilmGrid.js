@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { injectIntl } from 'react-intl';
 
-import { colors } from '../styles/theme';
+import { colors, breakpoints } from '../styles/theme';
 
 class FilmGrid extends React.PureComponent {
   render() {
@@ -30,22 +30,48 @@ class FilmGrid extends React.PureComponent {
 }
 
 const List = styled.ul`
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr;
   grid-column-gap: 2em;
-  grid-row-gap: 1em;
+  grid-row-gap: 1em; */
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
   margin: 1em 0 0;
   padding: 0;
-
-  @media (min-width: 425px) {
-    grid-template-columns: 1fr 1fr;
-  }
 `;
 
 const ListItem = styled.li`
-  margin: 0;
+  margin: 0 0 1em;
   padding: 0;
+
+  @media (min-width: ${breakpoints.sm}px) and (max-width: ${breakpoints.md-1}px) {
+    width: calc(50% - 2em);
+
+    :nth-of-type(2n) {
+      margin-left: 2em;
+    }
+
+    :nth-last-of-type(2) {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (min-width: ${breakpoints.lg}px) {
+    width: calc(50% - 2em);
+
+    :nth-of-type(2n) {
+      margin-left: 2em;
+    }
+
+    :nth-last-of-type(2) {
+      margin-bottom: 0;
+    }
+  }
+
+  :last-of-type {
+    margin-bottom: 0;
+  }
 
   a {
     display: flex;
